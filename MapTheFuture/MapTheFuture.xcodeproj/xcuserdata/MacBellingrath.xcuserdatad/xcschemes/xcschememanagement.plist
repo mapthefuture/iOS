@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MapTheFutureTV.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -18,6 +23,16 @@
 			<true/>
 		</dict>
 		<key>E68942381BFD357400FF5415</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6ED66E91BFE3FE100EAC9D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E6ED66F91BFE3FE100EAC9D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

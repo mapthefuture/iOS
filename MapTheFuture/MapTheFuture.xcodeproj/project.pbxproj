@@ -14,6 +14,7 @@
 		E68942301BFD357400FF5415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E689422F1BFD357400FF5415 /* Assets.xcassets */; };
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
 		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
+		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		E68942391BFD357400FF5415 /* MapTheFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapTheFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				E68942261BFD357400FF5415 /* AppDelegate.swift */,
 				E68942281BFD357400FF5415 /* FirstViewController.swift */,
+				E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */,
 				E689422A1BFD357400FF5415 /* SecondViewController.swift */,
 				E689422C1BFD357400FF5415 /* Main.storyboard */,
 				E689422F1BFD357400FF5415 /* Assets.xcassets */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */,
 				E689422B1BFD357400FF5415 /* SecondViewController.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
 				E68942291BFD357400FF5415 /* FirstViewController.swift in Sources */,
@@ -390,6 +394,7 @@
 				E68942441BFD357400FF5415 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E68942451BFD357400FF5415 /* Build configuration list for PBXNativeTarget "MapTheFutureTests" */ = {
 			isa = XCConfigurationList;
@@ -398,6 +403,7 @@
 				E68942471BFD357400FF5415 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import CoreLocation
+import MapKit
 
-class FirstViewController: UIViewController {
 
+
+class FirstViewController: UIViewController, CLLocationManagerDelegate,  MKMapViewDelegate{
+    
+    
+    @IBOutlet weak var mapView: MKMapView!
+    
+
+    @IBAction func findMeButtonPressed(sender: AnyObject) {
+        LocationManager.sharedManager().requestWhenInUseAuthorization()
+        LocationManager.sharedManager().startUpdatingLocation()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+  
+    
+    //MARK: - MapView
+    func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+        
     }
-
-
 }
 
