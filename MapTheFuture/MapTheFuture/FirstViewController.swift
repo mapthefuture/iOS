@@ -25,13 +25,39 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate,  MKMapVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+       
+        LocationManager.sharedManager().delegate = self
+        mapView.delegate = self
+        mapView.showsUserLocation = true
     }
+    
+    deinit {
+        LocationManager.sharedManager().stopUpdatingLocation()
+    }
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let loc = locations.last else { return }
+        
+        let center = CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        
+        
+        self.mapView.setRegion(region, animated: true)
+    }
+    
+    
+    
+    
+    
+    
     
   
     
     //MARK: - MapView
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
-        
+
     }
 }
 
