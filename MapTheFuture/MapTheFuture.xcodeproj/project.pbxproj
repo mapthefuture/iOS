@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344A4526ADE4822044EA611A /* Pods_MapTheFuture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F15941BF8F7B55D8016A4EC /* Pods_MapTheFuture.framework */; };
 		E62442B31C05ED9E00EA937E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62442B21C05ED9E00EA937E /* MapKit.framework */; };
 		E62442B51C06055900EA937E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62442B41C06055900EA937E /* Extensions.swift */; };
 		E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942261BFD357400FF5415 /* AppDelegate.swift */; };
@@ -17,6 +18,7 @@
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
 		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
+		E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE25201C0662F4002D2206 /* CreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +32,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A683DF64A11307006EF9AF7 /* Pods-MapTheFuture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapTheFuture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture.debug.xcconfig"; sourceTree = "<group>"; };
+		2F15941BF8F7B55D8016A4EC /* Pods_MapTheFuture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapTheFuture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF2C3509EFD5F8D56A6C0503 /* Pods-MapTheFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapTheFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture.release.xcconfig"; sourceTree = "<group>"; };
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		E68942231BFD357400FF5415 /* MapTheFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapTheFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68942261BFD357400FF5415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E68942281BFD357400FF5415 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		E68942281BFD357400FF5415 /* FirstViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		E689422A1BFD357400FF5415 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		E689422D1BFD357400FF5415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E689422F1BFD357400FF5415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -45,6 +50,8 @@
 		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		E6FE25201C0662F4002D2206 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		E6FE25251C066FB8002D2206 /* MapTheFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MapTheFuture.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E62442B31C05ED9E00EA937E /* MapKit.framework in Frameworks */,
+				344A4526ADE4822044EA611A /* Pods_MapTheFuture.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,13 +74,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		219C5BC9F67DF7914806F0C5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1A683DF64A11307006EF9AF7 /* Pods-MapTheFuture.debug.xcconfig */,
+				DF2C3509EFD5F8D56A6C0503 /* Pods-MapTheFuture.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		3270FBE555835F4300777144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2F15941BF8F7B55D8016A4EC /* Pods_MapTheFuture.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E689421A1BFD357400FF5415 = {
 			isa = PBXGroup;
 			children = (
-				E62442B21C05ED9E00EA937E /* MapKit.framework */,
 				E68942251BFD357400FF5415 /* MapTheFuture */,
 				E689423C1BFD357400FF5415 /* MapTheFutureTests */,
 				E68942241BFD357400FF5415 /* Products */,
+				219C5BC9F67DF7914806F0C5 /* Pods */,
+				3270FBE555835F4300777144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,16 +114,10 @@
 		E68942251BFD357400FF5415 /* MapTheFuture */ = {
 			isa = PBXGroup;
 			children = (
-				E68942261BFD357400FF5415 /* AppDelegate.swift */,
-				E68942281BFD357400FF5415 /* FirstViewController.swift */,
-				E62442B41C06055900EA937E /* Extensions.swift */,
-				E62442B61C06068A00EA937E /* MyPlayground.playground */,
-				E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */,
-				E689422A1BFD357400FF5415 /* SecondViewController.swift */,
+				E6FE25251C066FB8002D2206 /* MapTheFuture.entitlements */,
 				E689422C1BFD357400FF5415 /* Main.storyboard */,
-				E689422F1BFD357400FF5415 /* Assets.xcassets */,
-				E68942311BFD357400FF5415 /* LaunchScreen.storyboard */,
-				E68942341BFD357400FF5415 /* Info.plist */,
+				E6FE25221C0662FB002D2206 /* Create */,
+				E6FE25231C066B32002D2206 /* Supporting Files */,
 			);
 			path = MapTheFuture;
 			sourceTree = "<group>";
@@ -111,6 +131,39 @@
 			path = MapTheFutureTests;
 			sourceTree = "<group>";
 		};
+		E6FE25221C0662FB002D2206 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				E6FE25201C0662F4002D2206 /* CreateViewController.swift */,
+			);
+			name = Create;
+			sourceTree = "<group>";
+		};
+		E6FE25231C066B32002D2206 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E6FE25241C066B51002D2206 /* Frameworks */,
+				E68942261BFD357400FF5415 /* AppDelegate.swift */,
+				E68942281BFD357400FF5415 /* FirstViewController.swift */,
+				E62442B41C06055900EA937E /* Extensions.swift */,
+				E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */,
+				E689422A1BFD357400FF5415 /* SecondViewController.swift */,
+				E62442B61C06068A00EA937E /* MyPlayground.playground */,
+				E689422F1BFD357400FF5415 /* Assets.xcassets */,
+				E68942311BFD357400FF5415 /* LaunchScreen.storyboard */,
+				E68942341BFD357400FF5415 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E6FE25241C066B51002D2206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E62442B21C05ED9E00EA937E /* MapKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E68942421BFD357400FF5415 /* Build configuration list for PBXNativeTarget "MapTheFuture" */;
 			buildPhases = (
+				822AD8667E45A3AF07C2CDE2 /* Check Pods Manifest.lock */,
 				E689421F1BFD357400FF5415 /* Sources */,
 				E68942201BFD357400FF5415 /* Frameworks */,
 				E68942211BFD357400FF5415 /* Resources */,
+				7CE7450CBA69BF840B316CE6 /* Embed Pods Frameworks */,
+				D3EABBFBDFFDE526D620FCA5 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,6 +217,12 @@
 				TargetAttributes = {
 					E68942221BFD357400FF5415 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = UQFL2U85FV;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 					E68942381BFD357400FF5415 = {
 						CreatedOnToolsVersion = 7.2;
@@ -207,6 +269,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7CE7450CBA69BF840B316CE6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		822AD8667E45A3AF07C2CDE2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D3EABBFBDFFDE526D620FCA5 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E689421F1BFD357400FF5415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -214,6 +324,7 @@
 			files = (
 				E62442B51C06055900EA937E /* Extensions.swift in Sources */,
 				E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */,
+				E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* SecondViewController.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
 				E68942291BFD357400FF5415 /* FirstViewController.swift in Sources */,
@@ -341,23 +452,33 @@
 		};
 		E68942431BFD357400FF5415 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A683DF64A11307006EF9AF7 /* Pods-MapTheFuture.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapTheFuture/MapTheFuture.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MapTheFuture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
 		E68942441BFD357400FF5415 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DF2C3509EFD5F8D56A6C0503 /* Pods-MapTheFuture.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MapTheFuture/MapTheFuture.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MapTheFuture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

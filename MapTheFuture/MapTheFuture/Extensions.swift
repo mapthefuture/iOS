@@ -24,9 +24,10 @@ postfix operator >* { }
 
 postfix func >*(xs: [String]) -> Bool {
     
-    let rs = xs.map{$0.characters.count > 0}
-    if rs.contains(false) { return false }
-    return true
+    let rs = xs.map{ $0.characters.count > 0 }
     
+    if rs.contains(false) { return false }
+    
+    return true
 }
 
