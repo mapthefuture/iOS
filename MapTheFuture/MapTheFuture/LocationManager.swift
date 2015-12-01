@@ -17,6 +17,4 @@ class LocationManager: CLLocationManager {
     class func sharedManager() -> LocationManager {
         return _sharedManager
     }
-    
-    
 }

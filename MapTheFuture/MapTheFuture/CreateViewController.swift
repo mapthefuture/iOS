@@ -26,6 +26,8 @@ class CreateViewController: UIViewController, UISearchBarDelegate, MKMapViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        mapView.showsCompass = true
+
         // Do any additional setup after loading the view.
     }
 

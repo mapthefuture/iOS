@@ -31,3 +31,12 @@ postfix func >*(xs: [String]) -> Bool {
     return true
 }
 
+
+extension UIViewController {
+    
+    func alertUser(title: String, message: String){
+        let ac = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Cancel, handler: nil))
+        self.presentViewController(ac, animated: true, completion: nil)
+    }
+}

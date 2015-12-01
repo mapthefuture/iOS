@@ -84,10 +84,16 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-MapTheFuture/Bolts.framework"
-  install_framework "Pods-MapTheFuture/Parse.framework"
+  install_framework "Pods-MapTheFuture/Alamofire.framework"
+  install_framework "Pods-MapTheFuture/AlamofireObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/IQAudioRecorderController.framework"
+  install_framework "Pods-MapTheFuture/ObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/SCSiriWaveformView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-MapTheFuture/Bolts.framework"
-  install_framework "Pods-MapTheFuture/Parse.framework"
+  install_framework "Pods-MapTheFuture/Alamofire.framework"
+  install_framework "Pods-MapTheFuture/AlamofireObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/IQAudioRecorderController.framework"
+  install_framework "Pods-MapTheFuture/ObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/SCSiriWaveformView.framework"
 fi
