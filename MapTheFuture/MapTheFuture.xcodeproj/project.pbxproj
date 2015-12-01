@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		344A4526ADE4822044EA611A /* Pods_MapTheFuture.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F15941BF8F7B55D8016A4EC /* Pods_MapTheFuture.framework */; };
+		E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */; };
+		E6241B341C0DFF1600D2F5DD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B331C0DFF1600D2F5DD /* ProfileViewController.swift */; };
+		E6241B361C0E02F800D2F5DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B351C0E02F800D2F5DD /* User.swift */; };
+		E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */; };
 		E62442B31C05ED9E00EA937E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62442B21C05ED9E00EA937E /* MapKit.framework */; };
 		E62442B51C06055900EA937E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62442B41C06055900EA937E /* Extensions.swift */; };
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
@@ -39,6 +43,10 @@
 		1A683DF64A11307006EF9AF7 /* Pods-MapTheFuture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapTheFuture.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture.debug.xcconfig"; sourceTree = "<group>"; };
 		2F15941BF8F7B55D8016A4EC /* Pods_MapTheFuture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapTheFuture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF2C3509EFD5F8D56A6C0503 /* Pods-MapTheFuture.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MapTheFuture.release.xcconfig"; path = "Pods/Target Support Files/Pods-MapTheFuture/Pods-MapTheFuture.release.xcconfig"; sourceTree = "<group>"; };
+		E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
+		E6241B331C0DFF1600D2F5DD /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E6241B351C0E02F800D2F5DD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -100,6 +108,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E6241B321C0DFF0000D2F5DD /* User Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E6241B331C0DFF1600D2F5DD /* ProfileViewController.swift */,
+			);
+			name = "User Flow";
+			sourceTree = "<group>";
+		};
 		E674739B1C0CA9F900EEF02A /* Route Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				E68942281BFD357400FF5415 /* MainViewController.swift */,
+				E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */,
 			);
 			name = MainFlow;
 			sourceTree = "<group>";
@@ -130,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				E67473A11C0DE1C100EEF02A /* Tour.swift */,
+				E6241B351C0E02F800D2F5DD /* User.swift */,
 			);
 			name = "Model Objects";
 			sourceTree = "<group>";
@@ -160,6 +178,7 @@
 				E689422C1BFD357400FF5415 /* Main.storyboard */,
 				E674739C1C0CDC8F00EEF02A /* MainFlow */,
 				E674739B1C0CA9F900EEF02A /* Route Flow */,
+				E6241B321C0DFF0000D2F5DD /* User Flow */,
 				E6FE25221C0662FB002D2206 /* Creation Flow */,
 				E6FE25231C066B32002D2206 /* Supporting Files */,
 			);
@@ -178,8 +197,9 @@
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
 			isa = PBXGroup;
 			children = (
-				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
 				E6FE25201C0662F4002D2206 /* CreateViewController.swift */,
+				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
+				E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */,
 			);
 			name = "Creation Flow";
 			sourceTree = "<group>";
@@ -368,13 +388,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6241B361C0E02F800D2F5DD /* User.swift in Sources */,
 				E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */,
 				E62442B51C06055900EA937E /* Extensions.swift in Sources */,
 				E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */,
 				E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */,
 				E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
+				E6241B341C0DFF1600D2F5DD /* ProfileViewController.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
+				E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */,
+				E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
 				E68942291BFD357400FF5415 /* MainViewController.swift in Sources */,
 				E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */,

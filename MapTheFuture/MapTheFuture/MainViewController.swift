@@ -104,12 +104,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return tours.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! MapTableViewCell
       
         let tour = tours[indexPath.row]
-        cell.textLabel?.text = tour.title ?? ""
-        cell.detailTextLabel?.text = tour.length ?? ""
-        cell.imageView?.image = UIImage(named: "compass")
+      
+         cell.tourTitleLabel.text = tour.title ?? ""
+         cell.tourDescriptionLabel?.text = tour.length ?? ""
+         //TODO - Configure Media Preview
         return cell
     }
 

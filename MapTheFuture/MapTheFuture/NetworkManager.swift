@@ -43,31 +43,39 @@ class NetworkManager: NSObject {
     )}
     
     
-    func createTour(title: String) {
+    
+    /**
+     Create a New tour
+     
+     - parameter title: Provide a title for the tour
+     Creating a New Tour (POST https://fathomless-savannah-6575.herokuapp.com/tours/)
+     */
+    func createTour(title: String, success:(Bool)->()) {
         
-        // Creating a New Tour (POST https://fathomless-savannah-6575.herokuapp.com/tours/)
         
         
         let URLParameters = [
-            "title":"Donuts in Brooklyn",
-            "length":"1 hour",
+            
+            "title": title
         ]
         
         // Fetch Request
         Alamofire.request(.POST, "https://fathomless-savannah-6575.herokuapp.com/tours/", parameters: URLParameters)
-            .validate(statusCode: 200..<300)
-            .responseJSON{(request, response, JSON, error) in
-                if (error == nil)
-                {
-                    println("HTTP Response Body: \(JSON)")
+            .validate(statusCode: 200..<300).responseJSON(completionHandler: { (response) -> Void in
+                
+                switch response.result {
+               
+                case .Failure(let error):
+                    print(error)
+                    success(false)
+               
+                case .Success(let value):
+                     success(true)
+                    print(value)
+                    
                 }
-                else
-                {
-                    println("HTTP HTTP Request failed: \(error)")
-                }
-        }
-        
-    }
+            })
+      }
 
 }
 
