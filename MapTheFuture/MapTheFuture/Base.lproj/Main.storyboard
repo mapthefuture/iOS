@@ -32,7 +32,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kZ3-IK-KIZ">
-                                                        <rect key="frame" x="0.0" y="1" width="600" height="181"/>
+                                                        <rect key="frame" x="0.0" y="1" width="600" height="202"/>
                                                         <connections>
                                                             <outlet property="delegate" destination="9pv-A4-QxB" id="8l3-c5-uEY"/>
                                                         </connections>
@@ -43,7 +43,35 @@
                                                 <blurEffect style="extraLight"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-Xa-Q4W" customClass="OceanView" customModule="OceanView">
+                                            <rect key="frame" x="0.0" y="170" width="600" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="snN-NJ-K0k"/>
+                                            </constraints>
+                                        </view>
+                                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13Y-ec-kQf" customClass="OceanView" customModule="OceanView">
+                                            <rect key="frame" x="0.0" y="170" width="600" height="30"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="JQ7-vI-XE6"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OxY-Xa-Q4W" firstAttribute="leading" secondItem="7QP-fh-PId" secondAttribute="leading" id="IWn-2z-KWv"/>
+                                        <constraint firstAttribute="bottom" secondItem="13Y-ec-kQf" secondAttribute="bottom" id="JXk-Bs-XVy"/>
+                                        <constraint firstAttribute="trailing" secondItem="OxY-Xa-Q4W" secondAttribute="trailing" id="KhS-5V-qNp"/>
+                                        <constraint firstAttribute="bottom" secondItem="OxY-Xa-Q4W" secondAttribute="bottom" id="Ls9-5J-Sx0"/>
+                                        <constraint firstItem="13Y-ec-kQf" firstAttribute="leading" secondItem="7QP-fh-PId" secondAttribute="leading" id="O8y-kx-qVH"/>
+                                        <constraint firstAttribute="trailing" secondItem="13Y-ec-kQf" secondAttribute="trailing" id="ZXY-QK-dIt"/>
+                                        <constraint firstItem="OxY-Xa-Q4W" firstAttribute="top" secondItem="13Y-ec-kQf" secondAttribute="bottom" id="gLX-8t-G7p"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="gLX-8t-G7p"/>
+                                        </mask>
+                                    </variation>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="tCQ-fq-O2v"/>
@@ -176,8 +204,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="frontOceanView" destination="13Y-ec-kQf" id="LMd-Et-pXP"/>
                         <outlet property="imageView" destination="CBT-43-0zd" id="KoY-PM-T3q"/>
                         <outlet property="mapView" destination="kZ3-IK-KIZ" id="bu3-1D-Fh6"/>
+                        <outlet property="rearOceanView" destination="OxY-Xa-Q4W" id="XPZ-B7-iBR"/>
                         <outlet property="tableView" destination="4Zc-oz-UdU" id="r83-1Z-k28"/>
                     </connections>
                 </viewController>
@@ -197,7 +227,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DIw-j5-Vc3">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DIw-j5-Vc3">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </mapView>
                         </subviews>
@@ -632,43 +662,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Udp-Y7-wI6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-196" y="1407"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="WQ0-eT-hIw">
-            <objects>
-                <viewController id="duh-FQ-1UI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lOj-2w-LbO"/>
-                        <viewControllerLayoutGuide type="bottom" id="dwR-xT-FmD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5n4-Jr-Z2u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Uzr-tW-n8o"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oXu-dS-iJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1186" y="2257"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ANq-Zd-Js2">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="cTb-sF-2Mt" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p9J-GC-Gr1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="duh-FQ-1UI" kind="relationship" relationship="rootViewController" id="oXN-aa-eDv"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="szz-SY-SNo" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="374" y="2257"/>
         </scene>
     </scenes>
     <resources>

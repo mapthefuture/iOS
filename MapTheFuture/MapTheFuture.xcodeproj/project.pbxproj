@@ -14,6 +14,7 @@
 		E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */; };
 		E62442B31C05ED9E00EA937E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62442B21C05ED9E00EA937E /* MapKit.framework */; };
 		E62442B51C06055900EA937E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62442B41C06055900EA937E /* Extensions.swift */; };
+		E62BA02B1C0E334C002750E0 /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62BA02A1C0E334C002750E0 /* WaveViewController.swift */; };
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
 		E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674739D1C0CDDD400EEF02A /* NetworkManager.swift */; };
 		E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473A11C0DE1C100EEF02A /* Tour.swift */; };
@@ -50,6 +51,7 @@
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		E62BA02A1C0E334C002750E0 /* WaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
 		E67473991C0CA94700EEF02A /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsTableViewController.swift; path = ../StepsTableViewController.swift; sourceTree = "<group>"; };
 		E674739D1C0CDDD400EEF02A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E67473A11C0DE1C100EEF02A /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				E68942281BFD357400FF5415 /* MainViewController.swift */,
 				E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */,
+				E62BA02A1C0E334C002750E0 /* WaveViewController.swift */,
 			);
 			name = MainFlow;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E6241B341C0DFF1600D2F5DD /* ProfileViewController.swift in Sources */,
+				E62BA02B1C0E334C002750E0 /* WaveViewController.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
 				E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */,
 				E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */,

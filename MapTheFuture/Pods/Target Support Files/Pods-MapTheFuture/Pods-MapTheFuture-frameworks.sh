@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-MapTheFuture/AlamofireObjectMapper.framework"
   install_framework "Pods-MapTheFuture/IQAudioRecorderController.framework"
   install_framework "Pods-MapTheFuture/ObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/OceanView.framework"
   install_framework "Pods-MapTheFuture/SCSiriWaveformView.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-MapTheFuture/AlamofireObjectMapper.framework"
   install_framework "Pods-MapTheFuture/IQAudioRecorderController.framework"
   install_framework "Pods-MapTheFuture/ObjectMapper.framework"
+  install_framework "Pods-MapTheFuture/OceanView.framework"
   install_framework "Pods-MapTheFuture/SCSiriWaveformView.framework"
 fi

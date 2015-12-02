@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>OceanView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-MapTheFuture.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -47,7 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>925876C5EC7D28D9B1E4290EEA5CE7E5</key>
+		<key>46061E2FFDE7F96BCA3087D26BAB9FA5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9C6C7F24098D2C622711EE78E9E6F829</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import Parse
+import OceanView
 
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate{
@@ -22,6 +23,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
    }
    
+
    var searchController:UISearchController!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -38,9 +40,45 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         LocationManager.sharedManager().requestWhenInUseAuthorization()
         LocationManager.sharedManager().startUpdatingLocation()
     }
+    
+    
+    
+    //OceanView
+   @IBOutlet weak var rearOceanView: OceanView! {
+      didSet {
+         self.rearOceanView.frequency = 2
+         self.rearOceanView.waveColor = UIColor(red: 79/255, green: 119/255, blue: 180/255, alpha: 1)
+         self.rearOceanView.amplitudeRate = 0.2
+         self.rearOceanView.update(2)
+      }
+   }
+
+   
+   @IBOutlet weak var frontOceanView: OceanView!{
+      didSet {
+         self.frontOceanView.alpha = 0.5
+         self.frontOceanView.frequency = 1
+         self.frontOceanView.waveColor = UIColor(red: 127/255, green: 171/255, blue: 255/255, alpha: 1)
+         self.frontOceanView.amplitudeRate = 0.2
+         self.frontOceanView.update(3)
+      }
+   }
+   
+
+    lazy var timer: NSTimer = {
+        let lazyTimer =  NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateWave", userInfo: nil, repeats: false)
+        return lazyTimer
+    }()
+   
+   
+   
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        NSRunLoop.mainRunLoop().addTimer( timer
+            , forMode: NSRunLoopCommonModes)
+
       NetworkManager.sharedManager().getAllTours { [weak self] (success, tours) -> () in
          
          if success == false {
@@ -76,10 +114,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          // set the text view to the image view
          self.navigationItem.titleView = imageView
       }
-      
+
     }
     
     deinit {
+      
         LocationManager.sharedManager().stopUpdatingLocation()
     }
     
