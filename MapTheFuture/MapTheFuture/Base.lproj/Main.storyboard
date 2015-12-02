@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A279b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -10,7 +9,7 @@
         <!--Main View Controller-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="MainViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -84,7 +83,7 @@
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stockgirl" translatesAutoresizingMaskIntoConstraints="NO" id="CBT-43-0zd">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile" translatesAutoresizingMaskIntoConstraints="NO" id="CBT-43-0zd">
                                 <rect key="frame" x="250" y="84" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="Z57-IU-zri"/>
@@ -99,7 +98,7 @@
                                     <constraint firstAttribute="height" constant="400" id="DD5-PS-Iws"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="156" id="q5O-3Q-vPy" customClass="MapTableViewCell" customModule="MapTheFuture" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="156" id="q5O-3Q-vPy" customClass="MapTableViewCell" customModule="Wanderful" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="156"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q5O-3Q-vPy" id="N9N-KO-xXm">
@@ -134,6 +133,7 @@
                                         <connections>
                                             <outlet property="tourDescriptionLabel" destination="fZd-k9-Kkd" id="6hI-md-5gQ"/>
                                             <outlet property="tourTitleLabel" destination="lmT-fv-rVr" id="IXz-8A-wCm"/>
+                                            <segue destination="Kvg-CX-DXe" kind="show" identifier="ShowTourDetail" id="RNg-hs-ihh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -205,6 +205,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="frontOceanView" destination="13Y-ec-kQf" id="LMd-Et-pXP"/>
+                        <outlet property="greetingLabel" destination="93n-Cf-LwF" id="tdn-kA-BI5"/>
                         <outlet property="imageView" destination="CBT-43-0zd" id="KoY-PM-T3q"/>
                         <outlet property="mapView" destination="kZ3-IK-KIZ" id="bu3-1D-Fh6"/>
                         <outlet property="rearOceanView" destination="OxY-Xa-Q4W" id="XPZ-B7-iBR"/>
@@ -215,10 +216,106 @@
             </objects>
             <point key="canvasLocation" x="1562" y="-320"/>
         </scene>
+        <!--Site Table View Controller-->
+        <scene sceneID="3Hb-Ov-7Wr">
+            <objects>
+                <tableViewController id="Kvg-CX-DXe" customClass="SiteTableViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="158" sectionHeaderHeight="28" sectionFooterHeight="28" id="5wQ-Ma-U7C">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="z2c-fM-W2B">
+                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WS6-rH-QHc">
+                                    <rect key="frame" x="278" y="12" width="43" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="WS6-rH-QHc" firstAttribute="centerX" secondItem="z2c-fM-W2B" secondAttribute="centerX" id="TBu-rI-mdO"/>
+                                <constraint firstItem="WS6-rH-QHc" firstAttribute="centerY" secondItem="z2c-fM-W2B" secondAttribute="centerY" id="ne4-i0-mH7"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="158" id="6Oh-b7-drj" customClass="SiteTableViewCell" customModule="Wanderful" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="136" width="600" height="158"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Oh-b7-drj" id="cOp-It-FcR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="157.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-AS-bwX">
+                                            <rect key="frame" x="103" y="5" width="493" height="148"/>
+                                            <subviews>
+                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqv-kf-xG6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="244" height="148"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="6Oh-b7-drj" id="CY3-Ad-aCK"/>
+                                                    </connections>
+                                                </mapView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOg-ea-Uuo">
+                                                    <rect key="frame" x="249" y="0.0" width="244" height="148"/>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="95E-L9-XtK">
+                                            <rect key="frame" x="5" y="5" width="87" height="148"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqJ-tj-lga">
+                                                    <rect key="frame" x="0.0" y="0.0" width="87" height="81"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-hU-0s6">
+                                                    <rect key="frame" x="0.0" y="81" width="87" height="67"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="95E-L9-XtK" secondAttribute="bottom" constant="5" id="62p-0k-yfo"/>
+                                        <constraint firstItem="95E-L9-XtK" firstAttribute="leading" secondItem="cOp-It-FcR" secondAttribute="leading" constant="5" id="EiL-fv-auC"/>
+                                        <constraint firstAttribute="bottom" secondItem="NcB-AS-bwX" secondAttribute="bottom" constant="5" id="jbs-iC-fZ1"/>
+                                        <constraint firstItem="95E-L9-XtK" firstAttribute="top" secondItem="cOp-It-FcR" secondAttribute="top" constant="5" id="tQc-W5-D0A"/>
+                                        <constraint firstAttribute="trailing" secondItem="NcB-AS-bwX" secondAttribute="trailing" constant="5" id="ugc-hA-YGc"/>
+                                        <constraint firstItem="NcB-AS-bwX" firstAttribute="top" secondItem="cOp-It-FcR" secondAttribute="top" constant="5" id="xKn-g1-ulw"/>
+                                        <constraint firstItem="NcB-AS-bwX" firstAttribute="leading" secondItem="95E-L9-XtK" secondAttribute="trailing" constant="10" id="xvn-fW-bmK"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="siteDescriptionLabel" destination="5Yr-hU-0s6" id="haU-gP-Ajy"/>
+                                    <outlet property="siteImageView" destination="GOg-ea-Uuo" id="vsT-Rd-le6"/>
+                                    <outlet property="siteMapView" destination="tqv-kf-xG6" id="tqh-VA-sLS"/>
+                                    <outlet property="siteTitleLabel" destination="yqJ-tj-lga" id="6tp-r6-eBR"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Kvg-CX-DXe" id="Liv-QK-p03"/>
+                            <outlet property="delegate" destination="Kvg-CX-DXe" id="XuO-0a-Axa"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="tourTitleLabel" destination="WS6-rH-QHc" id="cet-hh-SVk"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NqW-8c-euI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2350" y="-318"/>
+        </scene>
         <!--Create View Controller-->
         <scene sceneID="gxC-Xj-sPP">
             <objects>
-                <viewController id="cUg-G0-6ed" customClass="CreateViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cUg-G0-6ed" customClass="CreateViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dkb-kl-Zsf"/>
                         <viewControllerLayoutGuide type="bottom" id="AuL-DC-eon"/>
@@ -257,7 +354,7 @@
         <!--Create a Tour-->
         <scene sceneID="Mh3-L9-2MA">
             <objects>
-                <viewController id="XGv-Lr-aig" customClass="CreateTourViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XGv-Lr-aig" customClass="CreateTourViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="A4j-ZQ-kSf"/>
                         <viewControllerLayoutGuide type="bottom" id="1db-FG-WGF"/>
@@ -291,7 +388,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tour Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="21" translatesAutoresizingMaskIntoConstraints="NO" id="Og6-fI-vYd">
                                 <rect key="frame" x="255" y="214" width="91.5" height="25.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -321,7 +418,7 @@
         <!--Routing View Controller-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="RoutingViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="RoutingViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -427,7 +524,7 @@
         <!--Steps Table View Controller-->
         <scene sceneID="CWr-8w-eqq">
             <objects>
-                <tableViewController id="NOF-k6-svg" customClass="StepsTableViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="NOF-k6-svg" customClass="StepsTableViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="N1r-OF-7YC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -466,7 +563,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -544,7 +641,7 @@
         <!--Profile View Controller-->
         <scene sceneID="KaL-Af-KTZ">
             <objects>
-                <viewController id="3Nn-mL-QNP" customClass="ProfileViewController" customModule="MapTheFuture" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3Nn-mL-QNP" customClass="ProfileViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eAu-8j-05n"/>
                         <viewControllerLayoutGuide type="bottom" id="cwU-5j-sQZ"/>
@@ -562,7 +659,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sarah" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ec7-It-VJW">
                                 <rect key="frame" x="278" y="264" width="44.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="109" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5tZ-T3-1ag">
@@ -667,6 +764,7 @@
     <resources>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
+        <image name="smile" width="644" height="638"/>
         <image name="stockgirl" width="225" height="199"/>
     </resources>
 </document>

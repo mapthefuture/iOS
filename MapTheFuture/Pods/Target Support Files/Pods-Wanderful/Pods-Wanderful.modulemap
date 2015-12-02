@@ -1,0 +1,6 @@
+framework module Pods_Wanderful {
+  umbrella header "Pods-Wanderful-umbrella.h"
+
+  export *
+  module * { export * }
+}

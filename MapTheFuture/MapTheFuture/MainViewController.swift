@@ -9,8 +9,8 @@
 import UIKit
 import CoreLocation
 import MapKit
-import Parse
 import OceanView
+import KeychainSwift
 
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate{
@@ -23,6 +23,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
    }
    
+    @IBOutlet weak var greetingLabel: UILabel!
 
    var searchController:UISearchController!
     @IBOutlet weak var mapView: MKMapView!
@@ -75,6 +76,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+      
+        if let name = KeychainSwift().get("name") {
+            greetingLabel.text = "Hello, \(name)"
+        }
         
         NSRunLoop.mainRunLoop().addTimer( timer
             , forMode: NSRunLoopCommonModes)
@@ -156,6 +162,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - MapView
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
 
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        guard segue.identifier == "ShowTourDetail", let siteTVC = segue.destinationViewController as? SiteTableViewController else { return }
+      
+        guard let selected = tableView.indexPathForSelectedRow?.row else { return }
+        let tour = tours[selected]
+        siteTVC.tour = tour
     }
 }
 

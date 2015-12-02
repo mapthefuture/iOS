@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KeychainSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,7 +34,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods-MapTheFuture.xcscheme</key>
+		<key>Pods-Wanderful.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -52,7 +57,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>46061E2FFDE7F96BCA3087D26BAB9FA5</key>
+		<key>4C698C648EE4D43C6B8BE0BE1FE91737</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -63,6 +68,11 @@
 			<true/>
 		</dict>
 		<key>A510217D18CA2FB4C785282B05B67560</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AF7CA737EF371FDF35051164A5A9DC25</key>
 		<dict>
 			<key>primary</key>
 			<true/>

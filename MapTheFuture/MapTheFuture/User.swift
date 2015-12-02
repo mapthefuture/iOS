@@ -15,17 +15,23 @@ import ObjectMapper
 class User: Mappable {
     
  
-    
-    var name: String?
-    var user_id: Int?
+    var id: Int?
+    var email: String?
+    var accessToken: String?
+    var firstName: String?
+    var lastName: String?
+
     
     required init?(_ map: Map){
         
     }
     
     func mapping(map: Map) {
-        name <- map["name"]
-        user_id <- map["user_id"]
+        id <- map["id"]
+        email <- map["email"]
+        accessToken <- map["access_token"]
+        firstName <- map["first_name"]
+        lastName <- map["last_name"]
     }
     
 }
