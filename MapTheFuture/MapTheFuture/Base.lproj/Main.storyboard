@@ -25,9 +25,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I0p-dP-BZ7">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="183"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="AQi-PG-Rif">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="183"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
                                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kZ3-IK-KIZ">
@@ -42,35 +42,7 @@
                                                 <blurEffect style="extraLight"/>
                                             </vibrancyEffect>
                                         </visualEffectView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OxY-Xa-Q4W" customClass="OceanView" customModule="OceanView">
-                                            <rect key="frame" x="0.0" y="170" width="600" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="snN-NJ-K0k"/>
-                                            </constraints>
-                                        </view>
-                                        <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="13Y-ec-kQf" customClass="OceanView" customModule="OceanView">
-                                            <rect key="frame" x="0.0" y="170" width="600" height="30"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="JQ7-vI-XE6"/>
-                                            </constraints>
-                                        </view>
                                     </subviews>
-                                    <constraints>
-                                        <constraint firstItem="OxY-Xa-Q4W" firstAttribute="leading" secondItem="7QP-fh-PId" secondAttribute="leading" id="IWn-2z-KWv"/>
-                                        <constraint firstAttribute="bottom" secondItem="13Y-ec-kQf" secondAttribute="bottom" id="JXk-Bs-XVy"/>
-                                        <constraint firstAttribute="trailing" secondItem="OxY-Xa-Q4W" secondAttribute="trailing" id="KhS-5V-qNp"/>
-                                        <constraint firstAttribute="bottom" secondItem="OxY-Xa-Q4W" secondAttribute="bottom" id="Ls9-5J-Sx0"/>
-                                        <constraint firstItem="13Y-ec-kQf" firstAttribute="leading" secondItem="7QP-fh-PId" secondAttribute="leading" id="O8y-kx-qVH"/>
-                                        <constraint firstAttribute="trailing" secondItem="13Y-ec-kQf" secondAttribute="trailing" id="ZXY-QK-dIt"/>
-                                        <constraint firstItem="OxY-Xa-Q4W" firstAttribute="top" secondItem="13Y-ec-kQf" secondAttribute="bottom" id="gLX-8t-G7p"/>
-                                    </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="gLX-8t-G7p"/>
-                                        </mask>
-                                    </variation>
                                 </view>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="tCQ-fq-O2v"/>
@@ -98,24 +70,24 @@
                                     <constraint firstAttribute="height" constant="400" id="DD5-PS-Iws"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="156" id="q5O-3Q-vPy" customClass="MapTableViewCell" customModule="Wanderful" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="156"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="70" id="q5O-3Q-vPy" customClass="MapTableViewCell" customModule="Wanderful" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="q5O-3Q-vPy" id="N9N-KO-xXm">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="155.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="s8k-R5-Wzu">
-                                                    <rect key="frame" x="5" y="5" width="590" height="146"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="s8k-R5-Wzu">
+                                                    <rect key="frame" x="10" y="10" width="580" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-fv-rVr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="590" height="66"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lmT-fv-rVr">
+                                                            <rect key="frame" x="0.0" y="0.0" width="580" height="23"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                             <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a lovely tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZd-k9-Kkd">
-                                                            <rect key="frame" x="0.0" y="71" width="590" height="75"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="a lovely tour" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZd-k9-Kkd">
+                                                            <rect key="frame" x="0.0" y="28" width="580" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                             <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -124,10 +96,10 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="s8k-R5-Wzu" firstAttribute="leading" secondItem="N9N-KO-xXm" secondAttribute="leading" constant="5" id="IvB-wv-2wW"/>
-                                                <constraint firstItem="s8k-R5-Wzu" firstAttribute="top" secondItem="N9N-KO-xXm" secondAttribute="top" constant="5" id="aYl-4Q-xRI"/>
-                                                <constraint firstAttribute="trailing" secondItem="s8k-R5-Wzu" secondAttribute="trailing" constant="5" id="hfK-Wf-Jge"/>
-                                                <constraint firstAttribute="bottom" secondItem="s8k-R5-Wzu" secondAttribute="bottom" constant="5" id="xRF-yR-4kb"/>
+                                                <constraint firstItem="s8k-R5-Wzu" firstAttribute="leading" secondItem="N9N-KO-xXm" secondAttribute="leading" constant="10" id="IvB-wv-2wW"/>
+                                                <constraint firstItem="s8k-R5-Wzu" firstAttribute="top" secondItem="N9N-KO-xXm" secondAttribute="top" constant="10" id="aYl-4Q-xRI"/>
+                                                <constraint firstAttribute="trailing" secondItem="s8k-R5-Wzu" secondAttribute="trailing" constant="10" id="hfK-Wf-Jge"/>
+                                                <constraint firstAttribute="bottom" secondItem="s8k-R5-Wzu" secondAttribute="bottom" constant="10" id="xRF-yR-4kb"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -204,11 +176,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="frontOceanView" destination="13Y-ec-kQf" id="LMd-Et-pXP"/>
                         <outlet property="greetingLabel" destination="93n-Cf-LwF" id="tdn-kA-BI5"/>
                         <outlet property="imageView" destination="CBT-43-0zd" id="KoY-PM-T3q"/>
                         <outlet property="mapView" destination="kZ3-IK-KIZ" id="bu3-1D-Fh6"/>
-                        <outlet property="rearOceanView" destination="OxY-Xa-Q4W" id="XPZ-B7-iBR"/>
                         <outlet property="tableView" destination="4Zc-oz-UdU" id="r83-1Z-k28"/>
                     </connections>
                 </viewController>

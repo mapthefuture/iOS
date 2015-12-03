@@ -14,7 +14,6 @@
 		E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */; };
 		E62442B31C05ED9E00EA937E /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E62442B21C05ED9E00EA937E /* MapKit.framework */; };
 		E62442B51C06055900EA937E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62442B41C06055900EA937E /* Extensions.swift */; };
-		E62BA02B1C0E334C002750E0 /* WaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62BA02A1C0E334C002750E0 /* WaveViewController.swift */; };
 		E63670AE1C0F79B300906D4E /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63670AD1C0F79B300906D4E /* Site.swift */; };
 		E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63670B01C0F806500906D4E /* SiteTableViewController.swift */; };
 		E6459F4A1C0F54290085E3A8 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6459F491C0F54290085E3A8 /* User.storyboard */; };
@@ -59,7 +58,6 @@
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
-		E62BA02A1C0E334C002750E0 /* WaveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveViewController.swift; sourceTree = "<group>"; };
 		E63670AD1C0F79B300906D4E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		E63670B01C0F806500906D4E /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
 		E6459F491C0F54290085E3A8 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
@@ -163,7 +161,6 @@
 			children = (
 				E68942281BFD357400FF5415 /* MainViewController.swift */,
 				E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */,
-				E62BA02A1C0E334C002750E0 /* WaveViewController.swift */,
 			);
 			name = MainFlow;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 				E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,
-				E62BA02B1C0E334C002750E0 /* WaveViewController.swift in Sources */,
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
 				E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
