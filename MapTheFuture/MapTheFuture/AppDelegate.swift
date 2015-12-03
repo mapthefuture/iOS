@@ -20,19 +20,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        
+        window = UIWindow(frame:UIScreen.mainScreen().bounds)
+        window?.backgroundColor = UIColor.whiteColor()
+        window?.makeKeyAndVisible()
         //Configure Crashlytics
         Fabric.with([Crashlytics.self])
         
-        var navVC: UINavigationController?
-        var tabVC: UITabBarController?
+     
+
         
         
         if let token = KeychainSwift().get("token") {
-            
+            print("User logged in with token: \(token)")
+            let mainsb = UIStoryboard(name: "Main", bundle: nil)
+            if let tvc = mainsb.instantiateInitialViewController() as? UITabBarController {
+
+                window?.rootViewController = tvc
+                
+            }
+        } else {
+            let userSB = UIStoryboard(name: "User", bundle: nil)
+            if let nav = userSB.instantiateInitialViewController() as? UINavigationController {
+                window?.rootViewController = nav
+            }
         }
 
-    
+        
         return true
     }
 

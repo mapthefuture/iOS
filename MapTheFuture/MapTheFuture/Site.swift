@@ -17,12 +17,16 @@ class Site: Mappable {
     var tourID: Int?
     var title: String?
     var description: String?
-    var lat: Double?
-    var lon: Double?
+    var lat: String?
+    var lon: String?
     var coordinate: CLLocationCoordinate2D? {
-        guard let lat = self.lat, let long = self.lon  else { return nil }
-        return CLLocationCoordinate2D(latitude: lat, longitude: long)
+        print(lat, lon)
+        guard let lat = self.lat, let long = self.lon, let dlat = Double(lat),  let dlong = Double(long)  else { return nil }
+
+       
         
+        return CLLocationCoordinate2D(latitude: dlat, longitude: dlong)
+      
     }
     
     required init?(_ map: Map){
@@ -36,7 +40,5 @@ class Site: Mappable {
         description <- map["description"]
         lat <- map["lat"]
         lon <- map["lon"]
-        
     }
-    
 }

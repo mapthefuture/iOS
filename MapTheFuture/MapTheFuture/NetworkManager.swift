@@ -55,6 +55,8 @@ class NetworkManager: NSObject {
         
         
         
+        
+        
         let URLParameters = [
             
             "title": title
@@ -155,10 +157,18 @@ class NetworkManager: NSObject {
      */
     func getSitesforTour(tourID: Int, completion: (success: Bool, sites: [Site]) -> ()) {
         
-        
+        guard let token = KeychainSwift().get("token") else { return }
             
             // Create manager
-            var manager = Manager.sharedInstance
+            let manager = Manager.sharedInstance
+        
+        
+        
+            manager.session.configuration.HTTPAdditionalHeaders = [
+            "token": token,
+            "Content-Type":"application/json",
+            ]
+
             
             let encoding = Alamofire.ParameterEncoding.JSON
             // Fetch Request

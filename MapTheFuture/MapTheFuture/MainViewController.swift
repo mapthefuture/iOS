@@ -18,7 +18,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
    var tours: [Tour] = [] {
       didSet {
-         "Got tours"
+         print(tours.flatMap{$0.id})
          tableView.reloadData()
       }
    }
@@ -76,7 +76,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+     
       
         if let name = KeychainSwift().get("name") {
             greetingLabel.text = "Hello, \(name)"
@@ -94,6 +95,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          } else {
             
             self?.tours = tours
+            
          }
    
       }

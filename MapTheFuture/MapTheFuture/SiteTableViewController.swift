@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class SiteTableViewController: UITableViewController {
     
@@ -63,7 +64,8 @@ class SiteTableViewController: UITableViewController {
         //Configure image
         //   cell.imageView?.image =
         if let coord = site.coordinate {
-            cell.siteMapView.centerCoordinate = coord
+//            cell.siteMapView.centerCoordinate = coord
+            cell.centerCoord = coord
         }
         
         return cell

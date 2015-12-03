@@ -249,31 +249,31 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="157.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqv-kf-xG6">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="157.5"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="6Oh-b7-drj" id="CY3-Ad-aCK"/>
+                                            </connections>
+                                        </mapView>
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NcB-AS-bwX">
-                                            <rect key="frame" x="103" y="5" width="493" height="148"/>
+                                            <rect key="frame" x="103" y="5" width="244" height="148"/>
                                             <subviews>
-                                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" pitchEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqv-kf-xG6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="244" height="148"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="6Oh-b7-drj" id="CY3-Ad-aCK"/>
-                                                    </connections>
-                                                </mapView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GOg-ea-Uuo">
-                                                    <rect key="frame" x="249" y="0.0" width="244" height="148"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="244" height="148"/>
                                                 </imageView>
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="95E-L9-XtK">
-                                            <rect key="frame" x="5" y="5" width="87" height="148"/>
+                                            <rect key="frame" x="5" y="5" width="336" height="148"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqJ-tj-lga">
-                                                    <rect key="frame" x="0.0" y="0.0" width="87" height="81"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="336" height="81"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-hU-0s6">
-                                                    <rect key="frame" x="0.0" y="81" width="87" height="67"/>
+                                                    <rect key="frame" x="0.0" y="81" width="336" height="67"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -282,11 +282,15 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="tqv-kf-xG6" firstAttribute="top" secondItem="cOp-It-FcR" secondAttribute="top" id="4DA-kr-U9q"/>
                                         <constraint firstAttribute="bottom" secondItem="95E-L9-XtK" secondAttribute="bottom" constant="5" id="62p-0k-yfo"/>
+                                        <constraint firstAttribute="trailing" secondItem="tqv-kf-xG6" secondAttribute="trailing" id="C8k-e9-U9w"/>
                                         <constraint firstItem="95E-L9-XtK" firstAttribute="leading" secondItem="cOp-It-FcR" secondAttribute="leading" constant="5" id="EiL-fv-auC"/>
+                                        <constraint firstAttribute="bottom" secondItem="tqv-kf-xG6" secondAttribute="bottom" id="UlS-3C-rWj"/>
                                         <constraint firstAttribute="bottom" secondItem="NcB-AS-bwX" secondAttribute="bottom" constant="5" id="jbs-iC-fZ1"/>
                                         <constraint firstItem="95E-L9-XtK" firstAttribute="top" secondItem="cOp-It-FcR" secondAttribute="top" constant="5" id="tQc-W5-D0A"/>
                                         <constraint firstAttribute="trailing" secondItem="NcB-AS-bwX" secondAttribute="trailing" constant="5" id="ugc-hA-YGc"/>
+                                        <constraint firstItem="tqv-kf-xG6" firstAttribute="leading" secondItem="cOp-It-FcR" secondAttribute="leading" id="x6r-6I-6xt"/>
                                         <constraint firstItem="NcB-AS-bwX" firstAttribute="top" secondItem="cOp-It-FcR" secondAttribute="top" constant="5" id="xKn-g1-ulw"/>
                                         <constraint firstItem="NcB-AS-bwX" firstAttribute="leading" secondItem="95E-L9-XtK" secondAttribute="trailing" constant="10" id="xvn-fW-bmK"/>
                                     </constraints>
@@ -638,10 +642,10 @@
             </objects>
             <point key="canvasLocation" x="-1320" y="495"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Avatar View Controller-->
         <scene sceneID="KaL-Af-KTZ">
             <objects>
-                <viewController id="3Nn-mL-QNP" customClass="ProfileViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3Nn-mL-QNP" customClass="AvatarViewController" customModule="Wanderful" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eAu-8j-05n"/>
                         <viewControllerLayoutGuide type="bottom" id="cwU-5j-sQZ"/>
@@ -650,7 +654,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stockgirl" translatesAutoresizingMaskIntoConstraints="NO" id="K3Z-Lr-WbK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="smile" translatesAutoresizingMaskIntoConstraints="NO" id="K3Z-Lr-WbK">
                                 <rect key="frame" x="238" y="114" width="124" height="124"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="K3Z-Lr-WbK" secondAttribute="height" multiplier="1:1" id="lz5-tz-lFh"/>
@@ -687,8 +691,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="3Nn-mL-QNP" id="0Ni-8H-q6v"/>
-                                    <outlet property="delegate" destination="3Nn-mL-QNP" id="GTU-GU-MpP"/>
+                                    <outlet property="dataSource" destination="3Nn-mL-QNP" id="Qhp-Fr-Ss7"/>
+                                    <outlet property="delegate" destination="3Nn-mL-QNP" id="Qgq-LX-oW3"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -711,11 +715,17 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Z3l-be-moM"/>
+                    <navigationItem key="navigationItem" id="Z3l-be-moM">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="9rr-9j-Ubd">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="3Nn-mL-QNP" id="XVv-Ue-6Cz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="K3Z-Lr-WbK" id="q60-J4-a8Q"/>
-                        <outlet property="tableView" destination="5tZ-T3-1ag" id="4o2-fF-IDx"/>
-                        <outlet property="userNameLabel" destination="Ec7-It-VJW" id="QZ9-yN-myi"/>
+                        <outlet property="avatarImageView" destination="K3Z-Lr-WbK" id="vUm-4a-Ch1"/>
+                        <outlet property="tableView" destination="5tZ-T3-1ag" id="wvi-Hh-l8S"/>
+                        <outlet property="userNameLabel" destination="Ec7-It-VJW" id="ZJa-Lw-7MI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEl-CP-a7C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -765,6 +775,5 @@
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
         <image name="smile" width="644" height="638"/>
-        <image name="stockgirl" width="225" height="199"/>
     </resources>
 </document>

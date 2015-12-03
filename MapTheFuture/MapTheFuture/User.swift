@@ -10,6 +10,7 @@
 import UIKit
 import AlamofireObjectMapper
 import ObjectMapper
+import KeychainSwift
 
 
 class User: Mappable {
@@ -34,4 +35,14 @@ class User: Mappable {
         lastName <- map["last_name"]
     }
     
-}
+    class func logOut() {
+        let keychain = KeychainSwift()
+        keychain.clear()
+        
+        let userSB = UIStoryboard(name: "User", bundle: nil)
+        if let nav = userSB.instantiateInitialViewController() as? UINavigationController {
+            UIApplication.sharedApplication().windows.first?.rootViewController = nav
+        }
+        
+    }
+   }

@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import KeychainSwift
 
 
-class AvatarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AvatarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+    
+    
+    var tours: [Tour] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var userNameLabel: UILabel! {
+        didSet {
+            userNameLabel.text = KeychainSwift().get("name")
+        }
+    }
+    
     
     lazy var picker: UIImagePickerController = {
         let lazyPicker = UIImagePickerController()
@@ -19,29 +37,30 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
             lazyPicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
         return lazyPicker }()
     
-    @IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBAction func setPhotoButtonPressed(sender: AnyObject) {
-        
-        //Presents Image Picker
-        self.navigationController?.presentViewController(picker, animated: true, completion: nil)
-
-    }
-    @IBAction func logoutButtonPressed(sender: UIButton) {
-        print("User logged out")
-      
-        //set token to nil
-        
-        //segue back to login/register vc
-        
-        let usersb = UIStoryboard(name: "User", bundle: nil )
-        if let nav = usersb.instantiateInitialViewController() as? UINavigationController {
-        
-        UIApplication.sharedApplication().windows.first?.rootViewController = nav
-        
-        
+    
+    @IBOutlet weak var avatarImageView: UIImageView! {
+        didSet {
+            let gr = UITapGestureRecognizer(target: self, action: "pickPhoto")
+            gr.numberOfTapsRequired = 2
+            avatarImageView.addGestureRecognizer(gr)
         }
     }
+    
+
+        
+        func pickPhoto() {
+        //Presents Image Picker
+        self.navigationController?.presentViewController(picker, animated: true, completion: nil)
+        }
+
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        User.logOut()
+    }
+    
+    
+    
     
     //MARK: - IMAGE PICKER
     
@@ -54,12 +73,26 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
         }
     }
     
-
     override func viewDidLoad() {
-        super.viewDidLoad()
+        NetworkManager.sharedManager().getAllTours { (success, tours) -> () in
+        self.tours = tours
+        }
+    }
+    
+    //MARK: - Table View
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tours.count
         
-
-        // Do any additional setup after loading the view.
-     }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        
+        let tour = tours[indexPath.row]
+        cell.textLabel?.text = tour.title
+        
+        return cell
+    }
 
    }
