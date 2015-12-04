@@ -14,13 +14,18 @@ class StepsTableViewController: UITableViewController {
     var route: MKRoute? {
         didSet {
             print("route set \(route)")
+    
         }
     }
 
     @IBOutlet weak var timeLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel.text = String(route?.expectedTravelTime)
+        if let eta = route?.expectedTravelTime {
+            timeLabel.text = stringFromTimeInterval(eta)
+            
+        }
+
 
     }
 

@@ -11,39 +11,97 @@ import UIKit
 
 
 
-class RegisterViewController: LoginViewController {
+class RegisterViewController: LoginViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var avatarImageView: UIImageView! {
+        
+        didSet {
+            avatarImageView.userInteractionEnabled = true
+        }
+    }
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
+    var tapGR: UITapGestureRecognizer!
+    
     @IBAction func registerButtonPressed(sender: UIButton) {
-//        
-//        guard let un = usernameTextField.text, let pw = passwordTextField.text, let em = emailTextField.text where un != "" && pw != "" && em != "" else { print("blank fields"); alertError(message: "Oops..", reason: "All fields are required.") ; return }
-//        
-//        NetworkManager.sharedManager().register(un, password: pw, email: em) { (success) -> Void in
-//            let mainsb = UIStoryboard(name: "Main", bundle: nil)
-//            if success {
-//                if let tab = mainsb.instantiateInitialViewController() as? UITabBarController
-//                {
-//                    self.navigationController?.navigationBarHidden = false
-//                    self.navigationController?.pushViewController(tab, animated: true)
-//                } else  {
-//                    self.alertError(message: "Registration Failed.", reason: "Please try again.")
-//                    
-//                }
-//            }
-//        }
+        
+        guard let fn = firstNameTextField.text, let ln = lastNameTextField.text, let pw = passwordTextField.text, let em = emailTextField.text where [fn, ln, pw, em]>* else { return }
+        
+        NetworkManager.sharedManager().signUp(fn, lastName: ln, email: em, password: pw) { [unowned self] (success, statusCode) -> () in
+            
+            
+            if success == true {
+                
+                if let img = self.avatarImageView.image {
+                
+                    NetworkManager.sharedManager().uploadPhoto(img, completion: { (success) -> () in
+                        print("image: \(img)")
+                    
+                        if success {
+                        self.performSegueWithIdentifier("SignUpComplete", sender: self)
+                        }
+                    })
+                } else {
+                    print("Could not get image")
+                }
+    
+             } else {
+                
+                self.alertUser("Sign Up Failed", message: String(statusCode))
+            }
+            
+        }
+
+        
+
     }
     
+    func setPhoto(sender: UITapGestureRecognizer) {
+        print("Tapped")
+        //Presents Image Picker
+        self.navigationController?.presentViewController(picker, animated: true, completion: nil)
+
+    }
+    
+    lazy var picker: UIImagePickerController = {
+        let lazyPicker = UIImagePickerController()
+        lazyPicker.delegate = self
+        lazyPicker.sourceType = UIImagePickerControllerSourceType.Camera
+        lazyPicker.showsCameraControls = true
+        lazyPicker.cameraDevice = UIImagePickerControllerCameraDevice.Front
+        return lazyPicker }()
+
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        tapGR = UITapGestureRecognizer(target: self, action: "setPhoto:")
+        
+        avatarImageView.addGestureRecognizer(tapGR)
+//
+        
+        
 
         // Do any additional setup after loading the view.
     }
+    
+    
+    //MARK: - IMAGE PICKER
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.avatarImageView.image = image
+            dismissViewControllerAnimated(true, completion: nil)
+            
+        }
+    }
+
 
    
 }

@@ -40,3 +40,18 @@ extension UIViewController {
         self.presentViewController(ac, animated: true, completion: nil)
     }
 }
+
+func getDocumentsDirectory() -> NSString {
+    let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+    let documentsDirectory = paths.first
+    return documentsDirectory ?? ""
+}
+
+//MARK: Time
+
+func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+    let interval = Int(interval)
+    let minutes = (interval / 60) % 60
+    let hours = (interval / 3600)
+    return String(format: "%02d:%02d", hours, minutes)
+}

@@ -46,11 +46,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
       
-     
+  
       
-        if let name = KeychainSwift().get("name") {
-            greetingLabel.text = "Hello, \(name)"
-        }
+      
+         let keychain = KeychainSwift()
+      if let name = keychain.get("name") {
+         greetingLabel.text = "Hello, \(name)"
+         
+      }
+      if let data = keychain.getData("profileImage"), let image = UIImage(data: data) {
+
+            imageView.image = image
+         }
+        
+      
+      
         
        
 
@@ -62,7 +72,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
          } else {
             
-            self?.tours = tours
+            self?.tours = tours.filter{$0.title != nil }.sort{$0.description?.characters.count > $1.description?.characters.count}
             
          }
    
@@ -72,7 +82,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         imageView.layer.masksToBounds = true
         imageView.clipsToBounds = true
     
-       
+      
         //Setup Map
         LocationManager.sharedManager().delegate = self
         mapView.delegate = self
@@ -124,10 +134,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tour = tours[indexPath.row]
       
          cell.tourTitleLabel.text = tour.title ?? ""
-         cell.tourDescriptionLabel?.text = tour.length ?? ""
+         cell.tourDescriptionLabel?.text = tour.description ?? ""
          //TODO - Configure Media Preview
         return cell
     }
+   
+   func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+      return 70.0
+   }
 
     //MARK: - MapView
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {

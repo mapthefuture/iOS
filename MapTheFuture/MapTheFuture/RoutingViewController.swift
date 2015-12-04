@@ -89,6 +89,7 @@ class RoutingViewController: UIViewController, MKMapViewDelegate{
                 guard let dirResp = response else { return }
                
                 print(dirResp.routes)
+                print("eta: \(dirResp.routes.first?.expectedTravelTime)")
                 
         
                 self.showRoute(dirResp)
@@ -130,8 +131,6 @@ class RoutingViewController: UIViewController, MKMapViewDelegate{
         
         stepsTVC.route = route
         print("route set on destinationvc")
-            
-        
     }
         
 }

@@ -45,7 +45,6 @@ class Tour: Mappable {
         startLong <- map["start_lon"]
         category <- map["category"]
         description <- map["description"]
-    
     }
     
 }

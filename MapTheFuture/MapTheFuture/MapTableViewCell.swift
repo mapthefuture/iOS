@@ -21,6 +21,7 @@ class MapTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
+      
 
     }
 

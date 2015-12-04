@@ -41,9 +41,11 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBOutlet weak var avatarImageView: UIImageView! {
         didSet {
+            
             let gr = UITapGestureRecognizer(target: self, action: "pickPhoto")
             gr.numberOfTapsRequired = 2
             avatarImageView.addGestureRecognizer(gr)
+            
         }
     }
     
@@ -57,6 +59,9 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
         User.logOut()
+        self.performSegueWithIdentifier("ShowUserFlow", sender: self)
+
+
     }
     
     
@@ -66,10 +71,17 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage, let data = UIImagePNGRepresentation(image) {
             self.avatarImageView.image = image
+            
+            let keychain = KeychainSwift()
+            keychain.set(data, forKey: "profileImage")
+            
             dismissViewControllerAnimated(true, completion: nil)
             
+            NetworkManager.sharedManager().uploadPhoto(image, completion: { (success) -> () in
+                print("successfully uploaded")
+            }) 
         }
     }
     

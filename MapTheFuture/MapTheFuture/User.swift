@@ -15,12 +15,12 @@ import KeychainSwift
 
 class User: Mappable {
     
- 
     var id: Int?
     var email: String?
     var accessToken: String?
     var firstName: String?
     var lastName: String?
+    var avatarURL: String?
 
     
     required init?(_ map: Map){
@@ -33,16 +33,24 @@ class User: Mappable {
         accessToken <- map["access_token"]
         firstName <- map["first_name"]
         lastName <- map["last_name"]
+        avatarURL <- map["avatar_url"]
     }
     
     class func logOut() {
         let keychain = KeychainSwift()
         keychain.clear()
-        
-        let userSB = UIStoryboard(name: "User", bundle: nil)
-        if let nav = userSB.instantiateInitialViewController() as? UINavigationController {
-            UIApplication.sharedApplication().windows.first?.rootViewController = nav
-        }
+
+    }
+    
+    func save() {
+        print(self.accessToken, self.id, self.firstName, self.lastName)
+        guard let firstname = self.firstName, let email = self.email, let id = self.id, let token = self.accessToken else { return }
+        let keychain =  KeychainSwift()
+        keychain.set(token, forKey: "token")
+        keychain.set(firstname, forKey: "name")
+        keychain.set(email, forKey: "email")
+        keychain.set(String(id), forKey: "id")
+        print("saved User")
         
     }
    }
