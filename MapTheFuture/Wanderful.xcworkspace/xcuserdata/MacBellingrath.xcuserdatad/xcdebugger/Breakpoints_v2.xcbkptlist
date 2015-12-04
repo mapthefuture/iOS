@@ -33,38 +33,6 @@
             endingLineNumber = "81"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.AvatarViewController.imagePickerController (Wanderful.AvatarViewController)(__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/AvatarViewController.swift"
-                  timestampString = "470938286.879359"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "82"
-                  endingLineNumber = "82"
-                  offsetFromSymbolStart = "988">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.AvatarViewController.(imagePickerController (Wanderful.AvatarViewController) -&gt; (__ObjC.UIImagePickerController, didFinishPickingMediaWithInfo : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;) -&gt; ()).(closure #1)"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/AvatarViewController.swift"
-                  timestampString = "470938286.879678"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "83"
-                  endingLineNumber = "83"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
