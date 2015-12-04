@@ -30,21 +30,21 @@ class RegisterViewController: LoginViewController, UIImagePickerControllerDelega
         
         guard let fn = firstNameTextField.text, let ln = lastNameTextField.text, let pw = passwordTextField.text, let em = emailTextField.text where [fn, ln, pw, em]>* else { return }
         
-        NetworkManager.sharedManager().signUp(fn, lastName: ln, email: em, password: pw) { [unowned self] (success, statusCode) -> () in
+        NetworkManager.sharedManager().signUp(fn, lastName: ln, email: em, password: pw) { (success, statusCode) -> () in
             
             
             if success == true {
                 
                 if let img = self.avatarImageView.image {
                 
-                    NetworkManager.sharedManager().uploadPhoto(img, completion: { (success) -> () in
+                    NetworkManager.sharedManager().uploadPhoto2(img, completion: { (success) -> () in
                         print("image: \(img)")
                     
                         if success {
                         self.performSegueWithIdentifier("SignUpComplete", sender: self)
                         }
-                    })
-                } else {
+                            })
+                        } else {
                     print("Could not get image")
                 }
     

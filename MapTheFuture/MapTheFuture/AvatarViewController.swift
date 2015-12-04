@@ -79,9 +79,11 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
             
             dismissViewControllerAnimated(true, completion: nil)
             
-            NetworkManager.sharedManager().uploadPhoto(image, completion: { (success) -> () in
-                print("successfully uploaded")
-            }) 
+            NetworkManager.sharedManager().uploadPhoto2(image, completion: { (success) -> () in
+                if success {
+                    print("successfully uploaded")
+                }
+            })
         }
     }
     

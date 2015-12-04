@@ -22,6 +22,8 @@ class NetworkManager: NSObject {
         return _sharedInstance
     }
     
+    private var myManager = Manager()
+    
 //    static let sharedInstance: NetworkManager = {
 //        let nm = NetworkManager()
 //        if let token = KeychainSwift().get("token") {
@@ -215,39 +217,215 @@ class NetworkManager: NSObject {
         }
     
     
-    func uploadPhoto(photo: UIImage, completion:(success: Bool)->()) {
+    
+    func uploadPhoto2(photo: UIImage, completion:(success: Bool)->()) {
+       
         
         print("about to upload photo")
         
-        if let png = UIImagePNGRepresentation(photo) {
-            print("obtained png")
+        if let png =  UIImageJPEGRepresentation(photo, 0.5) {
+            print("obtained photo")
+            
+            let base64string = png.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
+            
+            let keychain = KeychainSwift()
+            
+            guard let id = keychain.get("id"), let token = keychain.get("token") where token.characters.count > 0
+                
+                else { return print("Couldn't get id or token")}
+            
+            print("token -> \(token)")
+            
+            var headers = Alamofire.Manager.sharedInstance.session.configuration.HTTPAdditionalHeaders ?? [:]
+           
+            headers["access_token"] = token
+            headers["Content-Type"] = "application/json"
+            
+            let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+            configuration.HTTPAdditionalHeaders = headers
+            
+            
+            
+            keychain.set(png, forKey: "profileImage")
+            
+            
+            // JSON Body
+            let bodyParameters = [
+                "avatar": base64string
+            ]
+            
+            let encoding = Alamofire.ParameterEncoding.JSON
+            
+            // Fetch Request
+            myManager =  Alamofire
+                .Manager(configuration: configuration)
+            
+                
+            myManager.request(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", parameters: bodyParameters, encoding: encoding)
+                .validate(statusCode: 200..<300).responseJSON(options: .MutableContainers, completionHandler: { (response) -> Void in
+                    switch response.result {
+                        
+                    case .Failure(let error):
+                        
+                        print(error)
+                        completion(success: false)
+                        
+                    case .Success(let value):
+                        
+                        print(value)
+                        completion(success: true)
+                        
+                    }
+
+                    
+                })
+            }
+        
+        }
+
+    
+    }
+    
+
+    
+    func uploadPhoto(photo: UIImage, completion:(success: Bool)->()) {
+        
+        
+        print("about to upload photo")
+        
+        if let png =  UIImageJPEGRepresentation(photo, 0.5) {
+            print("obtained photo")
+            
+//            let base64string = png.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
             
         let keychain = KeychainSwift()
             
-         guard let id = keychain.get("id"), let token = keychain.get("token") else { return print("Couldn't get id or token")}
+         guard let id = keychain.get("id"), let token = keychain.get("token") where token.characters.count > 0
+            
+            else { return print("Couldn't get id or token")}
+
+            print("token -> \(token)")
             
             keychain.set(png, forKey: "profileImage")
-   
-           let headers = [
             
-                "token": token
+            // Create manager
+//            let manager = Manager.sharedInstance
+            
+            
+           let headers = [
+//                "Content-Type":"multipart/form-data; boundary=\(boundaryConstant)",
+                "access_token": token
             ]
-    
-            Alamofire.upload(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", headers: headers, data: png).responseJSON(options: NSJSONReadingOptions.MutableContainers, completionHandler: { (response) -> Void in
-                print("uploading!")
+            
+            
+        
+//  Alamofire.upload(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", headers: headers, data: png).responseJSON(completionHandler: { (response) -> Void in
+//                
+//                switch response.result{
+//                case .Success(let value):
+//                        print(value)
+//                    completion(success: true)
+//                case .Failure(let error):
+//                    print(error)
+//                    completion(success: false)
+//                }
+//            })
+            
+            Alamofire.upload(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", headers: headers, multipartFormData: { (multipartFormData) -> Void in
                 
-                switch response.result {
+                multipartFormData.appendBodyPart(data: png, name:  "userID\(id)ProfilePhoto.png", mimeType: "image/png")
                 
-                case .Failure(let error):
-                    print(error)
-                    completion(success: false)
-                case .Success(let value):
-                    print(value)
-                    completion(success: true)
-                }
+                
+//                multipartFormData.appendBodyPart(data: "\r\n--\(boundaryConstant)\r\n".dataUsingEncoding(NSUTF8StringEncoding)!, name: "")
+//                 multipartFormData.appendBodyPart(data: "Content-Disposition: form-data; name=\"file\"; filename=\"file.png\"\r\n".dataUsingEncoding(NSUTF8StringEncoding)!, name: "")
+//                
+//                
+//               
+//                multipartFormData.appendBodyPart(data: "Content-Type: image/png\r\n\r\n".dataUsingEncoding(NSUTF8StringEncoding)!, name: "")
+//                multipartFormData.appendBodyPart(data: png, name: "")
+                
+                
+                }, encodingMemoryThreshold: 10485760, encodingCompletion: { (encodeResult) -> Void in
+                    
+                    switch encodeResult {
+                        
+                    case .Failure(let error):
+                        
+                        print(error)
+                        
+                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+                       
+                        request.responseJSON(options: .MutableContainers, completionHandler: { (response) -> Void in
+                            
+                            switch response.result {
+                                
+                            case .Failure(let error):
+                               
+                                print(error)
+                                completion(success: false)
+                                
+                            case .Success(let value):
+                                
+                                print(value)
+                                completion(success: true)
+                                
+                            }
+                        })
+                            
+                    }
+                    
+                    //
             })
         }
     }
-}
+    
+    
+    
+
+//            Alamofire.upload(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", multipartFormData: { (multipartFormData) -> Void in
+//                
+//                multipartFormData.appendBodyPart(data: png, name: "userID\(id)ProfilePhoto")
+//                
+//                
+//                }, encodingCompletion: { (encodingResult) -> Void in
+//                    switch encodingResult {
+//                    case .Failure(let error):
+//                        print(error)
+//                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+//                        print(request.response)
+//                        
+//                    }
+//                })
+//        }
+
+
+    
+    func urlRequestWithMultipartBody(urlString:String, parameters:NSDictionary) -> (URLRequestConvertible) {
+        
+        // Create url request to send
+        var mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
+        // Set Content-Type in HTTP header.
+        let boundary = "PAW-boundary-\(arc4random())-\(arc4random())"
+        let contentType = "multipart/form-data; boundary=" + boundary
+        
+        // Set data
+        var dataString = String()
+        dataString += "--\(boundary)"
+        for (key, value) in parameters { dataString += "\r\nContent-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)\r\n--\(boundary)" }
+        dataString += "--"
+        
+        // Set content-type
+        mutableURLRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        
+        // Set the HTTPBody we'd like to submit
+        let requestBodyData = (dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+        mutableURLRequest.HTTPBody = requestBodyData
+        
+        // return URLRequestConvertible
+        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0)
+    }
+
+
 
 

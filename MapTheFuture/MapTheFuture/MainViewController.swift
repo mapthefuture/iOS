@@ -45,6 +45,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
  
     override func viewDidLoad() {
         super.viewDidLoad()
+      LocationManager.sharedManager().requestWhenInUseAuthorization()
+      LocationManager.sharedManager().startUpdatingLocation()
       
   
       
@@ -102,6 +104,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
 
     }
+   
+   override func viewWillDisappear(animated: Bool) {
+      super.viewWillDisappear(animated)
+      LocationManager.sharedManager().stopUpdatingLocation()
+   }
     
     deinit {
       
