@@ -157,41 +157,44 @@ class SiteTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
+        return 100
     }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionView =  UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
-        let site = sites[section]
-        if let coord = site.coordinate {
-            let map = MKMapView(frame: CGRect(origin: CGPointZero, size: sectionView.frame.size))
-            sectionView.addSubview(map)
-            map.center = sectionView.center
+            let site = sites[section]
+            if let coord = site.coordinate {
+                let map = MKMapView(frame: sectionView.frame)
+                    sectionView.addSubview(map)
+                    
+                    map.center = sectionView.center
+                    
+                    map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
+                    
+                }
+                
+                //Title Label
+                let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
+                sectionTitleLabel.text = site.title ?? "Default Title"
+                sectionTitleLabel.textAlignment = .Center
+                sectionTitleLabel.textColor = UIColor.blackColor()
+                sectionView.addSubview(sectionTitleLabel)
+                sectionTitleLabel.center = sectionView.center
+                //Detail Label
+                let sectionDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
+                sectionDetailLabel.text = site.description ?? "Default Description"
+                sectionDetailLabel.textAlignment = .Center
+                sectionDetailLabel.textColor = UIColor.darkGrayColor()
+                sectionView.addSubview(sectionDetailLabel)
+                sectionDetailLabel.center = CGPoint(x: sectionView.center.x, y: sectionTitleLabel.center.y + 25)
+                
+                
+                return sectionView
+                
 
-             map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
-            
+        
         }
-        
-        //Title Label
-        let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
-        sectionTitleLabel.text = site.title ?? "Default Title"
-        sectionTitleLabel.textAlignment = .Center
-        sectionTitleLabel.textColor = UIColor.blackColor()
-        sectionView.addSubview(sectionTitleLabel)
-        sectionTitleLabel.center = sectionView.center
-        //Detail Label
-        let sectionDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
-        sectionDetailLabel.text = site.description ?? "Default Description"
-        sectionDetailLabel.textAlignment = .Center
-        sectionDetailLabel.textColor = UIColor.darkGrayColor()
-        sectionView.addSubview(sectionDetailLabel)
-        sectionDetailLabel.center = CGPoint(x: sectionView.center.x, y: sectionTitleLabel.center.y + 40)
-        
-        
-        return sectionView
-        
-    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -205,8 +208,9 @@ class SiteTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        if let step = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions {
-            cell.textLabel?.text = step
+        if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
+            cell.textLabel?.text = stepString
+            cell.detailTextLabel?.text = String(step.distance)
         }
         
 
@@ -215,7 +219,7 @@ class SiteTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 20
+        return 50
         
     }
 
