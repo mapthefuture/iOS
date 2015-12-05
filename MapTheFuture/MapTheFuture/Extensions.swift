@@ -55,3 +55,9 @@ func stringFromTimeInterval(interval: NSTimeInterval) -> String {
     let hours = (interval / 3600)
     return String(format: "%02d:%02d", hours, minutes)
 }
+extension Double {
+func metersToMiles() -> Double {
+    let miles = (round(1000 * (self * 0.000621371)) / 1000)
+    return miles
+}
+}

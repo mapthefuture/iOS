@@ -16,15 +16,22 @@ extension Array {
 }
 
 
-class SiteTableViewController: UITableViewController {
+class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var tour: Tour?
     var sites: [Site] = []
     var coords:[CLLocationCoordinate2D] = []
-    var routes: [MKRoute] = []
+    var routes: [MKRoute] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     lazy var currentLocCoord: CLLocationCoordinate2D? = {
-        return CLLocationManager().location?.coordinate
+        let lazymanager = CLLocationManager()
+        lazymanager.delegate = self
+        lazymanager.requestLocation()
+        return lazymanager.location?.coordinate
     }()
 
 
@@ -65,7 +72,7 @@ class SiteTableViewController: UITableViewController {
     }
     
     func getSitesAndSteps() {
-        
+
         routes = []
         
         //Get sites
@@ -80,17 +87,17 @@ class SiteTableViewController: UITableViewController {
                 
                 
                 //put coordinates into array
-//                self.coords = sites.flatMap{$0.coordinate}
-                let a = CLLocationCoordinate2D(latitude: 33.7587, longitude: -84.3645782)
-                let b = CLLocationCoordinate2D(latitude: 33.7987, longitude: -84.55)
-                let c = CLLocationCoordinate2D(latitude: 33.7387, longitude: -84.3745782)
+                self.coords = sites.flatMap{$0.coordinate}
+//                let a = CLLocationCoordinate2D(latitude: 33.7587, longitude: -84.3645782)
+//                let b = CLLocationCoordinate2D(latitude: 33.7987, longitude: -84.55)
+//                let c = CLLocationCoordinate2D(latitude: 33.7387, longitude: -84.3745782)
+//                
+//                self.coords = [a,b,c]
                 
-                self.coords = [a,b,c]
                 
-                
-//                if let currloccord = self.currentLocCoord {
-//                    self.coords.insert(currloccord, atIndex: 0)
-//                }
+                if let currloccord = self.currentLocCoord {
+                    self.coords.insert(currloccord, atIndex: 0)
+                }
                 
                 print("Coordinates: \(self.coords)")
                 
@@ -133,6 +140,7 @@ class SiteTableViewController: UITableViewController {
         
         getSitesAndSteps()
         tourTitleLabel.text = tour?.title ?? ""
+        title = tour?.title ?? "Tour"
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -164,23 +172,39 @@ class SiteTableViewController: UITableViewController {
         let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
             let site = sites[section]
-            if let coord = site.coordinate {
+            if let coord = site.coordinate, let currentcoord = self.currentLocCoord {
+               
                 let map = MKMapView(frame: sectionView.frame)
+                
+                    map.delegate = self
                     sectionView.addSubview(map)
                     
                     map.center = sectionView.center
+                
+                if let route = routes[safe: section] {
+                    print("polyline : \(route.polyline)")
+                    map.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
+                }
+                
+                if section == 0 {
+                    map.showsUserLocation = true
                     
-                    map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
+                    map.setRegion(MKCoordinateRegion(center: currentcoord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
                     
+                } else if section > 0 {
+                    map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+                }
+                
                 }
                 
                 //Title Label
                 let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
                 sectionTitleLabel.text = site.title ?? "Default Title"
                 sectionTitleLabel.textAlignment = .Center
-                sectionTitleLabel.textColor = UIColor.blackColor()
+                sectionTitleLabel.textColor = UIColor.darkGrayColor()
                 sectionView.addSubview(sectionTitleLabel)
                 sectionTitleLabel.center = sectionView.center
+        
                 //Detail Label
                 let sectionDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
                 sectionDetailLabel.text = site.description ?? "Default Description"
@@ -189,7 +213,8 @@ class SiteTableViewController: UITableViewController {
                 sectionView.addSubview(sectionDetailLabel)
                 sectionDetailLabel.center = CGPoint(x: sectionView.center.x, y: sectionTitleLabel.center.y + 25)
                 
-                
+        
+        
                 return sectionView
                 
 
@@ -210,7 +235,7 @@ class SiteTableViewController: UITableViewController {
         
         if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
             cell.textLabel?.text = stepString
-            cell.detailTextLabel?.text = String(step.distance)
+            cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
         }
         
 
@@ -222,6 +247,25 @@ class SiteTableViewController: UITableViewController {
         return 50
         
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
+    
+    
+    //MARK: - MAP VIEW
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.cyanColor()
+        renderer.lineWidth = 10.0
+        return renderer
+    }
+
 
     /*
     // Override to support conditional editing of the table view.
