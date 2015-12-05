@@ -14,11 +14,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>IQAudioRecorderController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -29,17 +24,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>OceanView.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-Wanderful.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>SCSiriWaveformView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,11 +32,6 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>16BC00C5177D92F637948D3C3D39D150</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
@@ -62,17 +42,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9C6C7F24098D2C622711EE78E9E6F829</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A510217D18CA2FB4C785282B05B67560</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AF7CA737EF371FDF35051164A5A9DC25</key>
+		<key>BBFE02A46C7FD91EA34FA27E5128DBFC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

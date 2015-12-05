@@ -17,7 +17,9 @@ class StepsTableViewController: UITableViewController {
     
         }
     }
-
+    
+    var routes: [MKRoute]?
+    
     @IBOutlet weak var timeLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()

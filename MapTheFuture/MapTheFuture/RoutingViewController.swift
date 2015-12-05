@@ -63,7 +63,6 @@ class RoutingViewController: UIViewController, MKMapViewDelegate{
         
         getDirections()
         
-        
 //        let options = [MKLaunchOptionsDirectionsModeKey:
 //            MKLaunchOptionsDirectionsModeDriving]
 //        
@@ -109,9 +108,6 @@ class RoutingViewController: UIViewController, MKMapViewDelegate{
                 print(step.instructions)
             }
         }
-        
-        
-        
     }
 
     

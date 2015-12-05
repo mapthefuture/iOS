@@ -298,7 +298,7 @@ class NetworkManager: NSObject {
                 print("Error getting sites for tour \(error)")
                 completion(success: false, sites: [])
             case .Success(let sites):
-                print(sites)
+                sites.map{ print($0.title, $0.coordinate )}
                 completion(success: true, sites: sites)
                 
                 }
@@ -466,121 +466,6 @@ class NetworkManager: NSObject {
         
 }
 
-//            Alamofire.upload(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update", multipartFormData: { (multipartFormData) -> Void in
-//                
-//                multipartFormData.appendBodyPart(data: png, name: "userID\(id)ProfilePhoto")
-//                
-//                
-//                }, encodingCompletion: { (encodingResult) -> Void in
-//                    switch encodingResult {
-//                    case .Failure(let error):
-//                        print(error)
-//                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
-//                        print(request.response)
-//                        
-//                    }
-//                })
-//        }
-
-
-class MyRequestController {
-    
-    static let sharedInstance = MyRequestController()
-    
-    func sendRequest(photo: UIImage) {
-        
-        
-        if let png =  UIImageJPEGRepresentation(photo, 0.5) {
-            print("obtained photo")
-            
-            let base64string = png.base64EncodedStringWithOptions(.EncodingEndLineWithLineFeed)
-            
-            let keychain = KeychainSwift()
-            
-            guard let id = keychain.get("id"), let token = keychain.get("token") where token.characters.count > 0
-                
-                else { return print("Couldn't get id or token")}
-            
-            print("token -> \(token)")
-
-        /* Configure session, choose between:
-        * defaultSessionConfiguration
-        * ephemeralSessionConfiguration
-        * backgroundSessionConfigurationWithIdentifier:
-        And set session-wide properties, such as: HTTPAdditionalHeaders,
-        HTTPCookieAcceptPolicy, requestCachePolicy or timeoutIntervalForRequest.
-        */
-        let sessionConfig = NSURLSessionConfiguration.defaultSessionConfiguration()
-        
-        /* Create session, and optionally set a NSURLSessionDelegate. */
-        let session = NSURLSession(configuration: sessionConfig, delegate: nil, delegateQueue: nil)
-        
-        /* Create the Request:
-        Update a User (PATCH https://fathomless-savannah-6575.herokuapp.com/user/7/update)
-        */
-        
-        let URL = NSURL(string: "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update")
-        let request = NSMutableURLRequest(URL: URL!)
-        request.HTTPMethod = "PATCH"
-        
-        // Headers
-        
-        request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.addValue(token, forHTTPHeaderField: "access_token")
-        
-        // Form URL-Encoded Body
-        
-        let bodyParameters = [
-            "avatar": base64string
-        ]
-        let bodyString = self.stringFromQueryParameters(bodyParameters)
-        request.HTTPBody = bodyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-        
-        /* Start a new Task */
-        let task = session.dataTaskWithRequest(request, completionHandler: { (data, response, error ) -> Void in
-            if (error == nil) {
-                // Success
-                let statusCode = (response as! NSHTTPURLResponse).statusCode
-                print("URL Session Task Succeeded: HTTP \(statusCode)")
-            }
-            else {
-                // Failure
-                print("URL Session Task Failed: ", error);
-            }
-        })
-        task.resume()
-        }
-    }
-    
-    /**
-     This creates a new query parameters string from the given NSDictionary. For
-     example, if the input is @{@"day":@"Tuesday", @"month":@"January"}, the output
-     string will be @"day=Tuesday&month=January".
-     @param queryParameters The input dictionary.
-     @return The created parameters string.
-     */
-    func stringFromQueryParameters(queryParameters : Dictionary<String, String>) -> String {
-        var parts: [String] = []
-        for (name, value) in queryParameters {
-            var part = NSString(format: "%@=%@",
-                name.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!,
-                value.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!)
-            parts.append(part as String)
-        }
-        return parts.joinWithSeparator("&")
-    }
-    
-    /**
-     Creates a new URL by adding the given query parameters.
-     @param URL The input URL.
-     @param queryParameters The query parameter dictionary to add.
-     @return A new NSURL.
-     */
-    func NSURLByAppendingQueryParameters(URL : NSURL!, queryParameters : Dictionary<String, String>) -> NSURL {
-        let URLString : NSString = NSString(format: "%@?%@", URL.absoluteString, self.stringFromQueryParameters(queryParameters))
-        return NSURL(string: URLString as String)!
-    }
-}
 
 
 

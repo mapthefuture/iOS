@@ -7,23 +7,20 @@
 //
 
 import UIKit
-import IQAudioRecorderController
 
-class AudioRecordViewController: UIViewController, IQAudioRecorderControllerDelegate {
+
+class AudioRecordViewController: UIViewController {
 
     
     
     @IBAction func recordButtonPressed(sender: AnyObject) {
         
-        let recorderController = IQAudioRecorderController()
-        recorderController.delegate = self
-        self.presentViewController(recorderController, animated: true, completion: nil)
+      
+
         
         
     }
 
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,18 +32,7 @@ class AudioRecordViewController: UIViewController, IQAudioRecorderControllerDele
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // MARK: - AudioRecorder
-    
-    func audioRecorderController(controller: IQAudioRecorderController!, didFinishWithAudioAtPath filePath: String!) {
-        //
-    }
-    func audioRecorderControllerDidCancel(controller: IQAudioRecorderController!) {
-        print("canceled recording")
-    }
-    
-
-    /*
+     /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
