@@ -229,7 +229,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="158" id="6Oh-b7-drj" customClass="SiteTableViewCell" customModule="Wanderful" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapDisplayCell" rowHeight="158" id="6Oh-b7-drj" customClass="SiteTableViewCell" customModule="Wanderful" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="226" width="600" height="158"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Oh-b7-drj" id="cOp-It-FcR">
@@ -275,6 +275,14 @@
                                     <outlet property="siteMapView" destination="tqv-kf-xG6" id="tqh-VA-sLS"/>
                                     <outlet property="siteTitleLabel" destination="yqJ-tj-lga" id="6tp-r6-eBR"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="oPc-rE-sey">
+                                <rect key="frame" x="0.0" y="384" width="600" height="158"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oPc-rE-sey" id="hPA-vV-fQM">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="157.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

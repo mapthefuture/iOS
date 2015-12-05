@@ -9,17 +9,19 @@
 import UIKit
 import MapKit
 
-
+extension Array {
+    subscript (safe index: Int) -> Element? {
+        return indices ~= index ? self[index] : nil
+    }
+}
 
 
 class SiteTableViewController: UITableViewController {
     
     var tour: Tour?
     var sites: [Site] = []
-    
     var coords:[CLLocationCoordinate2D] = []
     var routes: [MKRoute] = []
-    
     
     lazy var currentLocCoord: CLLocationCoordinate2D? = {
         return CLLocationManager().location?.coordinate
@@ -78,13 +80,18 @@ class SiteTableViewController: UITableViewController {
                 
                 
                 //put coordinates into array
-                self.coords = sites.flatMap{$0.coordinate}
+//                self.coords = sites.flatMap{$0.coordinate}
+                let a = CLLocationCoordinate2D(latitude: 33.7587, longitude: -84.3645782)
+                let b = CLLocationCoordinate2D(latitude: 33.7987, longitude: -84.55)
+                let c = CLLocationCoordinate2D(latitude: 33.7387, longitude: -84.3745782)
+                
+                self.coords = [a,b,c]
                 
                 
+//                if let currloccord = self.currentLocCoord {
+//                    self.coords.insert(currloccord, atIndex: 0)
+//                }
                 
-                if let currloccord = self.currentLocCoord {
-                    self.coords.insert(currloccord, atIndex: 0)
-                }
                 print("Coordinates: \(self.coords)")
                 
                 //loop through coords and create routes
@@ -93,11 +100,13 @@ class SiteTableViewController: UITableViewController {
                     
                     print("current index: \(index). Coord: \(_coordinate)")
                   
-                    guard index < self.coords.count - 1 else { return }
+//                    guard let i = index where i < self.coords.count  else { return }
                   
-               
-                  
-                    self.getRoute(_coordinate, to: self.coords[index + 1], completion: { (route) -> () in
+                
+                    guard let to = self.coords[safe: index + 1] else { return }
+                    
+                    self.getRoute(_coordinate, to: to, completion: { (route) -> () in
+                        
                         if let _route = route {
                             
                             print(_route)
@@ -115,6 +124,8 @@ class SiteTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         getSitesAndSteps()
     }
+    
+    
                     
                 
     override func viewDidLoad() {
@@ -139,21 +150,27 @@ class SiteTableViewController: UITableViewController {
 
     // MARK: - Table view data source
    override func numberOfSectionsInTableView(tableView: UITableView) -> Int  {
-        
+    
+    print("number of sections: \(tableView.numberOfSections)")
     return sites.count
         
     }
 
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionView =  UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 75))
-        let map = MKMapView(frame: CGRect(origin: CGPointZero, size: sectionView.frame.size))
-        sectionView.addSubview(map)
-        map.center = sectionView.center
+        let sectionView =  UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
         let site = sites[section]
         if let coord = site.coordinate {
+            let map = MKMapView(frame: CGRect(origin: CGPointZero, size: sectionView.frame.size))
+            sectionView.addSubview(map)
+            map.center = sectionView.center
+
              map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)), animated: true)
+            
         }
         
         //Title Label
@@ -178,7 +195,7 @@ class SiteTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return routes[section].steps.count
+        return routes[safe: section]?.steps.count ?? 0
     }
 
     
@@ -186,14 +203,21 @@ class SiteTableViewController: UITableViewController {
         
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! SiteTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
         
-        cell.textLabel?.text = routes[indexPath.section].steps[indexPath.row].instructions
+        if let step = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions {
+            cell.textLabel?.text = step
+        }
+        
 
         
         return cell
     }
     
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 20
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -241,3 +265,5 @@ class SiteTableViewController: UITableViewController {
     */
 
 }
+
+
