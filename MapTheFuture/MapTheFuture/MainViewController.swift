@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 import MapKit
-import OceanView
 import KeychainSwift
 
 
@@ -74,7 +73,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
          } else {
             
-            self?.tours = tours.filter{$0.title != nil }.sort{$0.description?.characters.count > $1.description?.characters.count}
+            self?.tours = tours.sort{$0.description?.characters.count > $1.description?.characters.count}
             
          }
    

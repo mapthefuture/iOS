@@ -79,7 +79,8 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
             
             dismissViewControllerAnimated(true, completion: nil)
             
-            MyRequestController.sharedInstance.sendRequest(image)
+            //TO DO
+//            Save image to back-end
         }
     }
     

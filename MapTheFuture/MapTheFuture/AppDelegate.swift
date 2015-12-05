@@ -12,6 +12,7 @@ import Crashlytics
 import KeychainSwift
 
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -20,15 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        
+        
         window = UIWindow(frame:UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         window?.makeKeyAndVisible()
         //Configure Crashlytics
         Fabric.with([Crashlytics.self])
-        
-     
-
-        
         
         if let token = KeychainSwift().get("token") {
             print("User logged in with token: \(token)")

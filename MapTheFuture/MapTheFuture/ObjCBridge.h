@@ -9,6 +9,5 @@
 #ifndef ObjCBridge_h
 #define ObjCBridge_h
 
-#import <IQAudioRecorderController/IQAudioRecorderController.h>
 
 #endif /* ObjCBridge_h */

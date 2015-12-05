@@ -6,31 +6,22 @@ PODS:
   - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - Fabric (1.6.1)
-  - IQAudioRecorderController (1.0.1):
-    - SCSiriWaveformView
   - KeychainSwift (3.0.10)
   - ObjectMapper (1.0.1)
-  - OceanView (0.1.0)
-  - SCSiriWaveformView (1.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
   - AlamofireObjectMapper (~> 2.1)
   - Crashlytics
   - Fabric
-  - IQAudioRecorderController
   - KeychainSwift (~> 3.0)
-  - OceanView
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
   Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
-  IQAudioRecorderController: 8b63465b6f8b5c81c9faa4475c946536d9fb43d7
   KeychainSwift: b3fcc33bd6e12778be79d9be27e0f2e369b8cc4e
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
-  OceanView: 0d207e21d1cbc3391de975bcd826507ce040e9b4
-  SCSiriWaveformView: b8b2756af42addcd31900c3945f24edafefb5395
 
 COCOAPODS: 0.39.0
