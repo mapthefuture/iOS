@@ -377,34 +377,46 @@
                                     <constraint firstAttribute="height" priority="999" constant="225" id="u9n-hJ-I4Q"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SiteCell" rowHeight="78" id="06g-Js-gsH">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="78"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SiteCell" rowHeight="70" id="06g-Js-gsH" customClass="AddSiteTableViewCell" customModule="Wanderful" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="06g-Js-gsH" id="uD6-RS-CwM">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="78"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06g-Js-gsH" id="uD6-RS-CwM">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="69.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qax-XH-LiV">
-                                                    <rect key="frame" x="539" y="20" width="40" height="40"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4P-BR-LCY">
+                                                    <rect key="frame" x="18" y="24.5" width="522" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qax-XH-LiV">
+                                                    <rect key="frame" x="550" y="15" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="P3x-6l-J28"/>
                                                         <constraint firstAttribute="width" constant="40" id="PMq-Sa-bPn"/>
+                                                        <constraint firstAttribute="width" secondItem="Qax-XH-LiV" secondAttribute="height" multiplier="1:1" id="wp2-Zm-iEV"/>
                                                     </constraints>
                                                     <state key="normal" title="Button" image="addBlue"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="P3x-6l-J28"/>
+                                                        </mask>
+                                                    </variation>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Qax-XH-LiV" firstAttribute="bottom" secondItem="uD6-RS-CwM" secondAttribute="bottom" constant="20" id="04Z-ol-5Mm"/>
-                                                <constraint firstItem="Qax-XH-LiV" firstAttribute="top" secondItem="uD6-RS-CwM" secondAttribute="top" constant="20" id="VN8-sr-8E7"/>
-                                                <constraint firstAttribute="trailing" secondItem="Qax-XH-LiV" secondAttribute="trailing" constant="21" id="cMG-IJ-8M3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Qax-XH-LiV" secondAttribute="bottom" constant="9.5" id="tUc-yD-r7A"/>
+                                                <constraint firstItem="Qax-XH-LiV" firstAttribute="leading" secondItem="e4P-BR-LCY" secondAttribute="trailing" constant="10" id="JVS-Eu-nPt"/>
+                                                <constraint firstItem="e4P-BR-LCY" firstAttribute="leading" secondItem="uD6-RS-CwM" secondAttribute="leadingMargin" constant="10" id="WEv-91-phN"/>
+                                                <constraint firstItem="e4P-BR-LCY" firstAttribute="centerY" secondItem="uD6-RS-CwM" secondAttribute="centerY" id="bL5-st-GLY"/>
+                                                <constraint firstItem="Qax-XH-LiV" firstAttribute="centerY" secondItem="uD6-RS-CwM" secondAttribute="centerY" id="geQ-Qb-KMi"/>
+                                                <constraint firstAttribute="trailing" secondItem="Qax-XH-LiV" secondAttribute="trailing" constant="10" id="iJV-km-UYS"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="tUc-yD-r7A"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="accessoryView" destination="Qax-XH-LiV" id="af5-DC-z6L"/>
+                                            <outlet property="siteTitleLabel" destination="e4P-BR-LCY" id="OTq-jR-EeR"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

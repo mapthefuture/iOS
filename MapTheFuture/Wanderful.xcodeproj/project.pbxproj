@@ -22,6 +22,7 @@
 		E6459F521C0F544F0085E3A8 /* AvatarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F4F1C0F544F0085E3A8 /* AvatarViewController.swift */; };
 		E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */; };
 		E6459F541C0F544F0085E3A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F511C0F544F0085E3A8 /* LoginViewController.swift */; };
+		E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */; };
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
 		E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674739D1C0CDDD400EEF02A /* NetworkManager.swift */; };
 		E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473A11C0DE1C100EEF02A /* Tour.swift */; };
@@ -67,6 +68,7 @@
 		E6459F4F1C0F544F0085E3A8 /* AvatarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarViewController.swift; sourceTree = "<group>"; };
 		E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		E6459F511C0F544F0085E3A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteTableViewCell.swift; sourceTree = "<group>"; };
 		E67473991C0CA94700EEF02A /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsTableViewController.swift; path = ../StepsTableViewController.swift; sourceTree = "<group>"; };
 		E674739D1C0CDDD400EEF02A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E67473A11C0DE1C100EEF02A /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 			children = (
 				E63670B01C0F806500906D4E /* SiteTableViewController.swift */,
 				E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */,
+				E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */,
 			);
 			name = "Site Flow";
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
+				E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */,
 				E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
 				E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */,

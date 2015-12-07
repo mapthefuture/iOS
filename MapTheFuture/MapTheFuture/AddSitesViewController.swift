@@ -128,21 +128,11 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
-        
-        let addImageView = UIImageView(image: UIImage(named: "addLight"))
-        addImageView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        addImageView.contentMode = .ScaleAspectFit
-
-
-
-        cell.accessoryView = addImageView
-
-        
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! AddSiteTableViewCell
         
         let item = mapresponseObjects[indexPath.row]
-        cell.textLabel?.text = item.name
-        
+        cell.siteTitleLabel.text = item.name
+
         return cell
     }
     
@@ -153,8 +143,6 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
 
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
       
-        tableView.cellForRowAtIndexPath(indexPath)?.accessoryView = UIImageView(image: UIImage(named: "addBlue"))
-
         
         let item = mapresponseObjects[indexPath.row]
 
