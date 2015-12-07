@@ -49,6 +49,8 @@ class Tour: Mappable {
     
 }
 
+//Example JSON Response
+
 //"id": 8,
 //"user_id": 5,
 //"title": "The East Side",

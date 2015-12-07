@@ -25,6 +25,7 @@
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
 		E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674739D1C0CDDD400EEF02A /* NetworkManager.swift */; };
 		E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473A11C0DE1C100EEF02A /* Tour.swift */; };
+		E67F7EAA1C14D168005171FB /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F7EA91C14D168005171FB /* Uploader.swift */; };
 		E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942261BFD357400FF5415 /* AppDelegate.swift */; };
 		E68942291BFD357400FF5415 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942281BFD357400FF5415 /* MainViewController.swift */; };
 		E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689422A1BFD357400FF5415 /* RoutingViewController.swift */; };
@@ -34,7 +35,7 @@
 		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
-		E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE25201C0662F4002D2206 /* CreateViewController.swift */; };
+		E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		E67473991C0CA94700EEF02A /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsTableViewController.swift; path = ../StepsTableViewController.swift; sourceTree = "<group>"; };
 		E674739D1C0CDDD400EEF02A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E67473A11C0DE1C100EEF02A /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		E67F7EA91C14D168005171FB /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		E68942231BFD357400FF5415 /* Wanderful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wanderful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68942261BFD357400FF5415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E68942281BFD357400FF5415 /* MainViewController.swift */ = {isa = PBXFileReference; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -83,7 +85,7 @@
 		E69E4CE91C09E737002DEE61 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		E6FE25201C0662F4002D2206 /* CreateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
+		E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSitesViewController.swift; sourceTree = "<group>"; };
 		E6FE25251C066FB8002D2206 /* MapTheFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MapTheFuture.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,6 +133,7 @@
 				E6459F4B1C0F543B0085E3A8 /* OnboardingViewController.swift */,
 				E6459F4C1C0F543B0085E3A8 /* RegisterViewController.swift */,
 				E6459F4F1C0F544F0085E3A8 /* AvatarViewController.swift */,
+				E67F7EA91C14D168005171FB /* Uploader.swift */,
 				E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */,
 				E6459F511C0F544F0085E3A8 /* LoginViewController.swift */,
 			);
@@ -231,9 +234,9 @@
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
 			isa = PBXGroup;
 			children = (
-				E6FE25201C0662F4002D2206 /* CreateViewController.swift */,
-				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
 				E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */,
+				E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */,
+				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
 			);
 			name = "Creation Flow";
 			sourceTree = "<group>";
@@ -440,11 +443,12 @@
 				E6241B361C0E02F800D2F5DD /* User.swift in Sources */,
 				E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */,
 				E62442B51C06055900EA937E /* Extensions.swift in Sources */,
+				E67F7EAA1C14D168005171FB /* Uploader.swift in Sources */,
 				E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */,
 				E6459F541C0F544F0085E3A8 /* LoginViewController.swift in Sources */,
 				E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */,
 				E63670AE1C0F79B300906D4E /* Site.swift in Sources */,
-				E6FE25211C0662F4002D2206 /* CreateViewController.swift in Sources */,
+				E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */,
 				E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,

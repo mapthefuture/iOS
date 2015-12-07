@@ -9,7 +9,6 @@ pod 'AlamofireObjectMapper', '~> 2.1'
 pod 'Fabric'
 pod 'Crashlytics'
 pod 'KeychainSwift', '~> 3.0'
-
 end
 
 target 'Wanderful' do

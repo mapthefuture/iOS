@@ -80,7 +80,14 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
             dismissViewControllerAnimated(true, completion: nil)
             
             //TO DO
-//            Save image to back-end
+            NetworkManager.sharedManager().uploadPhoto(image, completion: { [weak self] (success) -> () in
+                if success {
+                    print("success")
+                }
+                else if success == false {
+                    self?.alertUser("Error", message: "Couldn't upload photo")
+                }
+            })
         }
     }
     

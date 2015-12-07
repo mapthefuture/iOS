@@ -55,6 +55,52 @@ func stringFromTimeInterval(interval: NSTimeInterval) -> String {
     let hours = (interval / 3600)
     return String(format: "%02d:%02d", hours, minutes)
 }
+
+// UINavigationController
+
+extension UINavigationController {
+    func setTitleView() {
+        //Create TitleView
+        if let image = UIImage(named: "compass") {
+            let imageView = UIImageView(image: image)
+            imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            
+            imageView.contentMode = .ScaleAspectFit
+            
+            // set the text view to the image view
+            self.navigationItem.titleView = imageView
+        }
+
+    }
+}
+
+//Colors
+
+extension UIColor {
+    
+    class func armadilloColor() -> UIColor {
+       return UIColor(hue:0, saturation:0, brightness:0.29, alpha:1)
+    }
+    
+    class func unitedNationsBlue() -> UIColor {
+        return UIColor(hue:0.62, saturation:0.65, brightness:0.91, alpha:1)
+    }
+    
+    class func cinnabarColor() -> UIColor {
+        return UIColor(hue:0.02, saturation:0.77, brightness:0.94, alpha:1)
+    
+    }
+    
+    class func loblollyColor() ->  UIColor {
+        return UIColor(hue:0.59, saturation:0.09, brightness:0.84, alpha:1)
+    }
+    
+    
+}
+
+
+
+//Distance Conversions
 extension Double {
 func metersToMiles() -> Double {
     let miles = (round(1000 * (self * 0.000621371)) / 1000)

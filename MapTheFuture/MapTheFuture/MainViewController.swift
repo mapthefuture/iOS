@@ -12,7 +12,7 @@ import MapKit
 import KeychainSwift
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate{
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate {
    
    
    var tours: [Tour] = [] {
@@ -31,7 +31,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func searchButtonPressed(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.delegate = self
+        searchController.searchBar.delegate = self
         presentViewController(searchController, animated: true, completion: nil)
         
     }
@@ -59,11 +59,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             imageView.image = image
          }
-        
-      
-      
-        
-       
 
       NetworkManager.sharedManager().getAllTours { [weak self] (success, tours) -> () in
          

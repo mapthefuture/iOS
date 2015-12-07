@@ -31,6 +31,13 @@ class Site: Mappable {
         
     }
     
+    init(tourID: Int, title: String, coordinate: CLLocationCoordinate2D) {
+        self.tourID = tourID
+        self.title = title
+        self.lat = String(coordinate.latitude)
+        self.lon = String(coordinate.longitude)
+    }
+    
     func mapping(map: Map) {
         id <- map["id"]
         tourID <- map["length"]
