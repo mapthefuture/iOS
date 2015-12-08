@@ -317,6 +317,11 @@ class NetworkManager: NSObject {
         }
     
     
+    func updateSitesForTour() {
+        //TODO
+    }
+    
+    
     
     func uploadPhoto2(photo: UIImage, completion:(success: Bool)->()) {
        

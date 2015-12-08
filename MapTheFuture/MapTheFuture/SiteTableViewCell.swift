@@ -35,6 +35,9 @@ class SiteTableViewCell: UITableViewCell, MKMapViewDelegate {
         // Initialization code
         
     }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -48,6 +48,9 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     @IBAction func doneButtonPressed(sender: AnyObject) {
         
         //todo
+        //Save tour with sites
+        NetworkManager.sharedManager().updateSitesForTour()
+
     }
     
    @objc var mapresponseObjects: [MKMapItem] = [] {
@@ -128,21 +131,81 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath) as! AddSiteTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellID, forIndexPath: indexPath)
         
         let item = mapresponseObjects[indexPath.row]
-        cell.siteTitleLabel.text = item.name
+        cell.textLabel?.text = item.name
+        if let light = UIImage(named:"addLight"), let dark = UIImage(named: "addBlue") {
+            let button = AddSiteButton()
+            button.frame.size = CGSize(width: 25, height: 25)
 
+            button.setImage(light, forState: .Normal)
+            button.indexpath = indexPath
+ 
+            button.addTarget(self, action: "addButtonTapped:", forControlEvents: .TouchUpInside)
+            button.imageView?.contentMode = .ScaleAspectFit
+            cell.accessoryView = button
+            
+        }
+        
+   
         return cell
+    }
+    
+    func addButtonTapped(sender: AddSiteButton) {
+         print("tapped")
+       
+        if sender.added == false {
+        guard let dark = UIImage(named: "addBlue") else { return }
+        sender.setImage(dark, forState: .Normal)
+        guard let indexp = sender.indexpath else { return }
+        let item = mapresponseObjects[indexp.row]
+
+        
+        print(item)
+        guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
+        let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate)
+        sites.append(site)
+        print(sites)
+        sender.added = true
+        } else if sender.added == true {
+             guard let light = UIImage(named: "addLight") else { return }
+             sender.setImage(light, forState: .Normal)
+            guard let indexp = sender.indexpath else { return }
+           if let arrayindex = sites.indexOf({ (site) -> Bool in
+                    site?.title == mapresponseObjects[indexp.row].name
+            
+           }) {
+                sites.removeAtIndex(arrayindex)
+                print(sites)
+                sender.added = true
+            }
+            
+        }
+
+        
+        
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mapresponseObjects.count
     }
     
+   
+    
+    
 
     func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        print(indexPath)
       
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            if let dark = UIImage(named:"addBlue") {
+                let imageView = UIImageView(image: dark)
+                imageView.frame.size = CGSize(width: 50, height: 50)
+                imageView.contentMode = .ScaleAspectFit
+                cell.accessoryView = imageView
+            }
+        }
         
         let item = mapresponseObjects[indexPath.row]
 
