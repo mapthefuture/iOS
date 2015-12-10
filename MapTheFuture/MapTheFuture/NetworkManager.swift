@@ -415,24 +415,57 @@ class NetworkManager: NSObject {
             keychain.set(png, forKey: "profileImage")
 
             
+            let documentPath = getDocumentsDirectory()
+        
+            let writePath = documentPath.stringByAppendingPathComponent("profileImage.png")
+            png.writeToFile(writePath, atomically: true)
             
-           let bodyParameters = [
-
-                "avatar": png
-            ]
             
+           
             let urlstring = "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update"
+            guard  let h = accesstokenHeader else { return }
+            let imageURL = NSURL(fileURLWithPath: writePath)
             
-            Alamofire.request(urlRequestWithMultipartBody(urlstring, parameters: bodyParameters)).validate().responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (response) -> Void in
-                switch response.result {
-                case .Failure(let error):
-                    print(error)
-                    completion(success: false)
-                case .Success(let value):
-                    print(value)
-                    completion(success: true)
-                }
-            })
+            Alamofire.upload(.PATCH, urlstring, headers: h, multipartFormData: { (mpfd) -> Void in
+                
+              mpfd.appendBodyPart(fileURL: imageURL, name: "avatar", fileName: "profileImage", mimeType: "image/png")
+                
+                
+                }, encodingMemoryThreshold: 5000, encodingCompletion: { (encodingResult) -> Void in
+                    switch encodingResult {
+                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+                        request.responseJSON(options: NSJSONReadingOptions.MutableContainers, completionHandler: { (response) -> Void in
+                            switch response.result {
+                            case  .Failure(let error):
+                                print(error)
+                                completion(success: false)
+                            case .Success(let value):
+                                print(value)
+                                completion(success: true)
+                            }
+                        })
+                    case .Failure(let error):
+                        print(error)
+                    }
+                    
+                    
+                    
+                })
+            
+//
+//
+//                
+//                
+//                .request(urlRequestWithMultipartBody(urlstring, parameters: bodyParameters)).validate().responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (response) -> Void in
+//                switch response.result {
+//                case .Failure(let error):
+//                    print(error)
+//                    completion(success: false)
+//                case .Success(let value):
+//                    print(value)
+//                    completion(success: true)
+//                }
+//            })
         
         }
     }

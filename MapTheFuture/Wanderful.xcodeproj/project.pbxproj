@@ -23,6 +23,7 @@
 		E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */; };
 		E6459F541C0F544F0085E3A8 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F511C0F544F0085E3A8 /* LoginViewController.swift */; };
 		E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */; };
+		E67245D51C19C85200B24FBA /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67245D41C19C85200B24FBA /* Loading.swift */; };
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
 		E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674739D1C0CDDD400EEF02A /* NetworkManager.swift */; };
 		E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473A11C0DE1C100EEF02A /* Tour.swift */; };
@@ -70,6 +71,7 @@
 		E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceViewController.swift; sourceTree = "<group>"; };
 		E6459F511C0F544F0085E3A8 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteTableViewCell.swift; sourceTree = "<group>"; };
+		E67245D41C19C85200B24FBA /* Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		E67473991C0CA94700EEF02A /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsTableViewController.swift; path = ../StepsTableViewController.swift; sourceTree = "<group>"; };
 		E674739D1C0CDDD400EEF02A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E67473A11C0DE1C100EEF02A /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				E674739F1C0DDD3700EEF02A /* Networking */,
 				E6FE25241C066B51002D2206 /* Frameworks */,
 				E68942261BFD357400FF5415 /* AppDelegate.swift */,
+				E67245D41C19C85200B24FBA /* Loading.swift */,
 				E62442B41C06055900EA937E /* Extensions.swift */,
 				E69E4CE91C09E737002DEE61 /* ObjCBridge.h */,
 				E689422F1BFD357400FF5415 /* Assets.xcassets */,
@@ -458,6 +461,7 @@
 				E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */,
 				E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
+				E67245D51C19C85200B24FBA /* Loading.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
 				E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */,

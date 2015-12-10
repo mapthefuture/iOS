@@ -12,7 +12,7 @@ import MapKit
 import KeychainSwift
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
    
    
    var tours: [Tour] = [] {
@@ -25,7 +25,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var greetingLabel: UILabel!
 
    var searchController:UISearchController!
-    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var mapView: MKMapView! {
+        didSet {
+            let gr = UITapGestureRecognizer(target: self, action: "userDidTapMapView:")
+            gr.delegate = self
+            gr.numberOfTapsRequired = 1
+            mapView.addGestureRecognizer(gr)
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
     @IBAction func searchButtonPressed(sender: AnyObject) {
@@ -41,6 +48,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         LocationManager.sharedManager().startUpdatingLocation()
     }
     
+    @IBOutlet weak var upArrow: UIButton!
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +67,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
             imageView.image = image
          }
+      Loading.start()
 
       NetworkManager.sharedManager().getAllTours { [weak self] (success, tours) -> () in
          
@@ -69,6 +78,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          } else {
             
             self?.tours = tours.sort{$0.description?.characters.count > $1.description?.characters.count}
+            Loading.stop()
             
          }
    
@@ -113,6 +123,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
+    //MARK: - Constraints
+    @IBOutlet weak var mapToTableRatioConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var mapToTableRatioExpandedConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var imageViewtoTopConstraint: NSLayoutConstraint!
+    //
+    
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       
       print(locations)
@@ -124,6 +143,28 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func userDidTapMapView(sender: UITapGestureRecognizer) {
+        
+        if mapToTableRatioConstraint.active {
+            
+      
+            NSLayoutConstraint.deactivateConstraints([mapToTableRatioConstraint])
+            NSLayoutConstraint.activateConstraints([mapToTableRatioExpandedConstraint])
+        
+        } else if mapToTableRatioExpandedConstraint.active {
+
+            NSLayoutConstraint.deactivateConstraints([mapToTableRatioExpandedConstraint])
+            NSLayoutConstraint.activateConstraints([mapToTableRatioConstraint])
+        }
+        UIView.animateWithDuration(2.0, delay: 0, usingSpringWithDamping: 10, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            self.view.layoutIfNeeded()
+            if self.upArrow.hidden == true { self.upArrow.hidden = false } else { self.upArrow.hidden = true }
+            if self.imageView.hidden == true { self.imageView.hidden = false } else { self.imageView.hidden = true }
+            if self.greetingLabel.hidden == true { self.greetingLabel.hidden = false } else { self.greetingLabel.hidden = true }
+
+            }, completion: nil)
     }
     
     

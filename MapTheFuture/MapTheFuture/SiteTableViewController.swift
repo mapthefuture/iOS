@@ -23,30 +23,22 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         didSet {
         
             tableView.reloadData()
-            distanceEstimateString = calculateTotalDistanceFrom(routes).metersToMilesString()
-            timeEstimateString = calculateTimeEstimateStringFrom(routes)
+            distanceLabel.text = calculateTotalDistanceFrom(routes).metersToMilesString()
+            timeEstimateTextLabel.text = calculateTimeEstimateStringFrom(routes)
         }
     }
+    
+    
+    
     @IBOutlet weak var timeEstimateTextLabel: UILabel!
     
-        lazy var currentLocCoord: CLLocationCoordinate2D? = {
+    lazy var currentLocCoord: CLLocationCoordinate2D? = {
         let lazymanager = CLLocationManager()
         lazymanager.delegate = self
         lazymanager.requestLocation()
         return lazymanager.location?.coordinate
     }()
-    
-    var distanceEstimateString = "" {
-        didSet {
-            distanceLabel.text = distanceEstimateString
-        }
-    }
-    var timeEstimateString = "" {
-        didSet {
-            timeEstimateTextLabel.text = timeEstimateString
-        }
-    }
-    
+
   
     @IBOutlet weak var tourTitleLabel: UILabel!
     
@@ -55,6 +47,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     func getRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion:(MKRoute?) -> ()) {
         
+        Loading.start()
        let fromPM = MKPlacemark(coordinate: from, addressDictionary: nil)
        let toPM = MKPlacemark(coordinate: to, addressDictionary: nil)
         
@@ -72,10 +65,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
         directions.calculateDirectionsWithCompletionHandler { (response, error) -> Void in
             
-            if error != nil { completion(nil); print(error) }
+            if error != nil { Loading.stop(); completion(nil); print(error) }
             
             if let r = response {
-                
+                Loading.stop()
                 completion(r.routes.first)
             }
             
@@ -83,14 +76,17 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
 
     }
     
-    func getSitesAndSteps() {
+    func getSitesAndSteps(completion completion:(()->())?) {
+        
+        
+        defer { if let _c = completion { _c() } }
+        
 
-    
         
         //Get sites
         if let t = tour, let id = t.id {
             
-            NetworkManager.sharedManager().getSitesforTour(id, completion: { [unowned self] (success, sites)
+            NetworkManager.sharedManager().getSitesforTour(id, completion: {  (success, sites)
             
             in if success == true {
                
@@ -129,6 +125,9 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                             print(_route)
                             self.routes.append(_route)
                             self.tableView.reloadData()
+                            if let c = completion {
+                                c()
+                            }
                         }
                     })
                 }
@@ -138,19 +137,31 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        getSitesAndSteps()
+    override func viewDidLayoutSubviews() {
+        
+        distanceLabel.text = calculateTotalDistanceFrom(routes).metersToMilesString()
+        timeEstimateTextLabel.text = calculateTimeEstimateStringFrom(routes)
+        
+        print("Calculation : \(calculateTimeEstimateStringFrom(routes))")
+        
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
          routes = []
         
         self.tourTitleLabel.text = tour?.title ?? "Wander"
        self.automaticallyAdjustsScrollViewInsets = false
         
-        getSitesAndSteps()
+
+        getSitesAndSteps(completion: nil)
 
     }
 
@@ -249,7 +260,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
             cell.textLabel?.text = "Walking directions unavailable for this site."
             
             
-        } else if !routes.isEmpty {
+        } else if !(routes.isEmpty) {
             if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
                 cell.textLabel?.text = stepString
                 cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
@@ -265,7 +276,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
+        getSitesAndSteps(completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {

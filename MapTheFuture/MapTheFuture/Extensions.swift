@@ -10,13 +10,25 @@ import UIKit
 import MapKit
 
 
-func calculateTotalDistanceFrom(routes: [MKRoute]) -> Double {
+protocol MapItemLiteralConvertible {
     
-    return routes.reduce(0){$0.1.distance}
+    func toSite() -> Site
+}
+
+
+func calculateTotalDistanceFrom(routes: [MKRoute]) -> Double {
+    let total = routes.reduce(0){$0.0 + $0.1.distance}
+    print("Routes Total Distance: \(total.metersToMilesString())")
+    return total
 }
 
 func calculateTimeEstimateStringFrom(routes: [MKRoute]) -> String {
-    return routes.reduce(0) {$0.1.expectedTravelTime}.stringFromTimeInterval()
+    
+    for r in routes { print(r.expectedTravelTime) }
+    
+    let total = routes.reduce (0) { $0.0 + $0.1.expectedTravelTime}
+    print("Routes Total travel time: \(total)")
+    return total.stringFromTimeInterval()
 }
 
 
@@ -24,6 +36,7 @@ func calculateTimeEstimateStringFrom(routes: [MKRoute]) -> String {
 
 
 extension UIViewController: UITextFieldDelegate {
+    
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -73,9 +86,9 @@ extension Array {
 extension NSTimeInterval {
 
 func stringFromTimeInterval() -> String {
-    let interval = Int(self)
-    let minutes = (interval / 60) % 60
-    let hours = (interval / 3600)
+//    let interval = Int(self)
+    let minutes = Int((self / 60))
+    let hours = Int(self / 3600)
     return String(format: "%02d:%02d", hours, minutes)
     }
 }
@@ -85,9 +98,9 @@ func stringFromTimeInterval() -> String {
 extension UIViewController {
     func setTitleView() {
         //Create TitleView
-        if let image = UIImage(named: "iconWhite") {
+        if let image = UIImage(named: "compass") {
             let imageView = UIImageView(image: image)
-            imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            imageView.frame = CGRect(x: 0, y: 0, width: 35, height: 35)
             
             imageView.contentMode = .ScaleAspectFit
             
