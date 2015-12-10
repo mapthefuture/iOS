@@ -9,37 +9,49 @@
 import UIKit
 import MapKit
 
-extension Array {
-    subscript (safe index: Int) -> Element? {
-        return indices ~= index ? self[index] : nil
-    }
-}
-
 
 class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     var tour: Tour?
-    var sites: [Site] = []
-    var coords:[CLLocationCoordinate2D] = []
-    var routes: [MKRoute] = [] {
+    var sites: [Site] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+    var coords:[CLLocationCoordinate2D] = []
+    var routes: [MKRoute] = [] {
+        didSet {
+        
+            tableView.reloadData()
+            distanceEstimateString = calculateTotalDistanceFrom(routes).metersToMilesString()
+            timeEstimateString = calculateTimeEstimateStringFrom(routes)
+        }
+    }
+    @IBOutlet weak var timeEstimateTextLabel: UILabel!
     
-    lazy var currentLocCoord: CLLocationCoordinate2D? = {
+        lazy var currentLocCoord: CLLocationCoordinate2D? = {
         let lazymanager = CLLocationManager()
         lazymanager.delegate = self
         lazymanager.requestLocation()
         return lazymanager.location?.coordinate
     }()
-
-
+    
+    var distanceEstimateString = "" {
+        didSet {
+            distanceLabel.text = distanceEstimateString
+        }
+    }
+    var timeEstimateString = "" {
+        didSet {
+            timeEstimateTextLabel.text = timeEstimateString
+        }
+    }
+    
+  
     @IBOutlet weak var tourTitleLabel: UILabel!
     
-    @IBAction func goButtonPressed(sender: AnyObject) {
-        
-    }
+
+    @IBOutlet weak var distanceLabel: UILabel!
     
     func getRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion:(MKRoute?) -> ()) {
         
@@ -73,10 +85,12 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     func getSitesAndSteps() {
 
-        routes = []
+    
         
         //Get sites
-        if let t = tour, let id = t.id { NetworkManager.sharedManager().getSitesforTour(id, completion: { [unowned self] (success, sites)
+        if let t = tour, let id = t.id {
+            
+            NetworkManager.sharedManager().getSitesforTour(id, completion: { [unowned self] (success, sites)
             
             in if success == true {
                
@@ -88,11 +102,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 
                 //put coordinates into array
                 self.coords = sites.flatMap{$0.coordinate}
-//                let a = CLLocationCoordinate2D(latitude: 33.7587, longitude: -84.3645782)
-//                let b = CLLocationCoordinate2D(latitude: 33.7987, longitude: -84.55)
-//                let c = CLLocationCoordinate2D(latitude: 33.7387, longitude: -84.3745782)
-//                
-//                self.coords = [a,b,c]
+
                 
                 
                 if let currloccord = self.currentLocCoord {
@@ -132,21 +142,16 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         getSitesAndSteps()
     }
     
-    
-                    
-                
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         routes = []
+        
+        self.tourTitleLabel.text = tour?.title ?? "Wander"
+       self.automaticallyAdjustsScrollViewInsets = false
+        
         getSitesAndSteps()
-        tourTitleLabel.text = tour?.title ?? ""
-        title = tour?.title ?? "Tour"
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -171,35 +176,42 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
         let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
-            let site = sites[section]
-            if let coord = site.coordinate, let currentcoord = self.currentLocCoord {
+        let site = sites[section]
+        
+        
+        let map = MKMapView(frame: sectionView.frame)
+        
+        map.delegate = self
+        sectionView.addSubview(map)
+        
+        map.center = sectionView.center
+
+        
+        
+            if let coord = site.coordinate {
                
-                let map = MKMapView(frame: sectionView.frame)
                 
-                    map.delegate = self
-                    sectionView.addSubview(map)
-                    
-                    map.center = sectionView.center
+                map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)), animated: true)
                 
                 if let route = routes[safe: section] {
                     print("polyline : \(route.polyline)")
                     map.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
                 }
                 
-                if section == 0 {
-                    map.showsUserLocation = true
-                    
-                    map.setRegion(MKCoordinateRegion(center: currentcoord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-                    
-                } else if section > 0 {
-                    map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-                }
+                print(site.title, site.coordinate, map)
                 
+                } else if site.coordinate == nil {
+            if let currentcoord = self.currentLocCoord {
+                map.setRegion(MKCoordinateRegion(center: currentcoord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
+            }
+
+    
+            
                 }
                 
                 //Title Label
                 let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
-                sectionTitleLabel.text = site.title ?? "Default Title"
+                sectionTitleLabel.text = site.title ?? "Site"
                 sectionTitleLabel.textAlignment = .Center
                 sectionTitleLabel.textColor = UIColor.darkGrayColor()
                 sectionView.addSubview(sectionTitleLabel)
@@ -222,8 +234,8 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return routes[safe: section]?.steps.count ?? 0
+
+        return routes[safe: section]?.steps.count ?? 1
     }
 
     
@@ -231,15 +243,19 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
-            cell.textLabel?.text = stepString
-            cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
+        if routes.isEmpty {
+            cell.textLabel?.text = "Walking directions unavailable for this site."
+            
+            
+        } else if !routes.isEmpty {
+            if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
+                cell.textLabel?.text = stepString
+                cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
+            }
         }
-        
 
-        
         return cell
     }
     
@@ -261,56 +277,12 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.strokeColor = UIColor.cyanColor()
+        renderer.strokeColor = UIColor.unitedNationsBlue()
         renderer.lineWidth = 10.0
         return renderer
     }
+    
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

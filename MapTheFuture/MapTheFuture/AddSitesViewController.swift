@@ -37,6 +37,8 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     
     @IBOutlet weak var tv: UITableView!
     
+    
+    
     @IBAction func searchButtonPressed(sender: AnyObject) {
         searchController = UISearchController(searchResultsController: nil)
         searchController.hidesNavigationBarDuringPresentation = false
@@ -46,13 +48,20 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        
+
         //todo
         //Save tour with sites
-        NetworkManager.sharedManager().updateSitesForTour()
-
+        guard let _tour = self.tour else { return }
+        sites.flatMap{ $0 }.map{ NetworkManager.sharedManager().createSiteforTour($0, tour: _tour, completion: { (success) -> () in
+            if success {
+                print(true)
+            }
+            else {
+                print("error")
+            }
+        })}
+        
     }
-    
    @objc var mapresponseObjects: [MKMapItem] = [] {
         
         didSet {
@@ -104,6 +113,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     
     
     func search(searchText: String) {
+        
         //
         localSearchRequest = MKLocalSearchRequest()
         localSearchRequest.naturalLanguageQuery = searchText
@@ -135,6 +145,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
         
         let item = mapresponseObjects[indexPath.row]
         cell.textLabel?.text = item.name
+        
         if let light = UIImage(named:"addLight"), let dark = UIImage(named: "addBlue") {
             let button = AddSiteButton()
             button.frame.size = CGSize(width: 25, height: 25)
@@ -147,8 +158,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
             cell.accessoryView = button
             
         }
-        
-   
+
         return cell
     }
     

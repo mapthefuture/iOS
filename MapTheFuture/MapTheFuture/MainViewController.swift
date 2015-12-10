@@ -87,15 +87,18 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
       
       //Create TitleView
-      if let image = UIImage(named: "compass") {
-         let imageView = UIImageView(image: image)
-         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-         
-         imageView.contentMode = .ScaleAspectFit
-         
-         // set the text view to the image view
-         self.navigationItem.titleView = imageView
-      }
+      setTitleView()
+//      if let image = UIImage(named: "iconWhite") {
+//         let imageView = UIImageView(image: image)
+//         imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+//
+//         
+//         imageView.contentMode = .ScaleAspectFit
+//         
+//         // set the text view to the image view
+//         self.navigationItem.titleView = imageView
+//         
+//      }
 
     }
    

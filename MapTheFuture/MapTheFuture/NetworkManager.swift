@@ -316,9 +316,40 @@ class NetworkManager: NSObject {
             }
         }
     
-    
-    func updateSitesForTour() {
+    /**
+     // Create Site 
+     (POST https://fathomless-savannah-6575.herokuapp.com/tours/12/sites)
+     
+     - parameter tour:       A Tour objecect
+     - parameter completion: called when the request completes
+     */
+    func createSiteforTour(site: Site, tour: Tour, completion:(success: Bool) -> ()) {
         //TODO
+        guard let tourID = tour.id else { return print("Tour doesn't have id") }
+        
+        var URLParameters = ["":""]
+        
+        if let siteTitle = site.title { URLParameters["title"] = siteTitle }
+        if let siteDescription = site.description { URLParameters["description"] = siteDescription }
+        if let siteLatitude = site.coordinate?.latitude { URLParameters["latitude"] = String(siteLatitude) }
+        if let siteLongitude = site.coordinate?.longitude { URLParameters["longitude"] = String(siteLongitude) }
+        
+       print(URLParameters)
+        
+        // Fetch Request
+        Alamofire.request(.POST, "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites", parameters: URLParameters , encoding: ParameterEncoding.JSON, headers: accesstokenHeader).responseJSON { (response) -> Void in
+            switch response.result {
+            
+            case .Failure(let error):
+                print(error)
+                completion(success: false)
+           
+            case .Success(let value):
+                print(value)
+                completion(success: true)
+            }
+        }
+        
     }
     
     

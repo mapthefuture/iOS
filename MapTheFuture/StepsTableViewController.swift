@@ -24,7 +24,7 @@ class StepsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if let eta = route?.expectedTravelTime {
-            timeLabel.text = stringFromTimeInterval(eta)
+            timeLabel.text = eta.stringFromTimeInterval()
             
         }
 
