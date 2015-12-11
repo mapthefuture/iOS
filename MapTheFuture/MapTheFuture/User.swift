@@ -42,6 +42,17 @@ class User: Mappable {
 
     }
     
+    static let currentUserID: Int? = {
+
+//        guard let firstname = self.firstName, let email = self.email, let id = self.id, let token = self.accessToken else { return nil }
+        
+        
+        let keychain =  KeychainSwift()
+        guard let idString = keychain.get("id"), let id = Int(idString)  else { return nil }
+        
+        return id
+    }()
+    
     func save() {
         print(self.accessToken, self.id, self.firstName, self.lastName)
         guard let firstname = self.firstName, let email = self.email, let id = self.id, let token = self.accessToken else { return }

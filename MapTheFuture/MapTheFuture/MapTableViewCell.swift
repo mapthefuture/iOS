@@ -15,6 +15,21 @@ class MapTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tourDescriptionLabel: UILabel!
     
+    @IBOutlet weak var myTourView: UIView!
+    
+    var myTour = false
+        {
+        didSet {
+            if myTour == true {
+                myTourView.hidden = false
+                
+            } else {
+                myTourView.hidden = true
+            }
+             self.contentView.setNeedsDisplay()
+        }
+       
+    }
     
     
     override func awakeFromNib() {

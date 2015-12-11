@@ -18,12 +18,18 @@ class CreateTourViewController: UIViewController {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBOutlet weak var tapToSelectCategoryButton: UIButton!
+    @IBOutlet weak var tourCategoryLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tourTitleTextField: UITextField!
-    @IBOutlet weak var tourCategoryTextField: UITextField!
     @IBOutlet weak var tourDescriptionTextField: UITextField!
+    @IBOutlet weak var stackViewBottom: NSLayoutConstraint!
+    
+    
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        guard let title = tourTitleTextField.text, let category = tourCategoryTextField.text, let tourdescrip = tourDescriptionTextField.text where [title]>* else { return }
+        guard let title = tourTitleTextField.text, var category = tourCategoryLabel.text, let tourdescrip = tourDescriptionTextField.text where [title]>* else { return }
+        if category == "Category" { category = "Other" }
         NetworkManager.sharedManager().createTour(title, description: tourdescrip, category: category) { [weak self] (success, tour) -> () in
             if !success  {
                 self?.alertUser("Couldn't create tour", message: "Something went wrong when creating this tour. Try again")
@@ -38,28 +44,42 @@ class CreateTourViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        doneButton.hidden = true
+        tapToSelectCategoryButton.layer.cornerRadius = tapToSelectCategoryButton.frame.height / 2
         navigationController?.setTitleView()
+//        scrollV.scrollRectToVisible(tourTitleTextField.frame, animated: true)
       
     }
 
+    
+    
+
+    @IBOutlet weak var stackView: UIStackView!
 
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         if textField == tourTitleTextField {
-            tourCategoryTextField.becomeFirstResponder()
+            if textField.text?.characters.count > 0 {
+                doneButton.backgroundColor = UIColor.unitedNationsBlue()
+                doneButton.titleLabel?.text = "Done"
+                doneButton.titleLabel?.textAlignment = .Center
+                doneButton.setNeedsDisplay()
+            }
+        
+            stackViewBottom.constant = 100
+            stackView.updateConstraintsIfNeeded()
             
-        } else if textField == tourCategoryTextField {
             tourDescriptionTextField.becomeFirstResponder()
-        } else{
+            
+        } else {
+            stackViewBottom.constant = 20
+            stackView.updateConstraintsIfNeeded()
             textField.resignFirstResponder()
-            doneButton.hidden = false
         }
-        
-        
         return true
     }
+    
+    
     
     // MARK: - Navigation
 
@@ -69,17 +89,12 @@ class CreateTourViewController: UIViewController {
             guard segue.identifier == "AddSites" else { return }
             guard let addSitesVC = segue.destinationViewController as? AddSitesViewController else { return }
             addSitesVC.tour = self.tour
-        
-                
-            
     }
 }
 
 extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBAction func pressedCategoryButton(sender: AnyObject) {
-        
-        
         
         //1
         let effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
@@ -143,9 +158,12 @@ extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return Tour.categories.count
     }
+    
+    
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
          print(row, component)
+        tourCategoryLabel.text = Tour.categories[row] ?? "Category"
     }
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         
@@ -168,5 +186,6 @@ extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     
 }
+
 
 

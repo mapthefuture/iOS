@@ -16,8 +16,21 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
    
    var tours: [Tour] = [] {
+      
       didSet {
+         
          print(tours.flatMap{$0.id})
+         
+        tours.map({ t in
+            guard let coord = t.coordinate else { return }
+            let a = MKPointAnnotation()
+            a.coordinate = coord
+            a.title = t.title
+            a.subtitle = t.description
+            mapView.addAnnotation(a)
+            
+         })
+         
          tableView.reloadData()
       }
    }
@@ -35,26 +48,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
    }
    
+   var tapGR: UITapGestureRecognizer?
+   
     @IBOutlet weak var mapView: MKMapView! {
         didSet {
-            let gr = UITapGestureRecognizer(target: self, action: "userDidTapMapView:")
-            gr.delegate = self
-            gr.numberOfTapsRequired = 1
-            mapView.addGestureRecognizer(gr)
+            tapGR = UITapGestureRecognizer(target: self, action: "userDidTapMapView:")
+            tapGR?.delegate = self
+            tapGR?.numberOfTapsRequired = 1
+         if let _tapGr = tapGR { mapView.addGestureRecognizer(_tapGr)
+         }
         }
     }
+   
     var searchController:UISearchController!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var upArrow: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBAction func searchButtonPressed(sender: AnyObject) {
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.hidesNavigationBarDuringPresentation = false
-        searchController.searchBar.delegate = self
-        presentViewController(searchController, animated: true, completion: nil)
-        
-    }
+
    
    func refresh() {
      
@@ -77,13 +88,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self?.toggleView()
             
          }
-         
       }
    }
    
-//   override func viewWillAppear(animated: Bool) {
-//      refresh()
-//   }
+
 
     @IBAction func findMeButtonPressed(sender: AnyObject) {
         LocationManager.sharedManager().requestWhenInUseAuthorization()
@@ -122,13 +130,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsCompass = true
-      
-      
+
       //Create TitleView
       setTitleView()
 
     }
    
+    
+    
    override func viewWillDisappear(animated: Bool) {
       super.viewWillDisappear(animated)
       LocationManager.sharedManager().stopUpdatingLocation()
@@ -143,7 +152,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Constraints
     @IBOutlet weak var mapToTableRatioConstraint: NSLayoutConstraint!
     
-    @IBOutlet weak var mapToTableRatioExpandedConstraint: NSLayoutConstraint!
+    @IBOutlet weak var mapToTableRatioExpandedConstraint: NSLayoutConstraint! 
     
     @IBOutlet weak var imageViewtoTopConstraint: NSLayoutConstraint!
     
@@ -152,8 +161,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       
-      print(locations)
-        
+//      print(locations)
+      
         guard let loc = locations.last else { return }
         
         let center = CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
@@ -209,6 +218,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
          cell.tourTitleLabel.text = tour.title ?? ""
          cell.tourDescriptionLabel?.text = tour.description ?? ""
+      print("CURRENT USER ID: \(User.currentUserID)")
+      print(tour.id)
+        if let usrID = tour.user_id, let currentUserID = User.currentUserID where usrID == currentUserID {
+         print("!!", usrID, currentUserID)
+            cell.myTour = true
+            
+        } else {
+         cell.myTour = false
+      }
          //TODO - Configure Media Preview
         return cell
     }
@@ -240,5 +258,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         isRotating = true
         
     }
+   
+   let defaultPinID = "com.macbellingrath.pin"
+   
+   
+   func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+      
+      let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(defaultPinID)
+      
+      guard let pv = pinView else {
+         
+        let pinV =  MKAnnotationView(annotation: annotation, reuseIdentifier: defaultPinID)
+         pinV.annotation = annotation
+         
+         pinV.canShowCallout = true
+         
+         if let compassImage = UIImage(named: "compass") {
+            
+            pinV.image = compassImage
+         
+         }
+         pinV.frame.size = CGSize(width: 30, height: 30)
+         return pinV
+      }
+      return pv
+   }
 }
-

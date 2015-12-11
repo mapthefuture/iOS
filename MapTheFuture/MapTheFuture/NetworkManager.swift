@@ -112,6 +112,35 @@ class NetworkManager: NSObject {
  
     }
     
+    /**
+     Updates Tour
+     
+     - parameter id:      tour ID
+     - parameter tour:    a tour with changes to update
+     - parameter success: Callback
+     */
+    func updateTour(id: Int, params: [String : AnyObject], success:(Bool)->()) {
+        
+                guard let headers = self.accesstokenHeader else { return print("Couldn't get token") }
+        
+        // Fetch Request
+        Alamofire.request(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/tours/\(id)/", parameters: params, encoding: ParameterEncoding.JSON, headers: headers).responseObject("tour", completionHandler: { (response: Response<Tour, NSError>) -> Void in
+            
+            switch response.result {
+                
+            case .Failure(let error):
+                print(error)
+                success(false)
+                
+            case .Success(let tour):
+                print(tour)
+                success(true)
+                
+            }
+        })
+        
+    }
+    
     
     /**
      Signs up a new User
