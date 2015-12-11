@@ -47,6 +47,19 @@ class Tour: Mappable {
         description <- map["description"]
     }
     
+    static var categories = [
+        "Art Museums",
+        "Architecture",
+        "Food",
+        "History",
+        "Nightlife",
+        "Scenic Routes",
+        "Nature + Wildlife",
+        "Shopping",
+        "Other"
+        ]
+
+    
 }
 
 //Example JSON Response

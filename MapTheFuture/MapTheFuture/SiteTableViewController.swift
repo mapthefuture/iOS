@@ -153,7 +153,6 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
          routes = []
         

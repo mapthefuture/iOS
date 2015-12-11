@@ -151,7 +151,6 @@
 			children = (
 				E63670B01C0F806500906D4E /* SiteTableViewController.swift */,
 				E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */,
-				E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */,
 			);
 			name = "Site Flow";
 			sourceTree = "<group>";
@@ -245,6 +244,7 @@
 				E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */,
 				E6EFC3021C173A8600921042 /* AddSiteButton.swift */,
 				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
+				E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */,
 			);
 			name = "Creation Flow";
 			sourceTree = "<group>";

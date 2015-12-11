@@ -7,7 +7,7 @@
 //
 import UIKit
 class Loading {
-    static let backgroundColor = UIColor.whiteColor()
+    static let backgroundColor = UIColor(white: 1.0, alpha: 0.1)
     static let fade = 0.1
     
     static var indicator: UIView = {
