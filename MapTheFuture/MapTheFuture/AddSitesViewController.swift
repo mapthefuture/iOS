@@ -94,7 +94,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
         
         didSet {
             
-            mapView.annotations.map { mapView.removeAnnotation($0)}
+            _ = mapView.annotations.map { mapView.removeAnnotation($0)}
             
             for i in mapresponseObjects {
                 let mapPin = MKPointAnnotation()
@@ -183,48 +183,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     }
     
     
-    
-    
-   
-    
-  
-//    
-//    func addButtonTapped(sender: AddSiteButton) {
-//         print("tapped")
-//        
-//        
-////       
-////        if sender.added == false {
-////        guard let dark = UIImage(named: "addBlue") else { return }
-////        sender.setImage(dark, forState: .Normal)
-////        guard let indexp = sender.indexpath else { return }
-////        let item = mapresponseObjects[indexp.row]
-//
-//        
-////        print(item)
-////        guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
-////        let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate)
-////        sites.append(site)
-////        print(sites)
-////        sender.added = true
-////        } else if sender.added == true {
-////             guard let light = UIImage(named: "addLight") else { return }
-////             sender.setImage(light, forState: .Normal)
-////            guard let indexp = sender.indexpath else { return }
-////           if let arrayindex = sites.indexOf({ (site) -> Bool in
-////                    site?.title == mapresponseObjects[indexp.row].name
-////            
-////           }) {
-////                sites.removeAtIndex(arrayindex)
-////                print(sites)
-////                sender.added = true
-////            }
-//        
-//        }
-
-        
-
-
+ 
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mapresponseObjects.count

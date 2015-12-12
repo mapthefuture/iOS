@@ -59,7 +59,7 @@ class RoutingViewController: UIViewController, MKMapViewDelegate{
         
         self.pm = place
         
-        let mapItem = MKMapItem(placemark: place)
+        let _ = MKMapItem(placemark: place)
         
         getDirections()
         

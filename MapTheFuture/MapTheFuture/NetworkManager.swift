@@ -11,12 +11,14 @@ import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
 import KeychainSwift
+import AlamofireImage
 
 private let _sharedInstance = NetworkManager()
 
 class NetworkManager: NSObject {
     
     typealias JSON = [String: AnyObject]
+    private let base = "https://fathomless-savannah-6575.herokuapp.com/"
     
     class func sharedManager() -> NetworkManager {
         return _sharedInstance
@@ -183,11 +185,44 @@ class NetworkManager: NSObject {
         })
     }
     
+    enum ModelType: String {
+        case Tour, User, Site
+    }
+    enum Method: String {
+        case OPTIONS, GET, HEAD, POST, PUT, PATCH, DELETE, TRACE, CONNECT
+    }
+    
+    struct RequestType {
+        var model: ModelType
+        var method: Method
+        var image: UIImage?
+        var data: NSData?
+        var recordID: Int?
+    }
+    
+    
+    func downloadProfileImage(success:(Bool, UIImage?)->()) {
+        guard let avURL = KeychainSwift().get("avatarURL") else { print("no Avatar URL"); return }
+        
+        Alamofire.request(.GET, avURL).responseImage { (response) -> Void in
+            switch response.result {
+            case .Failure(let error):
+                print(error)
+                success(false, nil)
+            case .Success(let image):
+                print("Successfully downloaded image")
+                success(true, image)
+                
+            }
+        }
+    
+    }
+    
     func putpic(image: UIImage, completion:(success: Bool)->()){
         
         // Update a User (PATCH https://fathomless-savannah-6575.herokuapp.com/user/7/update)
         
-        guard let data = UIImagePNGRepresentation(image) else { return }
+//        guard let data = UIImagePNGRepresentation(image) else { return }
         
         let keychain = KeychainSwift()
         
@@ -214,7 +249,7 @@ class NetworkManager: NSObject {
             Update a User (PATCH https://fathomless-savannah-6575.herokuapp.com/user/7/update)
             */
             
-            let URL = NSURL(string: "https://fathomless-savannah-6575.herokuapp.com/user/7/update")
+            let URL = NSURL(string: "https://fathomless-savannah-6575.herokuapp.com/user/\(id)/update")
             let request = NSMutableURLRequest(URL: URL!)
             request.HTTPMethod = "PATCH"
             
@@ -240,7 +275,7 @@ class NetworkManager: NSObject {
     func urlRequestWithMultipartBody(urlString:String, parameters:NSDictionary) -> (URLRequestConvertible) {
         
         // Create url request to send
-        var mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
+        let mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
         mutableURLRequest.HTTPMethod = Alamofire.Method.PATCH.rawValue
         // Set Content-Type in HTTP header.
         let boundary = "PAW-boundary-\(arc4random())-\(arc4random())"
@@ -338,7 +373,7 @@ class NetworkManager: NSObject {
                 print("Error getting sites for tour \(error)")
                 completion(success: false, sites: [])
             case .Success(let sites):
-                sites.map{ print($0.title, $0.coordinate )}
+               _ =  sites.map{ print($0.title, $0.coordinate )}
                 completion(success: true, sites: sites)
                 
                 }
@@ -382,48 +417,6 @@ class NetworkManager: NSObject {
     }
     
     
-    
-    func uploadPhoto2(photo: UIImage, completion:(success: Bool)->()) {
-       
-        
-        print("about to upload photo")
-        
-        guard let imgData =  UIImageJPEGRepresentation(photo,0.8) else
-
-        { return print("no image data or no imagestring")}
-        
-        let fileUploader = FileUploader()
-        
-        fileUploader.addFileData(imgData , withName: "avatar", withMimeType: "image/jpeg" )
-        
-
-        
-        
-            let keychain = KeychainSwift()
-            
-            guard let id = keychain.get("id"), let token = keychain.get("token") where token.characters.count > 0
-                
-                else { return print("Couldn't get id or token")}
-    
-        
-        
-        
-            print("token -> \(token)")
-            
-            let headers = [
-                "access_token" : token
-            ]
-        
-        // put your server URL here
-        let request = NSMutableURLRequest( URL: NSURL(string: "http://myserver.com/uploadFile" )! )
-        
-        request.HTTPMethod = "POST"
-        
-        let x = fileUploader.uploadFile(request: request)
-        
-        }
-
-
     func uploadPhoto(photo: UIImage, completion:(success: Bool)->()) {
         
         

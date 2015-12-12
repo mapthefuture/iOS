@@ -36,6 +36,7 @@
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
 		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
+		E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 		E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EFC3021C173A8600921042 /* AddSiteButton.swift */; };
 		E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */; };
@@ -89,6 +90,7 @@
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69E4CE91C09E737002DEE61 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
+		E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanderfulAnnotationView.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E6EFC3021C173A8600921042 /* AddSiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteButton.swift; sourceTree = "<group>"; };
 		E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSitesViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				E68942281BFD357400FF5415 /* MainViewController.swift */,
 				E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */,
+				E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */,
 				E6FE25221C0662FB002D2206 /* Creation Flow */,
 				E63670AF1C0F7FF200906D4E /* Site Flow */,
 				E674739B1C0CA9F900EEF02A /* Route Flow */,
@@ -471,6 +474,7 @@
 				E6459F4E1C0F543B0085E3A8 /* RegisterViewController.swift in Sources */,
 				E6459F521C0F544F0085E3A8 /* AvatarViewController.swift in Sources */,
 				E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */,
+				E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
 				E68942291BFD357400FF5415 /* MainViewController.swift in Sources */,
 				E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */,

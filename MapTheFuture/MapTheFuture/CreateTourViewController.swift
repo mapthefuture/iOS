@@ -24,7 +24,7 @@ class CreateTourViewController: UIViewController {
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tourTitleTextField: UITextField!
     @IBOutlet weak var tourDescriptionTextField: UITextField!
-    @IBOutlet weak var stackViewBottom: NSLayoutConstraint!
+   
     
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
@@ -51,6 +51,7 @@ class CreateTourViewController: UIViewController {
     }
 
     
+    @IBOutlet weak var expandedBottomConstraint: NSLayoutConstraint!
     
 
     @IBOutlet weak var stackView: UIStackView!
@@ -66,14 +67,14 @@ class CreateTourViewController: UIViewController {
                 doneButton.setNeedsDisplay()
             }
         
-            stackViewBottom.constant = 100
-            stackView.updateConstraintsIfNeeded()
+            NSLayoutConstraint.activateConstraints([expandedBottomConstraint])
+            view.updateConstraintsIfNeeded()
             
             tourDescriptionTextField.becomeFirstResponder()
             
         } else {
-            stackViewBottom.constant = 20
-            stackView.updateConstraintsIfNeeded()
+            NSLayoutConstraint.deactivateConstraints([expandedBottomConstraint])
+            view.updateConstraintsIfNeeded()
             textField.resignFirstResponder()
         }
         return true

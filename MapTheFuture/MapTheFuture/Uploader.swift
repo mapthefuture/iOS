@@ -83,7 +83,7 @@ class FileUploader {
     }
     
     func uploadFile( request sourceRequest: NSURLRequest ) -> Request? {
-        var request = sourceRequest.mutableCopy() as! NSMutableURLRequest
+        let request = sourceRequest.mutableCopy() as! NSMutableURLRequest
         let boundary = "FileUploader-boundary-\(arc4random())-\(arc4random())"
         request.setValue( "multipart/form-data;boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
         let data = NSMutableData()

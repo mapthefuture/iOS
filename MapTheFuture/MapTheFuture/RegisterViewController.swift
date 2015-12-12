@@ -37,17 +37,18 @@ class RegisterViewController: LoginViewController, UIImagePickerControllerDelega
                 
                 if let img = self.avatarImageView.image {
                 
-                    NetworkManager.sharedManager().uploadPhoto2(img, completion: { (success) -> () in
-                        print("image: \(img)")
-                    
+                    NetworkManager.sharedManager().uploadPhoto(img, completion: { (success) -> () in
+                       
                         if success {
-                        self.performSegueWithIdentifier("SignUpComplete", sender: self)
+                            self.performSegueWithIdentifier("SignUpComplete", sender: self)
                         }
-                            })
-                        } else {
-                    print("Could not get image")
+                        
+                    })
+                } else {
+                    print("could not get image")
                 }
-    
+                
+                
              } else {
                 
                 self.alertUser("Sign Up Failed", message: String(statusCode))

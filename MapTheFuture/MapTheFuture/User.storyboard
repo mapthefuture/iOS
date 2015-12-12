@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Wanderful-->
@@ -94,10 +95,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="FnF-hm-yuL">
-                                <rect key="frame" x="40" y="162" width="520" height="174"/>
+                                <rect key="frame" x="150.5" y="134" width="300" height="268"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fUV-kK-2GX">
-                                        <rect key="frame" x="0.0" y="0.0" width="520" height="48"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="79.5"/>
                                         <color key="backgroundColor" white="1" alpha="0.14218222128378377" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="OYB-8z-JRu"/>
@@ -114,7 +115,7 @@
                                         </connections>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="21p-NJ-BEf">
-                                        <rect key="frame" x="0.0" y="63" width="520" height="48"/>
+                                        <rect key="frame" x="0.0" y="94.5" width="300" height="79"/>
                                         <color key="backgroundColor" white="1" alpha="0.13925253378378377" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="CYj-0R-BJA"/>
@@ -131,10 +132,13 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEm-6V-XxM">
-                                        <rect key="frame" x="0.0" y="126" width="520" height="48"/>
+                                        <rect key="frame" x="0.0" y="188.5" width="300" height="79.5"/>
                                         <color key="backgroundColor" red="0.12156862745098039" green="0.90588235294117647" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="30"/>
-                                        <state key="normal" title="Login">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="WTX-H4-8YA"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                        <state key="normal" title="login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -142,6 +146,11 @@
                                                 <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="WTX-H4-8YA"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="loginButtonPressed:" destination="qvZ-Az-Kap" eventType="touchUpInside" id="voo-Vh-lkh"/>
                                         </connections>
@@ -150,12 +159,15 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="0h8-ys-jal"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="XVT-de-ljV"/>
                                     <constraint firstAttribute="height" constant="90" id="czE-Ng-Hu0"/>
                                     <constraint firstAttribute="width" constant="500" id="qZc-Xd-ooO"/>
+                                    <constraint firstItem="fUV-kK-2GX" firstAttribute="width" secondItem="21p-NJ-BEf" secondAttribute="width" id="xgy-In-eiH"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="0h8-ys-jal"/>
+                                        <exclude reference="XVT-de-ljV"/>
                                         <exclude reference="czE-Ng-Hu0"/>
                                         <exclude reference="qZc-Xd-ooO"/>
                                     </mask>
@@ -164,25 +176,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bfU-IJ-TO8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FnF-hm-yuL" secondAttribute="bottom" constant="50" id="2Hf-sw-qfb"/>
+                            <constraint firstItem="bfU-IJ-TO8" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FnF-hm-yuL" secondAttribute="bottom" constant="20" id="9bg-re-5tI"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="centerX" secondItem="BSm-To-YZd" secondAttribute="centerX" id="Be7-Td-PXr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="FnF-hm-yuL" secondAttribute="trailing" constant="20" id="D1o-yK-sMD"/>
+                            <constraint firstItem="FnF-hm-yuL" firstAttribute="centerY" secondItem="BSm-To-YZd" secondAttribute="centerY" id="FS2-NW-rT7"/>
+                            <constraint firstItem="FnF-hm-yuL" firstAttribute="height" secondItem="BSm-To-YZd" secondAttribute="height" multiplier="1: 2" id="TKn-8E-DUv"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="leading" secondItem="BSm-To-YZd" secondAttribute="leadingMargin" constant="20" id="VaN-OS-t51"/>
                             <constraint firstItem="bfU-IJ-TO8" firstAttribute="top" secondItem="FnF-hm-yuL" secondAttribute="bottom" constant="200" id="Vyn-DC-EdZ"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="centerX" secondItem="BSm-To-YZd" secondAttribute="centerX" id="WSU-Ce-mnx"/>
                             <constraint firstAttribute="trailing" secondItem="FnF-hm-yuL" secondAttribute="trailing" constant="20" id="Zvd-1W-FuI"/>
+                            <constraint firstItem="FnF-hm-yuL" firstAttribute="width" secondItem="BSm-To-YZd" secondAttribute="width" multiplier="1:2" id="aCe-9f-A7B"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="leading" secondItem="BSm-To-YZd" secondAttribute="leading" constant="20" id="g0L-sD-flJ"/>
+                            <constraint firstItem="FnF-hm-yuL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="QTJ-3y-R20" secondAttribute="bottom" constant="20" id="ikK-Bb-jKY"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="top" secondItem="QTJ-3y-R20" secondAttribute="bottom" constant="20" id="oo5-mP-p6c"/>
                             <constraint firstAttribute="trailing" secondItem="FnF-hm-yuL" secondAttribute="trailing" constant="492" id="yDQ-kF-edY"/>
                             <constraint firstItem="FnF-hm-yuL" firstAttribute="leading" secondItem="BSm-To-YZd" secondAttribute="leading" constant="20" id="yoY-FY-Xe8"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="D1o-yK-sMD"/>
+                                <exclude reference="VaN-OS-t51"/>
                                 <exclude reference="WSU-Ce-mnx"/>
                                 <exclude reference="Zvd-1W-FuI"/>
                                 <exclude reference="g0L-sD-flJ"/>
                                 <exclude reference="oo5-mP-p6c"/>
                                 <exclude reference="yDQ-kF-edY"/>
                                 <exclude reference="yoY-FY-Xe8"/>
+                                <exclude reference="2Hf-sw-qfb"/>
+                                <exclude reference="Vyn-DC-EdZ"/>
                             </mask>
                         </variation>
                     </view>
@@ -391,6 +413,6 @@
         <image name="iconWithText" width="806" height="766"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8pT-j6-2Bq"/>
+        <segue reference="CBr-QY-m8b"/>
     </inferredMetricsTieBreakers>
 </document>

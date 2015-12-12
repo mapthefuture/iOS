@@ -21,10 +21,10 @@ class MapTableViewCell: UITableViewCell {
         {
         didSet {
             if myTour == true {
-                myTourView.hidden = false
+                myTourView.backgroundColor = UIColor.unitedNationsBlue()
                 
             } else {
-                myTourView.hidden = true
+                myTourView.backgroundColor = UIColor.loblollyColor()
             }
              self.contentView.setNeedsDisplay()
         }

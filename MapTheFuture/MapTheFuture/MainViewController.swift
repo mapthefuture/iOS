@@ -12,8 +12,17 @@ import MapKit
 import KeychainSwift
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate {
    
+   
+   lazy var locationMgr: CLLocationManager = {
+     
+      let locmgr = CLLocationManager()
+      locmgr.delegate = self
+      locmgr.requestWhenInUseAuthorization()
+      return locmgr
+      
+   }()
    
    var tours: [Tour] = [] {
       
@@ -21,7 +30,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          
          print(tours.flatMap{$0.id})
          
-        tours.map({ t in
+        _ = tours.map({ t in
+         
             guard let coord = t.coordinate else { return }
             let a = MKPointAnnotation()
             a.coordinate = coord
@@ -37,28 +47,31 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
    
    var up = false {
+     
       didSet {
+       
         
-        imageViewtoTopConstraint.constant = mapToTableRatioConstraint.active ? -100 : 20
+         
+         imageViewtoTopConstraint.constant = mapToTableRatioConstraint.active ? 20 : -100
             
-        upArrow.transform = CGAffineTransformMakeRotation(CGFloat(((up ? -180 : 0) * (M_PI / 180))))
+         upArrow.transform = CGAffineTransformMakeRotation(CGFloat(((up ? 0 : -180) * (M_PI / 180))))
+
+         upArrow.setNeedsDisplay()
+         
          upArrow.updateConstraintsIfNeeded()
         
         
       }
    }
    
-   var tapGR: UITapGestureRecognizer?
+   var tapGR: UISwipeGestureRecognizer?
    
-    @IBOutlet weak var mapView: MKMapView! {
-        didSet {
-            tapGR = UITapGestureRecognizer(target: self, action: "userDidTapMapView:")
-            tapGR?.delegate = self
-            tapGR?.numberOfTapsRequired = 1
-         if let _tapGr = tapGR { mapView.addGestureRecognizer(_tapGr)
-         }
-        }
-    }
+   @IBOutlet weak var mapView: MKMapView! {
+      didSet {
+         mapView.showsCompass = true
+         mapView.showsScale = true
+      }
+   }
    
     var searchController:UISearchController!
     @IBOutlet weak var greetingLabel: UILabel!
@@ -66,6 +79,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var imageView: UIImageView!
 
+    @IBAction func arrowButtonPressed(sender: AnyObject) {
+      toggleView()
+    }
    
    func refresh() {
      
@@ -94,27 +110,49 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
     @IBAction func findMeButtonPressed(sender: AnyObject) {
-        LocationManager.sharedManager().requestWhenInUseAuthorization()
-        LocationManager.sharedManager().startUpdatingLocation()
-    }
-    
+       locationMgr.requestLocation()
+   }
    
- 
+
+   
+   
+ //MARK: - View Controller Lifecycle
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-      LocationManager.sharedManager().requestWhenInUseAuthorization()
-      LocationManager.sharedManager().startUpdatingLocation()
-
-         let keychain = KeychainSwift()
+      if CLLocationManager.locationServicesEnabled() {
+         switch CLLocationManager.authorizationStatus() {
+            
+         case .Denied, .NotDetermined, .Restricted:
+            locationMgr.requestWhenInUseAuthorization()
+         case .AuthorizedAlways, .AuthorizedWhenInUse: break
+         }
+       
+      }
+      locationMgr.requestLocation()
+      
+      let keychain = KeychainSwift()
       if let name = keychain.get("name") {
          greetingLabel.text = "Hello, \(name)"
          
       }
       
+      
       if let data = keychain.getData("profileImage"), let image = UIImage(data: data) {
 
             imageView.image = image
      
+      } else {
+      
+         NetworkManager.sharedManager().downloadProfileImage { [weak self] (success, profileImage) -> () in
+         if let prof = profileImage {
+            self?.imageView.image = prof
+            self?.imageView.contentMode = .ScaleAspectFill
+            if let imgD = UIImagePNGRepresentation(prof) {
+            keychain.set(imgD, forKey: "profileImage")
+               }
+            }
+         }
       }
       refresh()
       
@@ -135,18 +173,35 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       setTitleView()
 
     }
+   override func viewDidLayoutSubviews() {
+      
+//      if isRotating { up = true }
+//      isRotating = true
+      
+   }
+   func showNearby() {
+
+//      TODO
+   }
    
-    
-    
+   
    override func viewWillDisappear(animated: Bool) {
       super.viewWillDisappear(animated)
-      LocationManager.sharedManager().stopUpdatingLocation()
+
    }
-    
-    deinit {
+   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
-        LocationManager.sharedManager().stopUpdatingLocation()
-    }
+      guard segue.identifier == "ShowTourDetail", let siteTVC = segue.destinationViewController as? SiteTableViewController else { return }
+      
+      guard let selected = tableView.indexPathForSelectedRow?.row else { return }
+      let tour = tours[selected]
+      siteTVC.tour = tour
+   }
+
+   
+    deinit {
+      //
+   }
     
     
     //MARK: - Constraints
@@ -155,13 +210,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var mapToTableRatioExpandedConstraint: NSLayoutConstraint! 
     
     @IBOutlet weak var imageViewtoTopConstraint: NSLayoutConstraint!
-    
-
-    @IBOutlet weak var stackViewHiddenConstraint: NSLayoutConstraint!
+   
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       
-//      print(locations)
       
         guard let loc = locations.last else { return }
         
@@ -172,13 +224,27 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.mapView.setRegion(region, animated: true)
     }
     
-    func userDidTapMapView(sender: UITapGestureRecognizer) {
-      toggleView()
-    }
+   var effectView: UIVisualEffectView?
    
    func toggleView() {
-    
-    isRotating = false
+      
+      
+         if self.up {
+            let effect = UIBlurEffect(style: .ExtraLight )
+            
+            effectView = UIVisualEffectView(effect: effect)
+            effectView?.frame = self.mapView.frame
+            
+            if let _efv = self.effectView {
+               mapView.addSubview(_efv)
+
+            }
+            
+         } else if !(up) {
+            effectView?.removeFromSuperview()
+         }
+      
+
      
       if mapToTableRatioConstraint.active {
         
@@ -192,16 +258,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
       
       
+      
       UIView.animateWithDuration(2.0, delay: 0, usingSpringWithDamping: 10, initialSpringVelocity: 1, options: UIViewAnimationOptions.CurveEaseIn, animations:
          
          { () -> Void in
             
          self.up = !self.up
-         
+            
          self.view.layoutIfNeeded()
          
          }) { done in
-            
+           
       }
    }
  
@@ -241,46 +308,37 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
-        guard segue.identifier == "ShowTourDetail", let siteTVC = segue.destinationViewController as? SiteTableViewController else { return }
-      
-        guard let selected = tableView.indexPathForSelectedRow?.row else { return }
-        let tour = tours[selected]
-        siteTVC.tour = tour
-    }
-    
-    var isRotating: Bool = true
-    
-    override func viewDidLayoutSubviews() {
-        
-        if isRotating { up = true }
-        isRotating = true
-        
-    }
+   
+//    var isRotating: Bool = true
+   
+ 
    
    let defaultPinID = "com.macbellingrath.pin"
    
    
    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
       
-      let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(defaultPinID)
+      if annotation.coordinate ^= mapView.userLocation.coordinate {
+         return nil
+      }
       
-      guard let pv = pinView else {
+      let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(defaultPinID) as? WanderfulAnnotationView
+      
+      guard let pv = pinView  else {
          
-        let pinV =  MKAnnotationView(annotation: annotation, reuseIdentifier: defaultPinID)
-         pinV.annotation = annotation
          
-         pinV.canShowCallout = true
-         
-         if let compassImage = UIImage(named: "compass") {
-            
-            pinV.image = compassImage
-         
-         }
-         pinV.frame.size = CGSize(width: 30, height: 30)
+        let pinV =  WanderfulAnnotationView(annotation: annotation, reuseIdentifier: defaultPinID)
+
+
          return pinV
       }
       return pv
    }
+   
+   //MARK: - Location Manager
+   
+   func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+      print(error)
+   }
 }
+

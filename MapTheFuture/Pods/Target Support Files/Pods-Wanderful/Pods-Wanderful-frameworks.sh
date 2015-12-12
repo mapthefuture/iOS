@@ -85,12 +85,14 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Wanderful/Alamofire.framework"
+  install_framework "Pods-Wanderful/AlamofireImage.framework"
   install_framework "Pods-Wanderful/AlamofireObjectMapper.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wanderful/Alamofire.framework"
+  install_framework "Pods-Wanderful/AlamofireImage.framework"
   install_framework "Pods-Wanderful/AlamofireObjectMapper.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
