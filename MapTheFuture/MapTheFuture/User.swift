@@ -11,7 +11,7 @@ import UIKit
 import AlamofireObjectMapper
 import ObjectMapper
 import KeychainSwift
-
+import AlamofireImage
 
 class User: Mappable {
     

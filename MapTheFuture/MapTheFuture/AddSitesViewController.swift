@@ -54,11 +54,12 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
         guard let _tour = self.tour else { return }
         Loading.start()
         for site in sites.flatMap({$0}) {
-            NetworkManager.sharedManager().createSiteforTour(site, tour: _tour, completion: { [weak self] (success) -> () in
+            NetworkManager.sharedManager().createSiteforTour(site, tour: _tour, completion: { (success) -> () in
                 Loading.stop()
+               
                 if success {
                     
-                    if let _id = _tour.id, let first = self?.sites.first, let coord = first?.coordinate {
+                    if let _id = _tour.id, let first = self.sites.first, let coord = first?.coordinate {
                         
                         let coordParams = [
                             "start_lat" : coord.latitude,
@@ -75,15 +76,17 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
                             print(success)
                         } else if !success {
                             print("failure")
+                            
                             }
                         })
                     }
+                
+                    self.dismissViewControllerAnimated(true, completion: nil)
                     
-                    
-                    self?.dismissViewControllerAnimated(true, completion: nil)
                 } else if !success {
+                    
                     print("failed")
-                    self?.alertUser("Uploading these sites failed.", message: "Please check your network connection and try agian.")
+                    self.alertUser("Uploading these sites failed.", message: "Please check your network connection and try agian.")
                 }
             })
             

@@ -25,18 +25,25 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
             tableView.reloadData()
             distanceLabel.text = calculateTotalDistanceFrom(routes).metersToMilesString()
             timeEstimateTextLabel.text = calculateTimeEstimateStringFrom(routes)
+
         }
     }
     
     
     
     @IBOutlet weak var timeEstimateTextLabel: UILabel!
+    @IBOutlet weak var mapHeaderView: MKMapView!
     
-    lazy var currentLocCoord: CLLocationCoordinate2D? = {
-        let lazymanager = CLLocationManager()
-        lazymanager.delegate = self
-        lazymanager.requestLocation()
-        return lazymanager.location?.coordinate
+    
+    
+    var currentLocCoord: CLLocationCoordinate2D?
+    
+    lazy var locManager: CLLocationManager = {
+        let lazylocmanager = CLLocationManager()
+        lazylocmanager.delegate = self
+        lazylocmanager.requestWhenInUseAuthorization()
+        lazylocmanager.requestLocation()
+        return lazylocmanager
     }()
 
   
@@ -153,10 +160,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        routes = []
         
-         routes = []
-        
-        self.tourTitleLabel.text = tour?.title ?? "Wander"
+       self.tourTitleLabel.text = tour?.title ?? "Wander"
        self.automaticallyAdjustsScrollViewInsets = false
         
 
@@ -164,84 +171,144 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
 
     }
 
+    @IBAction func moreButtonPressed(sender: AnyObject) {
+        print("MORE PRESSED")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+     let reuseID = "headerView"
 
 
     // MARK: - Table view data source
    override func numberOfSectionsInTableView(tableView: UITableView) -> Int  {
     
     print("number of sections: \(tableView.numberOfSections)")
-    return sites.count
+    return sites.count >= 1 ? sites.count : 1
         
     }
 
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 100
     }
+    
+    
+//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        
+//
+//        return sites[safe: section]?.title ?? "Site"
+//
+//        
+//    }
+    
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let sectionView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
         
-        let site = sites[section]
-        
-        
-        let map = MKMapView(frame: sectionView.frame)
-        
-        map.delegate = self
-        sectionView.addSubview(map)
-        
-        map.center = sectionView.center
+        guard !(sites.isEmpty) else {
+            let emptyView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+            //Title Label
+            let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: emptyView.frame.width / 2, height: emptyView.frame.height / 2))
+            sectionTitleLabel.text = "No Sites have been added to this tour."
+            sectionTitleLabel.numberOfLines = 0
+            sectionTitleLabel.sizeToFit()
+            sectionTitleLabel.textAlignment = .Center
+            sectionTitleLabel.textColor = UIColor.darkGrayColor()
+            emptyView.addSubview(sectionTitleLabel)
+            sectionTitleLabel.center = emptyView.center
+            return emptyView
 
-        
-        
-            if let coord = site.coordinate {
-               
-                
-                map.setRegion(MKCoordinateRegion(center: coord, span: MKCoordinateSpan(latitudeDelta: 0.001, longitudeDelta: 0.001)), animated: true)
-                
-                if let route = routes[safe: section] {
-                    print("polyline : \(route.polyline)")
-                    map.addOverlay(route.polyline, level: MKOverlayLevel.AboveRoads)
-                }
-                
-                print(site.title, site.coordinate, map)
-                
-                } else if site.coordinate == nil {
-            if let currentcoord = self.currentLocCoord {
-                map.setRegion(MKCoordinateRegion(center: currentcoord, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)), animated: true)
-            }
-
-    
-            
-                }
-                
-                //Title Label
-                let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
-                sectionTitleLabel.text = site.title ?? "Site"
-                sectionTitleLabel.textAlignment = .Center
-                sectionTitleLabel.textColor = UIColor.darkGrayColor()
-                sectionView.addSubview(sectionTitleLabel)
-                sectionTitleLabel.center = sectionView.center
-        
-                //Detail Label
-                let sectionDetailLabel = UILabel(frame: CGRect(x: 0, y: 0, width: sectionView.frame.width / 2, height: sectionView.frame.height / 2))
-                sectionDetailLabel.text = site.description ?? "Default Description"
-                sectionDetailLabel.textAlignment = .Center
-                sectionDetailLabel.textColor = UIColor.darkGrayColor()
-                sectionView.addSubview(sectionDetailLabel)
-                sectionDetailLabel.center = CGPoint(x: sectionView.center.x, y: sectionTitleLabel.center.y + 25)
-                
-        
-        
-                return sectionView
-                
-
-        
         }
+
+        //Get Site
+        let site = sites[section]
+    
+
+        
+        //Check for the site's coordinate
+        if let coord = site.coordinate {
+            
+                
+                let polyLines =   routes.flatMap{ $0.polyline }
+                mapHeaderView.addOverlays(polyLines, level: .AboveRoads)
+                
+                if let first = mapHeaderView.overlays.first {
+            
+                let rect =  mapHeaderView.overlays.reduce(first.boundingMapRect, combine: { MKMapRectUnion($0, $1.boundingMapRect)})
+                     mapHeaderView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
+                }
+        }
+        
+    
+        if let headerV = tableView.dequeueReusableCellWithIdentifier(reuseID) as? SiteSectionHeaderTableViewCell {
+            
+        
+              headerV.contentView.backgroundColor = UIColor.unitedNationsBlue()
+            headerV.site = site
+        
+        //Title Label
+//        let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150 , height: 50))
+//        
+//        let titleLabelText = site.title ?? "Site"
+//        
+//        
+//        
+//        let titleTextattributes =   [ NSFontAttributeName: UIFont.systemFontOfSize(20, weight: UIFontWeightMedium), NSForegroundColorAttributeName : UIColor.whiteColor()]
+//        sectionTitleLabel.textAlignment = .Center
+//        sectionTitleLabel.numberOfLines = 0
+//        
+//        
+//        sectionTitleLabel.attributedText = NSAttributedString(string: titleLabelText, attributes: titleTextattributes)
+//        stackV.addArrangedSubview(sectionTitleLabel)
+//            
+//       
+//
+//
+//               //Detail Label
+//                let sectionDetailLabel = UILabel()
+//                sectionDetailLabel.text = site.description ?? "Default Description"
+//                sectionDetailLabel.textAlignment = .Center
+//                sectionDetailLabel.numberOfLines = 0
+//        
+//            let detailTitleLabelAttributes =   [ NSFontAttributeName: UIFont.systemFontOfSize(15, weight: UIFontWeightRegular), NSForegroundColorAttributeName : UIColor.whiteColor()]
+//        
+//        
+//            sectionTitleLabel.attributedText = NSAttributedString(string: titleLabelText, attributes: detailTitleLabelAttributes)
+//
+//        
+//                stackV.addArrangedSubview(sectionDetailLabel)
+//                headerV.contentView.sizeToFit()
+                return headerV
+        }
+        
+        return nil
+
+        
+//                // site media content
+////                /images/original/missing.png
+////                /audios/original/missing.png
+//            let moreButton = UIButton(frame: CGRect(x: stackV.center.x, y: sectionDetailLabel.frame.maxY + 10, width: stackV.frame.width / 3, height: 30))
+//                moreButton.backgroundColor = UIColor.whiteColor()
+//                moreButton.layer.cornerRadius = moreButton.frame.height / 2
+//                moreButton.setAttributedTitle(NSAttributedString(string: "more", attributes: [ NSFontAttributeName: UIFont.systemFontOfSize(10, weight: UIFontWeightSemibold), NSForegroundColorAttributeName : UIColor.darkGrayColor()]), forState: .Normal)
+//                moreButton.addTarget(self, action: "moreButtonPressed:", forControlEvents: .TouchUpInside )
+//        
+//                stackV.addSubview(moreButton)
+//
+
+
+    }
+    var site: Site?
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let site = sites[safe: indexPath.section]  {
+            print("tapped header \(site)")
+            self.site = site
+            performSegueWithIdentifier("showSiteDetail", sender: self )
+        }
+    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -275,7 +342,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        getSitesAndSteps(completion: nil)
+        if let loc = locations.last {
+            currentLocCoord = loc.coordinate
+        }
+        getSitesAndSteps (completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -290,6 +360,14 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         renderer.strokeColor = UIColor.unitedNationsBlue()
         renderer.lineWidth = 10.0
         return renderer
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard segue.identifier == "showSiteDetail" else { return }
+        guard let siteDetailVC = segue.destinationViewController as? SiteDetailViewController else { return }
+            siteDetailVC.site = site
+        
+        
     }
     
 

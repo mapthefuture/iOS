@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 import KeychainSwift
-
+import AlamofireImage
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
    
@@ -152,7 +152,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          
       }
       
-      imageView.getProfilePicture()
+      if let avURL = KeychainSwift().get("avatarURL"), let _url = NSURL(string: avURL) {
+         let filter = AspectScaledToFillSizeCircleFilter(size: imageView.frame.size)
+         imageView.af_setImageWithURL(_url, placeholderImage: UIImage(named: "placeholder"), filter: filter , imageTransition: .CrossDissolve(0.5))
+      }
+      
+//      imageView.getProfilePicture()
      
       refresh()
       

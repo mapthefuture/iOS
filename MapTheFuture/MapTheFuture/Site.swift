@@ -19,6 +19,9 @@ class Site: Mappable {
     var description: String?
     var lat: String?
     var lon: String?
+    var imageURL: String?
+    var audioURL: String?
+    var averageRating: Int?
     var coordinate: CLLocationCoordinate2D? {
         print(lat, lon)
         guard let lat = self.lat, let long = self.lon, let dlat = Double(lat), let dlong = Double(long) else { return nil }
@@ -40,10 +43,13 @@ class Site: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-        tourID <- map["length"]
+        tourID <- map["tour_id"]
         title <- map["title"]
         description <- map["description"]
         lat <- map["latitude"]
         lon <- map["longitude"]
+        imageURL <- map["image_url"]
+        audioURL <- map["audio_url"]
+        averageRating <- map["average_rating"]
     }
 }

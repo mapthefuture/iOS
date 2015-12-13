@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import KeychainSwift
+import AlamofireImage
+
 
 protocol MapItemLiteralConvertible {
     
@@ -169,6 +171,8 @@ func metersToMiles() -> Double {
 }
 
 extension UIImageView {
+    
+    
 
     func getProfilePicture(){
         let keychain = KeychainSwift()

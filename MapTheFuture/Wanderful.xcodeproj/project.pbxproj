@@ -36,6 +36,8 @@
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
 		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
+		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
+		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
 		E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 		E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EFC3021C173A8600921042 /* AddSiteButton.swift */; };
@@ -90,6 +92,8 @@
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69E4CE91C09E737002DEE61 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
+		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
 		E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanderfulAnnotationView.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E6EFC3021C173A8600921042 /* AddSiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteButton.swift; sourceTree = "<group>"; };
@@ -152,6 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				E63670B01C0F806500906D4E /* SiteTableViewController.swift */,
+				E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */,
+				E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */,
 				E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */,
 			);
 			name = "Site Flow";
@@ -452,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */,
 				E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */,
 				E6241B361C0E02F800D2F5DD /* User.swift in Sources */,
 				E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */,
@@ -461,6 +468,7 @@
 				E6459F541C0F544F0085E3A8 /* LoginViewController.swift in Sources */,
 				E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */,
 				E63670AE1C0F79B300906D4E /* Site.swift in Sources */,
+				E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */,
 				E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */,
 				E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,

@@ -37,7 +37,7 @@ class NetworkManager: NSObject {
         return ["access_token" : token ]
 
     }
-    private var myManager = Manager()
+
     
     static let sharedInstance: NetworkManager = {
         let nm = NetworkManager()
@@ -96,7 +96,7 @@ class NetworkManager: NSObject {
             "category" : category,
             "description" : description
         ]
-        guard let headers = self.accesstokenHeader else { return print("Couldn't get token") }
+        guard let headers = self.accesstokenHeader else {success(false, nil); return print("Couldn't get token") }
         
         // Fetch Request
         Alamofire.request(.POST, "https://fathomless-savannah-6575.herokuapp.com/tours/", parameters: URLParameters, encoding: ParameterEncoding.JSON, headers: headers).responseObject("tour", completionHandler: { (response: Response<Tour, NSError>) -> Void in
@@ -200,8 +200,12 @@ class NetworkManager: NSObject {
         var recordID: Int?
     }
     
+    lazy var imageCache: AutoPurgingImageCache = {
+        return AutoPurgingImageCache()
+    }()
     
     func downloadProfileImage(success:(Bool, UIImage?)->()) {
+    
         guard let avURL = KeychainSwift().get("avatarURL") else { print("no Avatar URL"); return }
         
         Alamofire.request(.GET, avURL).responseImage { (response) -> Void in
@@ -350,22 +354,22 @@ class NetworkManager: NSObject {
      */
     func getSitesforTour(tourID: Int, completion: (success: Bool, sites: [Site]) -> ()) {
         
-        guard let token = KeychainSwift().get("token") else { return }
-            
-            // Create manager
-            let manager = Manager.sharedInstance
-        
-        
-        
-            manager.session.configuration.HTTPAdditionalHeaders = [
-            "token": token,
-            "Content-Type":"application/json",
-            ]
+//        guard let token = KeychainSwift().get("token") else { return }
+//            
+////            // Create manager
+////            let manager = Manager.sharedInstance
+////        
+////        
+////        
+////            manager.session.configuration.HTTPAdditionalHeaders = [
+////            "token": token,
+////            "Content-Type":"application/json",
+////            ]
 
             
             let encoding = Alamofire.ParameterEncoding.JSON
             // Fetch Request
-        Alamofire.request(.GET, "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites", parameters: nil, encoding: encoding).responseArray("sites") { (response: Response<[Site], NSError>) -> Void in
+        Alamofire.request(.GET, "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites", parameters: nil, headers: accesstokenHeader ,encoding: encoding).responseArray("sites") { (response: Response<[Site], NSError>) -> Void in
             
             switch response.result {
                 
