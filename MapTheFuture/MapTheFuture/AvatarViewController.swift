@@ -42,9 +42,11 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var avatarImageView: UIImageView! {
         didSet {
             
+            
             let gr = UITapGestureRecognizer(target: self, action: "pickPhoto")
             gr.numberOfTapsRequired = 2
             avatarImageView.addGestureRecognizer(gr)
+            avatarImageView.getProfilePicture()
             
         }
     }
@@ -93,8 +95,9 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     
     override func viewDidLoad() {
         NetworkManager.sharedManager().getAllTours { (success, tours) -> () in
-        self.tours = tours
+            self.tours = tours.filter{$0.user_id == User.currentUserID  }
         }
+        
     }
     
     //MARK: - Table View

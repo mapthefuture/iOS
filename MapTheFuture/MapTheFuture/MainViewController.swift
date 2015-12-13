@@ -12,7 +12,7 @@ import MapKit
 import KeychainSwift
 
 
-class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate {
+class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
    
    
    lazy var locationMgr: CLLocationManager = {
@@ -77,14 +77,29 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var upArrow: UIButton!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var imageView: UIImageView!
+   @IBOutlet weak var imageView: UIImageView! {
+      didSet {
+         
+         let tapGR = UITapGestureRecognizer(target: self, action: "viewProfile:")
+         tapGR.numberOfTapsRequired = 1
+         tapGR.delegate  = self
+         imageView.addGestureRecognizer(tapGR)
+      }
+   }
+   
+   func viewProfile(sender: UITapGestureRecognizer) {
+      print("tapped")
+      
+      navigationController?.performSegueWithIdentifier("showProfile", sender: self)
+      
+   }
 
     @IBAction func arrowButtonPressed(sender: AnyObject) {
       toggleView()
     }
    
    func refresh() {
-     
+
       
       Loading.start()
       if tours.isEmpty { print(1); toggleView() }
@@ -137,23 +152,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          
       }
       
-      
-      if let data = keychain.getData("profileImage"), let image = UIImage(data: data) {
-
-            imageView.image = image
+      imageView.getProfilePicture()
      
-      } else {
-      
-         NetworkManager.sharedManager().downloadProfileImage { [weak self] (success, profileImage) -> () in
-         if let prof = profileImage {
-            self?.imageView.image = prof
-            self?.imageView.contentMode = .ScaleAspectFill
-            if let imgD = UIImagePNGRepresentation(prof) {
-            keychain.set(imgD, forKey: "profileImage")
-               }
-            }
-         }
-      }
       refresh()
       
     

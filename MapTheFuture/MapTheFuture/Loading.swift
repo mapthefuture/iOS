@@ -6,9 +6,11 @@
 //  Copyright © 2015 Mac Bellingrath. All rights reserved.
 //
 import UIKit
+
 class Loading {
-    static let backgroundColor = UIColor(white: 1.0, alpha: 0.1)
-    static let fade = 0.1
+  
+    static let backgroundColor = UIColor.whiteColor()
+    static let fade = 1.0
     
     static var indicator: UIView = {
         var view = UIView()
@@ -37,6 +39,8 @@ class Loading {
         rotateAnimation.repeatCount = Float.infinity
         return rotateAnimation
     }()
+    
+        
     
     static func start () {
         if let window :UIWindow = UIApplication.sharedApplication().keyWindow {

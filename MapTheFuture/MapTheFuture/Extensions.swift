@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-
+import KeychainSwift
 
 protocol MapItemLiteralConvertible {
     
@@ -166,4 +166,28 @@ func metersToMiles() -> Double {
             
         }
     }
+}
+
+extension UIImageView {
+
+    func getProfilePicture(){
+        let keychain = KeychainSwift()
+    if let data = keychain.getData("profileImage"), let image = UIImage(data: data) {
+        
+        self.image = image
+
+        
+    } else {
+        
+        NetworkManager.sharedManager().downloadProfileImage { [weak self] (success, profileImage) -> () in
+            if let prof = profileImage {
+                self?.image = prof
+                self?.contentMode = .ScaleAspectFill
+                if let imgD = UIImagePNGRepresentation(prof) {
+                    keychain.set(imgD, forKey: "profileImage")
+                }
+            }
+        }
+    }
+}
 }

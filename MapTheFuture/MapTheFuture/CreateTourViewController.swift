@@ -51,36 +51,80 @@ class CreateTourViewController: UIViewController {
     }
 
     
-    @IBOutlet weak var expandedBottomConstraint: NSLayoutConstraint!
+
     
 
     @IBOutlet weak var stackView: UIStackView!
 
     override func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
         textField.resignFirstResponder()
-        
-        if textField == tourTitleTextField {
-            if textField.text?.characters.count > 0 {
-                doneButton.backgroundColor = UIColor.unitedNationsBlue()
-                doneButton.titleLabel?.text = "Done"
-                doneButton.titleLabel?.textAlignment = .Center
-                doneButton.setNeedsDisplay()
-            }
-        
-            NSLayoutConstraint.activateConstraints([expandedBottomConstraint])
-            view.updateConstraintsIfNeeded()
+        if tourTitleTextField.text?.characters.count > 0 {
+            doneButton.backgroundColor = UIColor.unitedNationsBlue()
+            let atr = NSAttributedString(string: "Done", attributes: [NSForegroundColorAttributeName : UIColor.whiteColor(), NSFontAttributeName : UIFont.preferredFontForTextStyle(UIFontTextStyleCallout) ])
+            doneButton.setAttributedTitle(atr, forState: .Normal)
+            doneButton.titleLabel?.textAlignment = .Center
+         
             
-            tourDescriptionTextField.becomeFirstResponder()
-            
-        } else {
-            NSLayoutConstraint.deactivateConstraints([expandedBottomConstraint])
-            view.updateConstraintsIfNeeded()
-            textField.resignFirstResponder()
         }
+        
+            view.updateConstraintsIfNeeded()
+        
+        
         return true
     }
     
+    @IBOutlet weak var bottomLayout: NSLayoutConstraint!
     
+    @IBOutlet weak var descriptionButton: UIButton! {
+        didSet {
+            descriptionButton.layer.cornerRadius = descriptionButton.frame.height / 2
+        }
+    }
+    @IBAction func pressedDescriptionButton(sender: AnyObject) {
+        
+        view.resignFirstResponder()
+        
+        //1
+        let effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        
+        let visualEfView = UIVisualEffectView(effect: effect)
+        visualEfView.frame = UIScreen.mainScreen().bounds
+        
+        //2
+        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: visualEfView.frame.width / 2 , height: visualEfView.frame.height / 2))
+        textView.backgroundColor = UIColor.clearColor()
+        textView.textColor = UIColor.whiteColor()
+        textView.text = "tell me something..."
+        
+        textView.delegate = self
+
+        
+        visualEfView.contentView.addSubview(textView)
+        textView.center = visualEfView.center
+        
+        //3
+        let doneButton = UIButton(frame: CGRect(x: 0, y: 0, width: textView.frame.width, height: 30))
+        doneButton.backgroundColor = UIColor.unitedNationsBlue()
+        
+        doneButton.titleLabel?.textColor = UIColor.whiteColor()
+        doneButton.setTitle("Done", forState: .Normal)
+        doneButton.layer.cornerRadius = doneButton.frame.height / 2
+        
+        doneButton.addTarget(self, action: "dismiss:", forControlEvents: .TouchUpInside)
+        
+        
+        
+        
+        
+        doneButton.center = CGPoint(x: visualEfView.center.x, y: textView.frame.minY - CGFloat(doneButton.frame.height * 2))
+        
+        visualEfView.contentView.addSubview(doneButton)
+        categoryPickerView = visualEfView
+        
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(visualEfView)
+    }
     
     // MARK: - Navigation
 
@@ -92,6 +136,10 @@ class CreateTourViewController: UIViewController {
             addSitesVC.tour = self.tour
     }
 }
+
+
+
+
 
 extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -185,6 +233,25 @@ extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate
         return  "Title"
     }
     
+    
+}
+
+extension CreateTourViewController: UITextViewDelegate {
+    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        return true
+    }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        textView.text = ""
+    }
+
+    func textViewDidEndEditing(textView: UITextView) {
+        let description = textView.text
+        tourDescriptionTextField.text = description
+        tour?.description = description
+        textView.resignFirstResponder()
+    }
     
 }
 
