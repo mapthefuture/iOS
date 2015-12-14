@@ -34,6 +34,19 @@ class Tour: Mappable {
         
     }
     
+    func distance(from fromCoordinate: CLLocationCoordinate2D) -> Double {
+        
+        if let x = self.coordinate {
+            let lat = x.latitude
+            let lon = x.longitude
+            let loc = CLLocation(latitude: lat, longitude: lon)
+            let currentLoc = CLLocation(latitude: fromCoordinate.latitude, longitude: fromCoordinate.longitude)
+            
+            return loc.distanceFromLocation(currentLoc)
+        }
+        return 0.0
+    }
+    
     func mapping(map: Map) {
         id <- map["id"]
         user_id <- map["user_id"]

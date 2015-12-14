@@ -24,11 +24,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
    }()
    
+  
+   
    var tours: [Tour] = [] {
       
       didSet {
          
          print(tours.flatMap{$0.id})
+         
+         let loc = mapView.userLocation.coordinate
+         
+         tours = tours.filter{$0.distance(from: loc) > 0}.sort{ $0.distance(from: loc) < $1.distance(from: loc) }
          
         _ = tours.map({ t in
          
@@ -38,6 +44,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             a.title = t.title
             a.subtitle = t.description
             mapView.addAnnotation(a)
+         
             
          })
          
@@ -46,17 +53,38 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    }
    
    
+   
+   func calcDistances() -> [CLLocationDistance]? {
+  
+      var distArray: [CLLocationDistance] = []
+      _ = mapView.annotations.flatMap{$0}.map{
+         let lat = $0.coordinate.latitude
+         let lon = $0.coordinate.longitude
+         let loc = CLLocation(latitude: lat, longitude: lon)
+         if let currentLoc = mapView.userLocation.location {
+         
+            distArray.append(loc.distanceFromLocation(currentLoc))
+         }
+      }
+      print(distArray)
+      return distArray.isEmpty ? nil : distArray
+   }
+   
+      
+   
    var up = false {
      
       didSet {
        
-        
          
          imageViewtoTopConstraint.constant = mapToTableRatioConstraint.active ? 20 : -100
             
-         upArrow.transform = CGAffineTransformMakeRotation(CGFloat(((up ? 0 : -180) * (M_PI / 180))))
+         upArrow.transform = CGAffineTransformMakeRotation(CGFloat(((up ? 180 : 0) * (M_PI / 180))))
 
          upArrow.setNeedsDisplay()
+         
+//         let _annotations: [MKAnnotation] = up ?  mapView.annotations : [ mapView.userLocation ]
+//         mapView.showAnnotations(_annotations, animated: true)
          
          upArrow.updateConstraintsIfNeeded()
         
@@ -111,8 +139,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             self?.alertUser("Failed to get tours", message: "We're having trouble connecting to the network. Try again")
             
          } else {
+           
+               
+               self?.tours = tours
             
-            self?.tours = tours.sort{$0.description?.characters.count > $1.description?.characters.count}
+            
             
             Loading.stop()
             print(2)
@@ -178,22 +209,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       setTitleView()
 
     }
-   override func viewDidLayoutSubviews() {
-      
-//      if isRotating { up = true }
-//      isRotating = true
-      
-   }
-   func showNearby() {
 
-//      TODO
-   }
-   
-   
-   override func viewWillDisappear(animated: Bool) {
-      super.viewWillDisappear(animated)
-
-   }
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
       guard segue.identifier == "ShowTourDetail", let siteTVC = segue.destinationViewController as? SiteTableViewController else { return }
@@ -203,11 +219,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       siteTVC.tour = tour
    }
 
-   
-    deinit {
-      //
-   }
-    
+
     
     //MARK: - Constraints
     @IBOutlet weak var mapToTableRatioConstraint: NSLayoutConstraint!
@@ -220,11 +232,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       
       
-        guard let loc = locations.last else { return }
-        
-        let center = CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
+      guard let loc = locations.last else { return }
+        calcDistances()
+      
+      let center = CLLocationCoordinate2D(latitude: loc.coordinate.latitude, longitude: loc.coordinate.longitude)
+      
+      let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+
         
         self.mapView.setRegion(region, animated: true)
     }
@@ -234,20 +248,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    func toggleView() {
       
       
-         if self.up {
-            let effect = UIBlurEffect(style: .ExtraLight )
-            
-            effectView = UIVisualEffectView(effect: effect)
-            effectView?.frame = self.mapView.frame
-            
-            if let _efv = self.effectView {
-               mapView.addSubview(_efv)
-
-            }
-            
-         } else if !(up) {
-            effectView?.removeFromSuperview()
-         }
+//         if self.up {
+//            let effect = UIBlurEffect(style: .ExtraLight )
+//            
+//            effectView = UIVisualEffectView(effect: effect)
+//            effectView?.frame = self.mapView.frame
+//            
+//            if let _efv = self.effectView {
+//               mapView.addSubview(_efv)
+//
+//            }
+//            
+//         } else if !(up) {
+//            effectView?.removeFromSuperview()
+//         }
       
 
      
@@ -269,6 +283,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          { () -> Void in
             
          self.up = !self.up
+            self.mapView.alpha = self.up ? 1.0 : 0.5
             
          self.view.layoutIfNeeded()
          
@@ -290,6 +305,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
          cell.tourTitleLabel.text = tour.title ?? ""
          cell.tourDescriptionLabel?.text = tour.description ?? ""
+      
+
+     cell.distanceLabel.text = tour.distance(from: mapView.userLocation.coordinate).titleFromDouble()
+
+      
+   
+
       print("CURRENT USER ID: \(User.currentUserID)")
       print(tour.id)
         if let usrID = tour.user_id, let currentUserID = User.currentUserID where usrID == currentUserID {
@@ -304,13 +326,50 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
    
    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-      return 70.0
+      return 90
    }
+   
+//   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+//    
+//      
+//      return distanceCategories.count
+//   
+//   }
+   
+   
+   
+//   var distanceCategories: [String: [CLLocationDistance]] {
+//      return calcDistances()?.categorize{$0.titleFromDouble()} ?? [:]
+//   }
+//
+//
+//   var distanceLabels: [String] {
+//      var array: [String] = []
+//     _ =  distanceCategories.keys.map{array.append($0)}
+//      return array
+//   }
+//   let distanceLabels = ["Less than one mile", "One to five miles", "Five to ten miles", "Ten to twenty miles","Twenty to fifty miles", "Far Away", "Unknown"]
+
+
+   
+//   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//      
+//      return distanceLabels[section]
+//   }
+//   
+//   
+   
+   
 
     //MARK: - MapView
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+      tableView.reloadData()
 
     }
+   
+   
+   
+
     
     
    

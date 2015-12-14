@@ -34,6 +34,19 @@ class Site: Mappable {
         
     }
     
+    func distance(fromCoordinate: CLLocationCoordinate2D) -> Double? {
+        
+        if let x = self.coordinate {
+            let lat = x.latitude
+            let lon = x.longitude
+            let loc = CLLocation(latitude: lat, longitude: lon)
+            let currentLoc = CLLocation(latitude: fromCoordinate.latitude, longitude: fromCoordinate.longitude)
+                
+               return loc.distanceFromLocation(currentLoc)
+        }
+        return nil
+    }
+    
     init(tourID: Int, title: String, coordinate: CLLocationCoordinate2D) {
         self.tourID = tourID
         self.title = title

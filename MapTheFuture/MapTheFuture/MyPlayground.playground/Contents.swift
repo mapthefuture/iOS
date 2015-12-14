@@ -3,191 +3,78 @@
 import UIKit
 import Foundation
 
-let json: [String : AnyObject?] = [
-    
-    "tours" :
-        [
-            
-            [
-                "id": 1,
-                "user_id": 2,
-                "title": "Historical Views",
-                "length": "4 hours"
-            ],
-            
-            [
-                "id": 2,
-                "user_id": 1,
-                "title": "A new side of Atlanta",
-                "length": "2-4 hours"
-            ],
-            
-            [
-                "id": 3,
-                "user_id": nil,
-                "title": nil,
-                "length": nil
-            ],
-            
-            [
-                "id": 4,
-                "user_id": nil,
-                "title": nil,
-                "length": nil
-            ],
-            
-            [
-                "id": 5,
-                "user_id": nil,
-                "title": "Donuts in Brooklyn",
-                "length": "1 hour"
-            ]
-    ]
-]
-
-let x = json["tours"]
-
-
-
-//
-//infix operator >~ { associativity left }
-//
-//func >~(tf: UITextField,count: Int) -> Bool {
-//    
-//    if tf.text?.characters.count > count {
-//        return true
-//    }
-//    return false
-//}
-//
-//postfix operator >>> { }
-//
-//postfix func >>>(tf: UITextField) -> Bool {
-//    
-//    if tf.text?.characters.count > 0 {
-//        return true
-//    }
-//    return false
-//
-//}
-//
-//
-//
-//postfix operator >* { }
-//
-//postfix func >*(xs: [String]) -> Bool {
-//    
-//    let rs = xs.map{$0.characters.count > 0}
-//    if rs.contains(false) { return false }
-//    return true
-//    
-//}
-//
-//
-//
-//let me = ["mac"]
-//
-//me>*
-
-
-
-//infix operator <*> { associativity left }
-//
-//func <*><T: Equatable>(lhs: T, rhs: T) -> Bool {
-//    if lhs === rhs {
-//        return true
-//    }
-//    return false
-//}
-//
-//
-//func ***(lhs: )
-
-
-
-
-
-
-//let myfield = UITextField()
-//myfield.text = "Hello"
-//
-//myfield >~ 1
-//
-//myfield>>>
-//
-//let s1 = "hi"
-//let s2 = "there"
-//let s3 = "f"
-//let arrayxs = [s1,s2,s3]
-//
-//
-//arrayxs>*
-
-
-
-
-
-class MyRequestController {
-    
-    func sendRequest() {
-        
-        // Update a User (PATCH https://fathomless-savannah-6575.herokuapp.com/user/7/update)
-        
-        // Create manager
-        var manager = Manager.sharedInstance
-        
-        // Add Headers
-        manager.session.configuration.HTTPAdditionalHeaders = [
-            "Content-Type":"multipart/form-data; boundary=__X_PAW_BOUNDARY__",
-            "access_token":"c80ad01a14a0a6710584bbe457d74e8d",
-        ]
-        // Form Multipart Body
-        let bodyParameters = [
-            "avatar":"sdfg",
-        ]
-        
-        Alamofire.request(urlRequestWithMultipartBody("https://fathomless-savannah-6575.herokuapp.com/user/7/update", parameters: bodyParameters))
-            .validate(statusCode: 200..<300)
-            .responseJSON{(request, response, JSON, error) in
-                if (error == nil)
-                {
-                    println("HTTP Response Body: \(JSON)")
-                }
-                else
-                {
-                    println("HTTP HTTP Request failed: \(error)")
-                }
-        }
-        
+let distances = [0.0, 52.6048482237498, 7640713.6897714, 12430797.0004833, 30.5710683316783, 931.603764687175, 1235369.17415889, 941.011627370927, 557.039838632262, 2484.88839521014, 12430797.0004833, 127.435363458856, 7640713.6897714]
+//Distance Conversions
+extension Double {
+    func metersToMiles() -> Double {
+        let miles = (round(1000 * (self * 0.000621371)) / 1000)
+        return miles
     }
     
-    
-    func urlRequestWithMultipartBody(urlString:String, parameters:NSDictionary) -> (URLRequestConvertible) {
+    func metersToMilesString() -> String {
+        let miles = (round(1000 * (self * 0.000621371)) / 1000)
         
-        // Create url request to send
-        var mutableURLRequest = NSMutableURLRequest(URL: NSURL(string: urlString)!)
-        mutableURLRequest.HTTPMethod = Alamofire.Method.POST.rawValue
-        // Set Content-Type in HTTP header.
-        let boundary = "PAW-boundary-\(arc4random())-\(arc4random())"
-        let contentType = "multipart/form-data; boundary=" + boundary
-        
-        // Set data
-        var dataString = String()
-        dataString += "--\(boundary)"
-        for (key, value) in parameters { dataString += "\r\nContent-Disposition: form-data; name=\"\(key)\"\r\n\r\n\(value)\r\n--\(boundary)" }
-        dataString += "--"
-        
-        // Set content-type
-        mutableURLRequest.setValue(contentType, forHTTPHeaderField: "Content-Type")
-        
-        // Set the HTTPBody we'd like to submit
-        let requestBodyData = (dataString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-        mutableURLRequest.HTTPBody = requestBodyData
-        
-        // return URLRequestConvertible
-        return (Alamofire.ParameterEncoding.URL.encode(mutableURLRequest, parameters: nil).0)
+        switch miles {
+        case let x where x == 0:  return "Distance Unknown"
+        case let x where x <= 0.25: return "Less than a quarter mile"
+        case let x where x <= 0.5:  return "Less than half of a mile"
+        case let x where x <= 1.0:  return "Less than a mile"
+        case let x where x > 1.0: return "About \(x) miles"
+        default: return "Distance Unknown"
+            
+        }
     }
 }
+
+public extension SequenceType {
+    
+    /// Categorises elements of self into a dictionary, with the keys given by keyFunc
+    
+    func categorise<U : Hashable>(@noescape keyFunc: Generator.Element -> U) -> [U:[Generator.Element]] {
+        var dict: [U:[Generator.Element]] = [:]
+        for el in self {
+            let key = keyFunc(el)
+            dict[key]?.append(el) ?? {dict[key] = [el]}()
+        }
+        return dict
+    }
+}
+
+let x = distances.categorise { $0.metersToMilesString()}
+x.count
+
+
+extension Double {
+
+    func titleFromDouble() -> String {
+       
+    
+    let miles = (round(1000 * (self * 0.000621371)) / 1000)
+            switch miles {
+            case let x where x >= 0 && x <= 1 : return "Less than one mile"
+            case let x where x > 1 && x <= 5 : return "One to five miles"
+            case let x where x > 5 && x <= 10: return "Five to ten miles"
+            case let x where x > 10 && x <= 20: return "Ten to twenty miles"
+            case let x where x > 20 && x <= 50: return "Twenty to fifty miles"
+            case let x where x > 50: return "Far Away"
+            default: return "Unknown"
+           
+            }
+    }
+}
+
+for x in distances {
+    print(x.titleFromDouble())
+}
+let so = distances.categorise{$0.titleFromDouble()}
+so["Far Away"]
+
+
+
+
+
+
+
 
 
 

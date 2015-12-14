@@ -15,6 +15,10 @@ class MapTableViewCell: UITableViewCell {
     
     @IBOutlet weak var tourDescriptionLabel: UILabel!
     
+    
+    @IBOutlet weak var distanceLabel: UILabel!
+    
+    
     @IBOutlet weak var myTourView: UIView!
     
     var myTour = false

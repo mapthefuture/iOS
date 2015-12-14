@@ -147,7 +147,23 @@ extension UIColor {
 }
 
 
+public extension SequenceType {
+    
+    /// Categorises elements of self into a dictionary, with the keys given by keyFunc
+    
+    func categorize<U : Hashable>(@noescape keyFunc: Generator.Element -> U) -> [U:[Generator.Element]] {
+        var dict: [U:[Generator.Element]] = [:]
+        for el in self {
+            let key = keyFunc(el)
+            dict[key]?.append(el) ?? {dict[key] = [el]}()
+        }
+        
+        return dict
+    }
+}
 
+
+let distanceStrings = ["Less than one mile", "One to five miles", "Five to ten miles", "Ten to twenty miles","Twenty to fifty miles", "Far Away", "Unknown"]
 //Distance Conversions
 extension Double {
 func metersToMiles() -> Double {
@@ -168,6 +184,79 @@ func metersToMiles() -> Double {
             
         }
     }
+    
+    
+        func titleFromDouble() -> String {
+            
+            
+            let miles = (round(1000 * (self * 0.000621371)) / 1000)
+            switch miles {
+            case let x where x > 0 && x <= 1 : return "Less than one mile"
+            case let x where x > 1 && x <= 5 : return "One to five miles"
+            case let x where x > 5 && x <= 10: return "Five to ten miles"
+            case let x where x > 10 && x <= 20: return "Ten to twenty miles"
+            case let x where x > 20 && x <= 50: return "Twenty to fifty miles"
+            case let x where x > 50: return "Far Away"
+            default: return "Unknown"
+                
+            }
+        }
+    
+
+}
+extension MKMapView {
+    
+    func setMap() {
+        
+        var zoomRect: MKMapRect?
+        
+        for annotation in self.annotations {
+            
+            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+            
+            let annotationRect = MKMapRect(origin: annotationPoint, size: MKMapSize(width: 0.1, height: 0.1))
+            
+            if zoomRect == nil {
+                
+                zoomRect = annotationRect
+                
+            } else {
+                
+                zoomRect = MKMapRectUnion(zoomRect!, annotationRect)
+            }
+            if let _rect = zoomRect {
+                self.setVisibleMapRect(_rect, animated: true)
+            }
+        }
+        
+    }
+    
+    func setMap(withCender: CLLocationCoordinate2D, radius: Double) {
+        
+        var zoomRect: MKMapRect?
+        
+        for annotation in self.annotations {
+            
+            let annotationPoint = MKMapPointForCoordinate(annotation.coordinate)
+            
+            let annotationRect = MKMapRect(origin: annotationPoint, size: MKMapSize(width: 0.1, height: 0.1))
+            
+            if zoomRect == nil {
+                
+                zoomRect = annotationRect
+                
+            } else {
+                
+                zoomRect = MKMapRectUnion(zoomRect!, annotationRect)
+            }
+            if let _rect = zoomRect {
+                self.setVisibleMapRect(_rect, animated: true)
+            }
+        }
+        
+    }
+
+
 }
 
 
@@ -179,6 +268,9 @@ extension UINavigationController {
     func displayBlur(withView: UIView) {
         
         //1
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = UIColor.clearColor()
+        
         let effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
         
         let visualEfView = UIVisualEffectView(effect: effect)
@@ -206,7 +298,10 @@ extension UINavigationController {
         
         visualEfView.contentView.addSubview(doneButton)
         
-        UIApplication.sharedApplication().keyWindow?.addSubview(visualEfView)
+        viewController.view.addSubview(visualEfView)
+        self.presentViewController(viewController, animated: true, completion: nil)
+        
+//        UIApplication.sharedApplication().keyWindow?.addSubview(visualEfView)
         
         
     }
