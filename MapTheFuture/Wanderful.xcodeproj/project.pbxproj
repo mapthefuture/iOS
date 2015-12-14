@@ -27,6 +27,10 @@
 		E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473991C0CA94700EEF02A /* StepsTableViewController.swift */; };
 		E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E674739D1C0CDDD400EEF02A /* NetworkManager.swift */; };
 		E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67473A11C0DE1C100EEF02A /* Tour.swift */; };
+		E67A2AAE1C1F45C30086586E /* SiteDetailPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AAD1C1F45C30086586E /* SiteDetailPopupViewController.swift */; };
+		E67A2AB11C1F694A0086586E /* CreatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */; };
+		E67A2AB31C1F761D0086586E /* CreateCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */; };
+		E67A2AB51C1F76280086586E /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */; };
 		E67F7EAA1C14D168005171FB /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F7EA91C14D168005171FB /* Uploader.swift */; };
 		E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942261BFD357400FF5415 /* AppDelegate.swift */; };
 		E68942291BFD357400FF5415 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942281BFD357400FF5415 /* MainViewController.swift */; };
@@ -78,6 +82,10 @@
 		E67473991C0CA94700EEF02A /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StepsTableViewController.swift; path = ../StepsTableViewController.swift; sourceTree = "<group>"; };
 		E674739D1C0CDDD400EEF02A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E67473A11C0DE1C100EEF02A /* Tour.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tour.swift; sourceTree = "<group>"; };
+		E67A2AAD1C1F45C30086586E /* SiteDetailPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailPopupViewController.swift; sourceTree = "<group>"; };
+		E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePopupViewController.swift; sourceTree = "<group>"; };
+		E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewController.swift; sourceTree = "<group>"; };
+		E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
 		E67F7EA91C14D168005171FB /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		E68942231BFD357400FF5415 /* Wanderful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wanderful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68942261BFD357400FF5415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				E63670B01C0F806500906D4E /* SiteTableViewController.swift */,
+				E67A2AAD1C1F45C30086586E /* SiteDetailPopupViewController.swift */,
 				E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */,
 				E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */,
 				E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */,
@@ -250,9 +259,12 @@
 			isa = PBXGroup;
 			children = (
 				E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */,
+				E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */,
 				E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */,
 				E6EFC3021C173A8600921042 /* AddSiteButton.swift */,
 				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
+				E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */,
+				E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */,
 				E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */,
 			);
 			name = "Creation Flow";
@@ -464,6 +476,7 @@
 				E674739E1C0CDDD400EEF02A /* NetworkManager.swift in Sources */,
 				E62442B51C06055900EA937E /* Extensions.swift in Sources */,
 				E67F7EAA1C14D168005171FB /* Uploader.swift in Sources */,
+				E67A2AB31C1F761D0086586E /* CreateCollectionViewController.swift in Sources */,
 				E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */,
 				E6459F541C0F544F0085E3A8 /* LoginViewController.swift in Sources */,
 				E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */,
@@ -474,8 +487,10 @@
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E67245D51C19C85200B24FBA /* Loading.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,
+				E67A2AAE1C1F45C30086586E /* SiteDetailPopupViewController.swift in Sources */,
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
 				E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */,
+				E67A2AB51C1F76280086586E /* CreateCollectionViewCell.swift in Sources */,
 				E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
 				E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */,
@@ -484,6 +499,7 @@
 				E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */,
 				E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
+				E67A2AB11C1F694A0086586E /* CreatePopupViewController.swift in Sources */,
 				E68942291BFD357400FF5415 /* MainViewController.swift in Sources */,
 				E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */,
 			);

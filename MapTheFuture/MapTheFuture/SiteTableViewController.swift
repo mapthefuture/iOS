@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import STPopup
 
 
 class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -168,6 +169,8 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
 
         getSitesAndSteps(completion: nil)
+        
+       
 
     }
 
@@ -195,14 +198,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         return 100
     }
     
-    
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        
-//
-//        return sites[safe: section]?.title ?? "Site"
-//
-//        
-//    }
+
     
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -247,72 +243,40 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
               headerV.contentView.backgroundColor = UIColor.unitedNationsBlue()
             headerV.site = site
-        
-        //Title Label
-//        let sectionTitleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150 , height: 50))
-//        
-//        let titleLabelText = site.title ?? "Site"
-//        
-//        
-//        
-//        let titleTextattributes =   [ NSFontAttributeName: UIFont.systemFontOfSize(20, weight: UIFontWeightMedium), NSForegroundColorAttributeName : UIColor.whiteColor()]
-//        sectionTitleLabel.textAlignment = .Center
-//        sectionTitleLabel.numberOfLines = 0
-//        
-//        
-//        sectionTitleLabel.attributedText = NSAttributedString(string: titleLabelText, attributes: titleTextattributes)
-//        stackV.addArrangedSubview(sectionTitleLabel)
-//            
-//       
-//
-//
-//               //Detail Label
-//                let sectionDetailLabel = UILabel()
-//                sectionDetailLabel.text = site.description ?? "Default Description"
-//                sectionDetailLabel.textAlignment = .Center
-//                sectionDetailLabel.numberOfLines = 0
-//        
-//            let detailTitleLabelAttributes =   [ NSFontAttributeName: UIFont.systemFontOfSize(15, weight: UIFontWeightRegular), NSForegroundColorAttributeName : UIColor.whiteColor()]
-//        
-//        
-//            sectionTitleLabel.attributedText = NSAttributedString(string: titleLabelText, attributes: detailTitleLabelAttributes)
-//
-//        
-//                stackV.addArrangedSubview(sectionDetailLabel)
-//                headerV.contentView.sizeToFit()
+
                 return headerV
         }
         
         return nil
 
-        
-//                // site media content
-////                /images/original/missing.png
-////                /audios/original/missing.png
-//            let moreButton = UIButton(frame: CGRect(x: stackV.center.x, y: sectionDetailLabel.frame.maxY + 10, width: stackV.frame.width / 3, height: 30))
-//                moreButton.backgroundColor = UIColor.whiteColor()
-//                moreButton.layer.cornerRadius = moreButton.frame.height / 2
-//                moreButton.setAttributedTitle(NSAttributedString(string: "more", attributes: [ NSFontAttributeName: UIFont.systemFontOfSize(10, weight: UIFontWeightSemibold), NSForegroundColorAttributeName : UIColor.darkGrayColor()]), forState: .Normal)
-//                moreButton.addTarget(self, action: "moreButtonPressed:", forControlEvents: .TouchUpInside )
-//        
-//                stackV.addSubview(moreButton)
-//
-
-
     }
+    
+
     var site: Site?
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let view = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) as? SiteSectionHeaderTableViewCell {
-         navigationController?.displayBlur(view)
+        let popV = UIStoryboard(name: "Main", bundle: nil)
+       
+        if let v = popV.instantiateViewControllerWithIdentifier("PopUpController") as?
+            
+            SiteDetailPopupViewController {
+                
+                if let _site = sites[safe: indexPath.section] {
+                    v.site = _site
+                }
+                
+            
+            let popup = STPopupController(rootViewController: v)
+            
+                popup.cornerRadius = 4
+            
+                popup.navigationBar.barTintColor = UIColor.unitedNationsBlue()
+                popup.navigationBar.tintColor = UIColor.whiteColor()
+                popup.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(15, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor.whiteColor()]
+            
+                popup.presentInViewController(self)
         }
-        
- 
-//        if let site = sites[safe: indexPath.section]  {
-//            print("tapped header \(site)")
-//            self.site = site
-//            performSegueWithIdentifier("showSiteDetail", sender: self )
-//        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -324,16 +288,18 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
         if routes.isEmpty {
+            
             cell.textLabel?.text = "Walking directions unavailable for this site."
             
-            
         } else if !(routes.isEmpty) {
-            if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row]  {
+            
+            if let stepString = routes[safe: indexPath.section]?.steps[safe: indexPath.row]?.instructions, let step = routes[safe: indexPath.section]?.steps[indexPath.row] {
+                
                 cell.textLabel?.text = stepString
+                
                 cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
             }
         }
@@ -378,5 +344,6 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
 
 
 }
+
 
 

@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1D1BAB417C6274C9318F38DE'
-               BlueprintName = 'AlamofireObjectMapper'
+               BlueprintIdentifier = 'C09C0CB580BFD11676046DFD'
+               BlueprintName = 'STPopup'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'AlamofireObjectMapper.framework'>
+               BuildableName = 'STPopup.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

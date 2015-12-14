@@ -10,6 +10,7 @@ PODS:
   - Fabric (1.6.1)
   - KeychainSwift (3.0.10)
   - ObjectMapper (1.0.1)
+  - STPopup (1.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - Crashlytics
   - Fabric
   - KeychainSwift (~> 3.0)
+  - STPopup
 
 SPEC CHECKSUMS:
   Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
@@ -27,5 +29,6 @@ SPEC CHECKSUMS:
   Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   KeychainSwift: b3fcc33bd6e12778be79d9be27e0f2e369b8cc4e
   ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
+  STPopup: 0c5bfe21b39ce422593f93d8f7f5df3d1bc6d1d3
 
 COCOAPODS: 0.39.0

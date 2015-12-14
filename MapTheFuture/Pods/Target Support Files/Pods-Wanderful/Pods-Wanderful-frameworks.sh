@@ -89,6 +89,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Wanderful/AlamofireObjectMapper.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
+  install_framework "Pods-Wanderful/STPopup.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wanderful/Alamofire.framework"
@@ -96,4 +97,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wanderful/AlamofireObjectMapper.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
+  install_framework "Pods-Wanderful/STPopup.framework"
 fi

@@ -34,6 +34,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>STPopup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -47,7 +52,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>69322B6A172D77E5035A393911993830</key>
+		<key>8617DBB1C65D77AECD81A3410A2A91E0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8B91AAEA8C1B111A92F529C019DD2581</key>
 		<dict>
 			<key>primary</key>
 			<true/>

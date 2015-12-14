@@ -10,6 +10,7 @@ pod 'Fabric'
 pod 'Crashlytics'
 pod 'KeychainSwift', '~> 3.0'
 pod 'AlamofireImage', '~> 2.0'
+pod 'STPopup'
 end
 
 target 'Wanderful' do

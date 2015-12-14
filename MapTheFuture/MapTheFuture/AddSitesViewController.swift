@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import STPopup
 
 class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     

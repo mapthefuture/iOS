@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import STPopup
 
-class CreateTourViewController: UIViewController {
+class CreateTourViewController: UIViewController, CreateDelegate {
     
     var tour: Tour?
     
@@ -19,23 +20,37 @@ class CreateTourViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBOutlet weak var tourDescriptionTExt: UILabel!
+    
+    
     @IBOutlet weak var tapToSelectCategoryButton: UIButton!
     @IBOutlet weak var tourCategoryLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var tourTitleTextField: UITextField!
-    @IBOutlet weak var tourDescriptionTextField: UITextField!
+ 
    
     
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        guard let title = tourTitleTextField.text, var category = tourCategoryLabel.text, let tourdescrip = tourDescriptionTextField.text where [title]>* else { return }
+        
+        guard let title = tourTitleTextField.text, var category = tourCategoryLabel.text, let tourdescrip = tour?.description where [title]>* else { return }
+        
         if category == "Category" { category = "Other" }
-        NetworkManager.sharedManager().createTour(title, description: tourdescrip, category: category) { [weak self] (success, tour) -> () in
+        
+        NetworkManager.sharedManager().createTour(title, description: tourdescrip, category: category) {
+            
+            [weak self] (success, tour) -> () in
+            
             if !success  {
+               
                 self?.alertUser("Couldn't create tour", message: "Something went wrong when creating this tour. Try again")
+                
             } else if success {
+                
                 if let _tour = tour {
+                    
                     self?.tour = _tour
+                   
                     self?.performSegueWithIdentifier("AddSites", sender: self)
                 }
             }
@@ -46,13 +61,11 @@ class CreateTourViewController: UIViewController {
         super.viewDidLoad()
         tapToSelectCategoryButton.layer.cornerRadius = tapToSelectCategoryButton.frame.height / 2
         navigationController?.setTitleView()
-//        scrollV.scrollRectToVisible(tourTitleTextField.frame, animated: true)
+//      scrollV.scrollRectToVisible(tourTitleTextField.frame, animated: true)
+        
       
     }
 
-    
-
-    
 
     @IBOutlet weak var stackView: UIStackView!
 
@@ -74,7 +87,7 @@ class CreateTourViewController: UIViewController {
         return true
     }
     
-    @IBOutlet weak var bottomLayout: NSLayoutConstraint!
+
     
     @IBOutlet weak var descriptionButton: UIButton! {
         didSet {
@@ -86,47 +99,29 @@ class CreateTourViewController: UIViewController {
     @IBAction func pressedDescriptionButton(sender: AnyObject) {
         
         view.resignFirstResponder()
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        if let popupVC = sb.instantiateViewControllerWithIdentifier("CreatePopUpVC") as? CreatePopupViewController{
         
-        //1
-        let effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        
-        let visualEfView = UIVisualEffectView(effect: effect)
-        visualEfView.frame = UIScreen.mainScreen().bounds
-        
-        //2
-        let textView = UITextView(frame: CGRect(x: 0, y: 0, width: visualEfView.frame.width / 2 , height: visualEfView.frame.height / 2))
-        textView.backgroundColor = UIColor.clearColor()
-        textView.textColor = UIColor.whiteColor()
-        textView.text = "tell me something..."
-        
-        textView.delegate = self
+            popupVC.delegate = self
+            
+            let pop = STPopupController(rootViewController: popupVC)
+            pop.cornerRadius = 4
 
+            pop.presentInViewController(self)
+
+
+        }
         
-        visualEfView.contentView.addSubview(textView)
-        textView.center = visualEfView.center
-        
-        //3
-        let doneButton = UIButton(frame: CGRect(x: 0, y: 0, width: textView.frame.width, height: 30))
-        doneButton.backgroundColor = UIColor.unitedNationsBlue()
-        
-        doneButton.titleLabel?.textColor = UIColor.whiteColor()
-        doneButton.setTitle("Done", forState: .Normal)
-        doneButton.layer.cornerRadius = doneButton.frame.height / 2
-        
-        doneButton.addTarget(self, action: "dismiss:", forControlEvents: .TouchUpInside)
-        
-        
-        
-        
-        
-        doneButton.center = CGPoint(x: visualEfView.center.x, y: textView.frame.minY - CGFloat(doneButton.frame.height * 2))
-        
-        visualEfView.contentView.addSubview(doneButton)
-        categoryPickerView = visualEfView
-        
-        
-        UIApplication.sharedApplication().keyWindow?.addSubview(visualEfView)
     }
+    
+    //Delegate
+    func didWriteDescription(description: String) {
+        self.tour?.description = description
+        
+        tourDescriptionTExt.text = description
+        print(description)
+    }
+    
     
     // MARK: - Navigation
 
@@ -187,6 +182,8 @@ extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate
         
     }
     
+    
+    
     func dismiss(sender: UIButton) {
         
         guard let vev = categoryPickerView else { return }
@@ -238,24 +235,24 @@ extension CreateTourViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
 }
 
-extension CreateTourViewController: UITextViewDelegate {
-    
-    func textViewShouldEndEditing(textView: UITextView) -> Bool {
-        return true
-    }
-    
-    func textViewDidBeginEditing(textView: UITextView) {
-        textView.text = ""
-    }
-
-    func textViewDidEndEditing(textView: UITextView) {
-        let description = textView.text
-        tourDescriptionTextField.text = description
-        tour?.description = description
-        textView.resignFirstResponder()
-    }
-    
-}
+//extension CreateTourViewController: UITextViewDelegate {
+//    
+//    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+//        return true
+//    }
+//    
+//    func textViewDidBeginEditing(textView: UITextView) {
+//        textView.text = ""
+//    }
+//
+//    func textViewDidEndEditing(textView: UITextView) {
+//        let description = textView.text
+//        tourDescriptionTextField.text = description
+//        tour?.description = description
+//        textView.resignFirstResponder()
+//    }
+//    
+//}
 
 
 
