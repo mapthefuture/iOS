@@ -303,11 +303,16 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     var site: Site?
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        if let site = sites[safe: indexPath.section]  {
-            print("tapped header \(site)")
-            self.site = site
-            performSegueWithIdentifier("showSiteDetail", sender: self )
+        if let view = tableView.dequeueReusableCellWithIdentifier(reuseID, forIndexPath: indexPath) as? SiteSectionHeaderTableViewCell {
+         navigationController?.displayBlur(view)
         }
+        
+ 
+//        if let site = sites[safe: indexPath.section]  {
+//            print("tapped header \(site)")
+//            self.site = site
+//            performSegueWithIdentifier("showSiteDetail", sender: self )
+//        }
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

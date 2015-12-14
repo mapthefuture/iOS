@@ -15,13 +15,12 @@ class SiteSectionHeaderTableViewCell: UITableViewCell {
     
     var site: Site? 
     
-    @IBOutlet weak var moreButton: UIButton! {
-        didSet {
-            moreButton.layer.cornerRadius = moreButton.frame.height / 2
-            moreButton.layer.masksToBounds = true
-            moreButton.clipsToBounds = true
-        }
-    }
+    @IBOutlet weak var cameraIcon: UIImageView!
+    
+    @IBOutlet weak var audioIcon: UIImageView!
+    
+    @IBOutlet weak var noteIcon: UIImageView!
+
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.setNeedsLayout()

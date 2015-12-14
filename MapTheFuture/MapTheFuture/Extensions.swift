@@ -170,6 +170,48 @@ func metersToMiles() -> Double {
     }
 }
 
+
+extension UINavigationController {
+    
+    func dismiss(sender: UIButton) {
+        
+    }
+    func displayBlur(withView: UIView) {
+        
+        //1
+        let effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        
+        let visualEfView = UIVisualEffectView(effect: effect)
+        visualEfView.frame = UIScreen.mainScreen().bounds
+        
+        visualEfView.contentView.addSubview(withView)
+        withView.frame = CGRect(x: 0, y: 0, width: visualEfView.frame.width / 2 , height: visualEfView.frame.height / 2)
+        withView.center = visualEfView.contentView.center
+        
+        //3
+        let doneButton = UIButton(frame: CGRect(x: 0, y: 0, width: withView.frame.width, height: 30))
+        doneButton.backgroundColor = UIColor.unitedNationsBlue()
+        
+        doneButton.titleLabel?.textColor = UIColor.whiteColor()
+        doneButton.setTitle("Done", forState: .Normal)
+        doneButton.layer.cornerRadius = doneButton.frame.height / 2
+        
+        doneButton.addTarget(self, action: "dismiss:", forControlEvents: .TouchUpInside)
+        
+        
+        
+        
+        
+        doneButton.center = CGPoint(x: visualEfView.center.x, y: withView.frame.minY - CGFloat(doneButton.frame.height * 2))
+        
+        visualEfView.contentView.addSubview(doneButton)
+        
+        UIApplication.sharedApplication().keyWindow?.addSubview(visualEfView)
+        
+        
+    }
+}
+
 extension UIImageView {
     
     

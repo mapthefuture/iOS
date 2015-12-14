@@ -81,6 +81,8 @@ class CreateTourViewController: UIViewController {
             descriptionButton.layer.cornerRadius = descriptionButton.frame.height / 2
         }
     }
+    
+
     @IBAction func pressedDescriptionButton(sender: AnyObject) {
         
         view.resignFirstResponder()

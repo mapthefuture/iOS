@@ -295,8 +295,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="157.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-hD-qsd">
-                                            <rect key="frame" x="150.5" y="26.5" width="300" height="105"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="zZ4-hD-qsd">
+                                            <rect key="frame" x="151" y="27" width="300" height="105"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqJ-tj-lga">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="24"/>
@@ -313,28 +313,32 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-hU-0s6">
-                                                    <rect key="frame" x="0.0" y="29" width="300" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-hU-0s6">
+                                                    <rect key="frame" x="0.0" y="29" width="300" height="31"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BHP-fD-jc2">
-                                                    <rect key="frame" x="0.0" y="56" width="300" height="49"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                    <state key="normal" title="more">
-                                                        <color key="titleColor" red="0.31764999030000002" green="0.49412000179999999" blue="0.90979999300000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="moreButtonPressed:" destination="NqW-8c-euI" eventType="touchUpInside" id="aFz-4i-HaJ"/>
-                                                        <action selector="moreButtonPressed:" destination="Kvg-CX-DXe" eventType="touchUpInside" id="if9-Ov-PEe"/>
-                                                    </connections>
-                                                </button>
+                                                <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" distribution="fillEqually" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="rj2-ET-P9c">
+                                                    <rect key="frame" x="0.0" y="65" width="300" height="40"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="m0r-HF-cXm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="98" height="40"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="headphones" translatesAutoresizingMaskIntoConstraints="NO" id="pXS-RY-cyx">
+                                                            <rect key="frame" x="101" y="0.0" width="98" height="40"/>
+                                                        </imageView>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="note" translatesAutoresizingMaskIntoConstraints="NO" id="1c8-YO-gob">
+                                                            <rect key="frame" x="202" y="0.0" width="98" height="40"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ejT-y2-Wec"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="yqJ-tj-lga" firstAttribute="width" secondItem="zZ4-hD-qsd" secondAttribute="width" id="6SR-8R-xSs"/>
-                                                <constraint firstItem="BHP-fD-jc2" firstAttribute="width" secondItem="zZ4-hD-qsd" secondAttribute="width" id="NNL-Di-ZfO"/>
                                                 <constraint firstItem="5Yr-hU-0s6" firstAttribute="width" secondItem="zZ4-hD-qsd" secondAttribute="width" id="mLX-zZ-6Nd"/>
                                             </constraints>
                                         </stackView>
@@ -348,7 +352,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="moreButton" destination="BHP-fD-jc2" id="6u8-7l-ffQ"/>
+                                    <outlet property="audioIcon" destination="pXS-RY-cyx" id="xfS-5M-AgY"/>
+                                    <outlet property="cameraIcon" destination="m0r-HF-cXm" id="UPr-Wo-kIx"/>
+                                    <outlet property="noteIcon" destination="1c8-YO-gob" id="QeQ-7J-fRw"/>
                                     <outlet property="siteDescriptionLabel" destination="5Yr-hU-0s6" id="neR-vm-hvI"/>
                                     <outlet property="siteTitleLabel" destination="yqJ-tj-lga" id="CtD-La-snB"/>
                                 </connections>
@@ -1123,11 +1129,14 @@
         <image name="Rocket" width="26" height="58"/>
         <image name="Sign" width="26" height="28"/>
         <image name="arrowBlue" width="1027" height="560"/>
+        <image name="camera" width="826" height="576"/>
         <image name="default" width="1141" height="950"/>
+        <image name="headphones" width="747" height="747"/>
         <image name="home" width="26" height="32"/>
         <image name="locator" width="22" height="22"/>
         <image name="man" width="26" height="38"/>
         <image name="mountain" width="26" height="27"/>
+        <image name="note" width="464" height="629"/>
         <image name="smile" width="644" height="638"/>
     </resources>
     <inferredMetricsTieBreakers>
