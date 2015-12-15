@@ -8,8 +8,19 @@
 
 import UIKit
 import STPopup
+import AlamofireImage
 class SiteDetailPopupViewController: UIViewController {
    
+    @IBOutlet weak var imgView: UIImageView! {
+        didSet {
+
+            if let s = site, let url = s.imageURL, let ns = NSURL(string: url) {
+                if s.hasImage() {
+                    imgView.af_setImageWithURL(ns, placeholderImage: nil, filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: imgView.frame.size, radius: 20), imageTransition: .FlipFromTop(1))
+                }
+            }
+        }
+    }
     
     @IBOutlet weak var tourDescription: UITextView! {
         didSet {
@@ -62,6 +73,15 @@ class SiteDetailPopupViewController: UIViewController {
         
         self.contentSizeInPopup = CGSizeMake(300, 400);
         self.landscapeContentSizeInPopup = CGSizeMake(400, 200);
+        
+        if let s = site, let url = s.imageURL, let ns = NSURL(string: url) {
+            if s.hasImage() {
+                print("hasimage!", s.hasImage())
+                imgView.af_setImageWithURL(ns)
+                imgView.af_setImageWithURL(ns, placeholderImage: nil, filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: imgView.frame.size, radius: 20), imageTransition: .FlipFromTop(1))
+            }
+        }
+
         // Do any additional setup after loading the view.
     }
 

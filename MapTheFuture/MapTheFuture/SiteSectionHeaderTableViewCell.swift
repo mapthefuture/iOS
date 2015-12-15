@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class SiteSectionHeaderTableViewCell: UITableViewCell {
     
@@ -21,11 +22,19 @@ class SiteSectionHeaderTableViewCell: UITableViewCell {
     
     @IBOutlet weak var noteIcon: UIImageView!
 
+    @IBOutlet weak var imageV: UIImageView!
+    
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.setNeedsLayout()
         siteDescriptionLabel.text = site?.description ?? ""
         siteTitleLabel.text = site?.title ?? ""
+        if let s = site, let url = s.imageURL, let _nsimgurl = NSURL(string: url) {
+            if s.hasImage() {
+                imageV.af_setImageWithURL(_nsimgurl)
+            }
+        }
         
         
     }

@@ -22,6 +22,7 @@ class Site: Mappable {
     var imageURL: String?
     var audioURL: String?
     var averageRating: Int?
+    var image: UIImage?
     var coordinate: CLLocationCoordinate2D? {
         print(lat, lon)
         guard let lat = self.lat, let long = self.lon, let dlat = Double(lat), let dlong = Double(long) else { return nil }
@@ -47,11 +48,13 @@ class Site: Mappable {
         return nil
     }
     
-    init(tourID: Int, title: String, coordinate: CLLocationCoordinate2D) {
+    init(tourID: Int, title: String, coordinate: CLLocationCoordinate2D, description: String, image: UIImage?) {
         self.tourID = tourID
         self.title = title
         self.lat = String(coordinate.latitude)
         self.lon = String(coordinate.longitude)
+        self.description = description
+        self.image = image
     }
     
     func mapping(map: Map) {
@@ -65,4 +68,22 @@ class Site: Mappable {
         audioURL <- map["audio_url"]
         averageRating <- map["average_rating"]
     }
+    func hasImage() -> Bool {
+        guard let url = self.imageURL else { return false }
+        if url.containsString("missing") {
+            return false
+        } 
+        return true
+    }
+    func uploadImage(completion:(success: Bool)->()) {
+        
+        if let image = self.image {
+            print("obtained photo")
+            NetworkManager.sharedManager().uploadPhotoForSite(self, photo: image, completion: { (success) -> () in
+                completion(success: success)
+            })
+            
+            }
+        else { completion(success: false) }
+        }
 }

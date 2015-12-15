@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -42,6 +47,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
@@ -52,12 +62,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8617DBB1C65D77AECD81A3410A2A91E0</key>
+		<key>5235FF56878E69AB46B606A6BD2038D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8B91AAEA8C1B111A92F529C019DD2581</key>
+		<key>8397863B1EE4DADF451FB78FC675C857</key>
 		<dict>
 			<key>primary</key>
 			<true/>

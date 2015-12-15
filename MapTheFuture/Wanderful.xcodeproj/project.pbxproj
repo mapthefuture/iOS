@@ -31,6 +31,12 @@
 		E67A2AB11C1F694A0086586E /* CreatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */; };
 		E67A2AB31C1F761D0086586E /* CreateCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */; };
 		E67A2AB51C1F76280086586E /* CreateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */; };
+		E67A2AB81C20530C0086586E /* CreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB71C20530C0086586E /* CreationViewController.swift */; };
+		E67A2ABA1C2058710086586E /* HeaderViewNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AB91C2058710086586E /* HeaderViewNib.swift */; };
+		E67A2ABC1C20587E0086586E /* WanderfulSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E67A2ABB1C20587E0086586E /* WanderfulSectionHeader.xib */; };
+		E67A2ABF1C2066C50086586E /* SiteCreationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2ABE1C2066C50086586E /* SiteCreationViewController.swift */; };
+		E67A2AC41C2078F60086586E /* CustomCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AC31C2078F60086586E /* CustomCells.swift */; };
+		E67A2AC61C20792F0086586E /* FloatLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67A2AC51C20792F0086586E /* FloatLabelTextField.swift */; };
 		E67F7EAA1C14D168005171FB /* Uploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E67F7EA91C14D168005171FB /* Uploader.swift */; };
 		E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942261BFD357400FF5415 /* AppDelegate.swift */; };
 		E68942291BFD357400FF5415 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68942281BFD357400FF5415 /* MainViewController.swift */; };
@@ -86,6 +92,12 @@
 		E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatePopupViewController.swift; sourceTree = "<group>"; };
 		E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewController.swift; sourceTree = "<group>"; };
 		E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateCollectionViewCell.swift; sourceTree = "<group>"; };
+		E67A2AB71C20530C0086586E /* CreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationViewController.swift; sourceTree = "<group>"; };
+		E67A2AB91C2058710086586E /* HeaderViewNib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderViewNib.swift; sourceTree = "<group>"; };
+		E67A2ABB1C20587E0086586E /* WanderfulSectionHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WanderfulSectionHeader.xib; sourceTree = "<group>"; };
+		E67A2ABE1C2066C50086586E /* SiteCreationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteCreationViewController.swift; sourceTree = "<group>"; };
+		E67A2AC31C2078F60086586E /* CustomCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCells.swift; sourceTree = "<group>"; };
+		E67A2AC51C20792F0086586E /* FloatLabelTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabelTextField.swift; sourceTree = "<group>"; };
 		E67F7EA91C14D168005171FB /* Uploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Uploader.swift; sourceTree = "<group>"; };
 		E68942231BFD357400FF5415 /* Wanderful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wanderful.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68942261BFD357400FF5415 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,6 +225,27 @@
 			name = "Model Objects";
 			sourceTree = "<group>";
 		};
+		E67A2ABD1C2058840086586E /* Tour Creation Form */ = {
+			isa = PBXGroup;
+			children = (
+				E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */,
+				E67A2AC31C2078F60086586E /* CustomCells.swift */,
+				E67A2AB71C20530C0086586E /* CreationViewController.swift */,
+				E67A2AB91C2058710086586E /* HeaderViewNib.swift */,
+				E67A2ABB1C20587E0086586E /* WanderfulSectionHeader.xib */,
+			);
+			name = "Tour Creation Form";
+			sourceTree = "<group>";
+		};
+		E67A2AC01C2066F50086586E /* Site Creation Form */ = {
+			isa = PBXGroup;
+			children = (
+				E67A2ABE1C2066C50086586E /* SiteCreationViewController.swift */,
+				E67A2AC51C20792F0086586E /* FloatLabelTextField.swift */,
+			);
+			name = "Site Creation Form";
+			sourceTree = "<group>";
+		};
 		E689421A1BFD357400FF5415 = {
 			isa = PBXGroup;
 			children = (
@@ -261,11 +294,12 @@
 				E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */,
 				E67A2AB01C1F694A0086586E /* CreatePopupViewController.swift */,
 				E6FE25201C0662F4002D2206 /* AddSitesViewController.swift */,
-				E6EFC3021C173A8600921042 /* AddSiteButton.swift */,
 				E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */,
-				E67A2AB21C1F761D0086586E /* CreateCollectionViewController.swift */,
+				E6EFC3021C173A8600921042 /* AddSiteButton.swift */,
 				E67A2AB41C1F76280086586E /* CreateCollectionViewCell.swift */,
 				E64B104F1C1623E700710479 /* AddSiteTableViewCell.swift */,
+				E67A2AC01C2066F50086586E /* Site Creation Form */,
+				E67A2ABD1C2058840086586E /* Tour Creation Form */,
 			);
 			name = "Creation Flow";
 			sourceTree = "<group>";
@@ -389,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */,
+				E67A2ABC1C20587E0086586E /* WanderfulSectionHeader.xib in Resources */,
 				E6459F4A1C0F54290085E3A8 /* User.storyboard in Resources */,
 				E68942301BFD357400FF5415 /* Assets.xcassets in Resources */,
 				E689422E1BFD357400FF5415 /* Main.storyboard in Resources */,
@@ -487,11 +522,15 @@
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
 				E67245D51C19C85200B24FBA /* Loading.swift in Sources */,
 				E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */,
+				E67A2AB81C20530C0086586E /* CreationViewController.swift in Sources */,
 				E67A2AAE1C1F45C30086586E /* SiteDetailPopupViewController.swift in Sources */,
+				E67A2ABA1C2058710086586E /* HeaderViewNib.swift in Sources */,
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
 				E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */,
 				E67A2AB51C1F76280086586E /* CreateCollectionViewCell.swift in Sources */,
+				E67A2AC61C20792F0086586E /* FloatLabelTextField.swift in Sources */,
 				E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */,
+				E67A2AC41C2078F60086586E /* CustomCells.swift in Sources */,
 				E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */,
 				E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */,
 				E6459F4E1C0F543B0085E3A8 /* RegisterViewController.swift in Sources */,
@@ -499,6 +538,7 @@
 				E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */,
 				E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */,
 				E68942271BFD357400FF5415 /* AppDelegate.swift in Sources */,
+				E67A2ABF1C2066C50086586E /* SiteCreationViewController.swift in Sources */,
 				E67A2AB11C1F694A0086586E /* CreatePopupViewController.swift in Sources */,
 				E68942291BFD357400FF5415 /* MainViewController.swift in Sources */,
 				E674739A1C0CA94700EEF02A /* StepsTableViewController.swift in Sources */,

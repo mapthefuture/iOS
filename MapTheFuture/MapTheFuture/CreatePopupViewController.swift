@@ -10,7 +10,9 @@ import UIKit
 import STPopup
 
 protocol CreateDelegate: class{
+    
     func didWriteDescription(description: String)
+    
 }
 
 class CreatePopupViewController: UIViewController, UITextViewDelegate, CreateDelegate {
@@ -23,6 +25,8 @@ class CreatePopupViewController: UIViewController, UITextViewDelegate, CreateDel
         delegate?.didWriteDescription(description)
     }
     
+    
+    //t
     @IBAction func doneButtonPressed(sender: AnyObject) {
         
         delegate?.didWriteDescription(textV.text)

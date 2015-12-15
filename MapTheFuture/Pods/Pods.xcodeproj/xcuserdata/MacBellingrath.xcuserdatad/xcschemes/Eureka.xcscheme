@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '769295D3BC4F944E7973AC8F'
-               BlueprintName = 'KeychainSwift'
+               BlueprintIdentifier = '417B14181FA606810C5EC40F'
+               BlueprintName = 'Eureka'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'KeychainSwift.framework'>
+               BuildableName = 'Eureka.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

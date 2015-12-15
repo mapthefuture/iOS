@@ -262,9 +262,11 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
             
             SiteDetailPopupViewController {
                 
-                if let _site = sites[safe: indexPath.section] {
-                    v.site = _site
-                }
+                
+                    
+                
+                
+                
                 
             
             let popup = STPopupController(rootViewController: v)
@@ -276,6 +278,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 popup.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(15, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor.whiteColor()]
             
                 popup.presentInViewController(self)
+                let site = sites[indexPath.section]
+                v.site = site
+
+                
         }
     }
 
@@ -290,7 +296,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        if routes.isEmpty {
+        if routes[safe: indexPath.section] == nil {
             
             cell.textLabel?.text = "Walking directions unavailable for this site."
             
@@ -336,7 +342,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard segue.identifier == "showSiteDetail" else { return }
         guard let siteDetailVC = segue.destinationViewController as? SiteDetailViewController else { return }
-            siteDetailVC.site = site
+//            siteDetailVC.site = site
         
         
     }

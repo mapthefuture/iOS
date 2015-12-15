@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 import STPopup
 
+
 class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIGestureRecognizerDelegate {
     
     private let cellID = "SiteCell"
@@ -55,7 +56,7 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
         guard let _tour = self.tour else { return }
         Loading.start()
         for site in sites.flatMap({$0}) {
-            NetworkManager.sharedManager().createSiteforTour(site, tour: _tour, completion: { (success) -> () in
+            NetworkManager.sharedManager().createSiteforTour(site, tour: _tour, completion: { (success, site) -> () in
                 Loading.stop()
                
                 if success {
@@ -194,59 +195,59 @@ class AddSitesViewController: UIViewController, UISearchBarDelegate, MKMapViewDe
     }
     
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if let cell =  tableView.cellForRowAtIndexPath(indexPath) as?
-            
-            AddSiteTableViewCell {
-                if cell.added == false {
-                cell.added = true
-                let item = mapresponseObjects[indexPath.row]
-                guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
-                let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate)
-                sites.append(site)
-                print(sites)
-                    
-                } else if cell.added == true {
-                    
-                    cell.added = false
-                   
-                    if let arrayindex = sites.indexOf({ (site) -> Bool in
-                        
-                        site?.title == cell.mapItem?.name
-              
-                         }) {
-                    sites.removeAtIndex(arrayindex)
-                    
-                            print(sites)
-                    }
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        
+//        if let cell =  tableView.cellForRowAtIndexPath(indexPath) as?
+//            
+//            AddSiteTableViewCell {
+//                if cell.added == false {
+//                cell.added = true
+//                let item = mapresponseObjects[indexPath.row]
+//                guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
+//                let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate, desc)
+//                sites.append(site)
+//                print(sites)
+//                    
+//                } else if cell.added == true {
+//                    
+//                    cell.added = false
+//                   
+//                    if let arrayindex = sites.indexOf({ (site) -> Bool in
+//                        
+//                        site?.title == cell.mapItem?.name
+//              
+//                         }) {
+//                    sites.removeAtIndex(arrayindex)
+//                    
+//                            print(sites)
+//                    }
+//
+//                }
+//        }
+//    }
 
-                }
-        }
-    }
-
-    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
-        print(indexPath)
-      
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if let dark = UIImage(named:"addBlue") {
-                let imageView = UIImageView(image: dark)
-                imageView.frame.size = CGSize(width: 50, height: 50)
-                imageView.contentMode = .ScaleAspectFit
-                cell.accessoryView = imageView
-            }
-        }
-        
-        let item = mapresponseObjects[indexPath.row]
-
-        guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
-        let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate)
-        sites.append(site)
-        print(sites)
-        
-        
-    }
-
+//    func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+//        print(indexPath)
+//      
+//        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+//            if let dark = UIImage(named:"addBlue") {
+//                let imageView = UIImageView(image: dark)
+//                imageView.frame.size = CGSize(width: 50, height: 50)
+//                imageView.contentMode = .ScaleAspectFit
+//                cell.accessoryView = imageView
+//            }
+//        }
+//        
+//        let item = mapresponseObjects[indexPath.row]
+//
+//        guard let tour = self.tour, let id = tour.id, let name = item.name else { return print("Tour missing info") }
+//        let site = Site(tourID: id, title: name, coordinate: item.placemark.coordinate)
+//        sites.append(site)
+//        print(sites)
+//        
+//        
+//    }
+//
 
     
 

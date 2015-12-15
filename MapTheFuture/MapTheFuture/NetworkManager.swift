@@ -391,7 +391,7 @@ class NetworkManager: NSObject {
      - parameter tour:       A Tour objecect
      - parameter completion: called when the request completes
      */
-    func createSiteforTour(site: Site, tour: Tour, completion:(success: Bool) -> ()) {
+    func createSiteforTour(site: Site, tour: Tour, completion:(success: Bool, Site?) -> ()) {
         //TODO
         guard let tourID = tour.id else { return print("Tour doesn't have id") }
         
@@ -405,20 +405,34 @@ class NetworkManager: NSObject {
        print(URLParameters)
         
         // Fetch Request
-        Alamofire.request(.POST, "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites", parameters: URLParameters , encoding: ParameterEncoding.JSON, headers: accesstokenHeader).responseJSON { (response) -> Void in
+        Alamofire.request(.POST, "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites", parameters: URLParameters , encoding: ParameterEncoding.JSON, headers: accesstokenHeader).responseObject("site") { (response:
+            Response<Site, NSError>) -> Void in
             switch response.result {
-            
             case .Failure(let error):
                 print(error)
-                completion(success: false)
-           
-            case .Success(let value):
-                print(value)
-                completion(success: true)
+
+                completion(success: false, nil)
+            case .Success(let site):
+                print(site)
+                completion(success: true, site)
             }
+            
         }
-        
     }
+//        responseJSON { (response) -> Void in
+//            switch response.result {
+//            
+//            case .Failure(let error):
+//                print(error)
+//                completion(success: false, nil)
+//           
+//            case .Success(let value):
+//                print(value)
+//                completion(success: true)
+//            }
+//        }
+//        
+//    }
     
     
     func uploadPhoto(photo: UIImage, completion:(success: Bool)->()) {
@@ -477,26 +491,143 @@ class NetworkManager: NSObject {
                     
                     
                 })
-            
-//
-//
-//                
-//                
-//                .request(urlRequestWithMultipartBody(urlstring, parameters: bodyParameters)).validate().responseJSON(options: NSJSONReadingOptions.AllowFragments, completionHandler: { (response) -> Void in
-//                switch response.result {
-//                case .Failure(let error):
-//                    print(error)
-//                    completion(success: false)
-//                case .Success(let value):
-//                    print(value)
-//                    completion(success: true)
-//                }
-//            })
-        
         }
     }
     
+    
+    func createSiteForTour2(site: Site, tour: Tour, completion: (Bool)->()) {
+        guard let tourID = tour.id else { return print("Tour doesn't have id") }
+        
+        var URLParameters = ["":""]
+        
+        if let siteTitle = site.title { URLParameters["title"] = siteTitle }
+        if let siteDescription = site.description { URLParameters["description"] = siteDescription }
+        if let siteLatitude = site.coordinate?.latitude { URLParameters["latitude"] = String(siteLatitude) }
+        if let siteLongitude = site.coordinate?.longitude { URLParameters["longitude"] = String(siteLongitude) }
+        
+        print(URLParameters)
+        
+        // Fetch Request
+        
+        print("about to upload photo")
+        
+        if let siteimg =  site.image, let png = UIImageJPEGRepresentation(siteimg, 0.5) {
+            print("obtained photo")
+            
+            
+            
+            let documentPath = getDocumentsDirectory()
+            
+            
+            let writePath = documentPath.stringByAppendingPathComponent("siteImage\(site.title ?? "").png")
+            png.writeToFile(writePath, atomically: true)
+            
+            
+            
+            
+            let URL = NSURL(string: "https://fathomless-savannah-6575.herokuapp.com/tours/\(tourID)/sites")!
+            var request = NSMutableURLRequest(URL: URL)
+            
+
+            let encoding = Alamofire.ParameterEncoding.URL
+            (request, _) = encoding.encode(request, parameters: URLParameters)
+            let urlstring = request.URLString
+            
+
+            //append parameters
+            
+            
+            guard  let h = accesstokenHeader else { return }
+            let imageURL = NSURL(fileURLWithPath: writePath)
+            
+            Alamofire.upload(.POST, urlstring, headers: h, multipartFormData: { (mpfd) -> Void in
+        
+                mpfd.appendBodyPart(fileURL: imageURL, name: "image", fileName: "siteimage.png", mimeType: "image/png")
+        
+                
+                }, encodingMemoryThreshold: 10000, encodingCompletion: { (encodingResult) -> Void in
+                    switch encodingResult {
+                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+                        request.responseJSON(options: NSJSONReadingOptions.MutableContainers, completionHandler: { (response) -> Void in
+                            print(response.response)
+                            switch response.result {
+                            case  .Failure(let error):
+                                print(error)
+                                completion(false)
+                            case .Success(let value):
+                                print(value)
+                                completion(true)
+                            }
+                        })
+                    case .Failure(let error):
+                        print(error)
+                        completion(false)
+                    }
+                    
+                    
+                    
+            })
+        }
+       
+        
+    }
+
+    
+    
+    func uploadPhotoForSite(site: Site, photo: UIImage, completion:(success: Bool)->()) {
+        
+        
+                print("about to upload photo")
+                
+                if let png =  UIImageJPEGRepresentation(photo, 0.5) {
+                    print("obtained photo")
+                    
+                    
+                    
+                    let documentPath = getDocumentsDirectory()
+                    
+                    
+                    let writePath = documentPath.stringByAppendingPathComponent("siteImage.png")
+                    png.writeToFile(writePath, atomically: true)
+                    
+                    
+                    
+                    let urlstring = "https://fathomless-savannah-6575.herokuapp.com/sites/\(site.id!)/update"
+                    guard  let h = accesstokenHeader else { return }
+                    let imageURL = NSURL(fileURLWithPath: writePath)
+                    
+                    Alamofire.upload(.PATCH, urlstring, headers: h, multipartFormData: { (mpfd) -> Void in
+                        
+                        mpfd.appendBodyPart(fileURL: imageURL, name: "image", fileName: "image", mimeType: "image/png")
+
+                        
+                        }, encodingMemoryThreshold: 10000, encodingCompletion: { (encodingResult) -> Void in
+                            switch encodingResult {
+                            case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+                                request.responseJSON(options: NSJSONReadingOptions.MutableContainers, completionHandler: { (response) -> Void in
+                                    switch response.result {
+                                    case  .Failure(let error):
+                                        print(error)
+                                        completion(success: false)
+                                    case .Success(let value):
+                                        print(value)
+                                        completion(success: true)
+                                    }
+                                })
+                            case .Failure(let error):
+                                print(error)
+                                completion(success: false)
+                            }
+                            
+                            
+                            
+                    })
+                }
+        }
 }
+
+
+
 
 
 
