@@ -21,22 +21,29 @@ class NetworkManager: NSObject {
     private let base = "https://fathomless-savannah-6575.herokuapp.com/"
     
     class func sharedManager() -> NetworkManager {
+        let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+        config.HTTPAdditionalHeaders = ["access_token" : KeychainSwift().get("token") ?? ""]
         return _sharedInstance
     }
     
     
-    private var accesstokenHeader: [String: String]? {
+    lazy var accesstokenHeader: [String: String]? = {
         let keychain = KeychainSwift()
         
         guard let token = keychain.get("token") where token.characters.count > 0
             
-            else {print("Couldn't get id or token"); return nil }
+            else {print("Couldn't get id or token");
+                
+                
+                return nil }
         
         print("token -> \(token)")
         
+
+        
         return ["access_token" : token ]
 
-    }
+    }()
 
     
     static let sharedInstance: NetworkManager = {
@@ -123,7 +130,7 @@ class NetworkManager: NSObject {
      */
     func updateTour(id: Int, params: [String : AnyObject], success:(Bool)->()) {
         
-                guard let headers = self.accesstokenHeader else { return print("Couldn't get token") }
+        guard let headers = self.accesstokenHeader else {success(false); return print("Couldn't get token") }
         
         // Fetch Request
         Alamofire.request(.PATCH, "https://fathomless-savannah-6575.herokuapp.com/tours/\(id)/", parameters: params, encoding: ParameterEncoding.JSON, headers: headers).responseObject("tour", completionHandler: { (response: Response<Tour, NSError>) -> Void in
@@ -140,6 +147,23 @@ class NetworkManager: NSObject {
                 
             }
         })
+        
+    }
+    
+    
+    func deleteTour(tour: Tour, success: (Bool) -> ()) {
+        guard let headers = self.accesstokenHeader, let id  = tour.id else { success(false); return print("Couldn't get token") }
+        
+        Alamofire.request(.DELETE, "https://fathomless-savannah-6575.herokuapp.com/tours/\(id)", parameters: nil, encoding: .JSON, headers: headers).responseString { (response) -> Void in
+            switch response.result {
+            case .Success(let value):
+                print(value)
+                success(true)
+            case.Failure(let error):
+                print(error)
+                success(false)
+            }
+        }
         
     }
     
@@ -332,6 +356,8 @@ class NetworkManager: NSObject {
             
             print(response.result.value?.accessToken)
             if let user = response.result.value {
+                
+                NSURLSessionConfiguration.defaultSessionConfiguration().HTTPAdditionalHeaders = ["access_token":user.accessToken!]
                 user.save()
                 
                 print("login: \(response.result.value?.accessToken)")
@@ -419,20 +445,86 @@ class NetworkManager: NSObject {
             
         }
     }
-//        responseJSON { (response) -> Void in
-//            switch response.result {
-//            
-//            case .Failure(let error):
-//                print(error)
-//                completion(success: false, nil)
-//           
-//            case .Success(let value):
-//                print(value)
-//                completion(success: true)
-//            }
-//        }
-//        
-//    }
+    
+    
+    func updateSite(site: Site, completion: ()->()) {
+        
+        guard let siteID = site.id else { return print("Site doesn't have id") }
+        
+        var URLParameters = ["":""]
+        
+        if let siteTitle = site.title { URLParameters["title"] = siteTitle }
+        if let siteDescription = site.description { URLParameters["description"] = siteDescription }
+        if let siteLatitude = site.coordinate?.latitude { URLParameters["latitude"] = String(siteLatitude) }
+        if let siteLongitude = site.coordinate?.longitude { URLParameters["longitude"] = String(siteLongitude) }
+        
+        print(URLParameters)
+        
+        // Fetch Request
+        
+        print("about to upload photo")
+        
+        
+            
+            
+            
+            let URL = NSURL(string: "https://fathomless-savannah-6575.herokuapp.com/sites/\(siteID)/sites")!
+            var request = NSMutableURLRequest(URL: URL)
+            
+            
+            let encoding = Alamofire.ParameterEncoding.URL
+            (request, _) = encoding.encode(request, parameters: URLParameters)
+            let urlstring = request.URLString
+            
+            
+            //append parameters
+            
+            
+            guard  let h = accesstokenHeader else { return }
+        
+            Alamofire.upload(.PATCH, urlstring, headers: h, multipartFormData: { (mpfd) -> Void in
+                if let siteimg =  site.image, let png = UIImageJPEGRepresentation(siteimg, 0.5) {
+                    print("obtained photo")
+                    
+                    
+                    
+                    let documentPath = getDocumentsDirectory()
+                    
+                    
+                    let writePath = documentPath.stringByAppendingPathComponent("siteImage\(site.title ?? "").png")
+                    png.writeToFile(writePath, atomically: true)
+                    
+                    let imageURL = NSURL(fileURLWithPath: writePath)
+
+                mpfd.appendBodyPart(fileURL: imageURL, name: "image", fileName: "siteimage.png", mimeType: "image/png")
+                }
+                
+                }, encodingMemoryThreshold: 10000, encodingCompletion: { (encodingResult) -> Void in
+                    switch encodingResult {
+                    case .Success(request: let request, streamingFromDisk: _, streamFileURL: _):
+                        request.responseJSON(options: NSJSONReadingOptions.MutableContainers, completionHandler: { (response) -> Void in
+                            print(response.response)
+                            switch response.result {
+                            case  .Failure(let error):
+                                print(error)
+                                completion()
+                            case .Success(let value):
+                                print(value)
+                                completion()
+                            }
+                        })
+                    case .Failure(let error):
+                        print(error)
+                        completion()
+                    }
+                    
+                    
+                    
+            })
+        }
+        
+    
+
     
     
     func uploadPhoto(photo: UIImage, completion:(success: Bool)->()) {

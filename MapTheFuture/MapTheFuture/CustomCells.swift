@@ -451,7 +451,7 @@ public class MapViewController : UIViewController, TypedRowControllerType, MKMap
         let v = UIImageView(frame: CGRectMake(0, 0, 50, 50))
         v.image = UIImage(named: "map_pin", inBundle: NSBundle(forClass: MapViewController.self), compatibleWithTraitCollection: nil)
         v.image = v.image?.imageWithRenderingMode(.AlwaysTemplate)
-        v.tintColor = self.view.tintColor
+//        v.tintColor = self.view.tintColor
         v.backgroundColor = .clearColor()
         v.clipsToBounds = true
         v.contentMode = .ScaleAspectFit

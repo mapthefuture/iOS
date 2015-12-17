@@ -90,6 +90,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-Wanderful/Eureka.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
+  install_framework "Pods-Wanderful/PullToMakeFlight.framework"
+  install_framework "Pods-Wanderful/PullToRefresh.framework"
   install_framework "Pods-Wanderful/STPopup.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -99,5 +101,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-Wanderful/Eureka.framework"
   install_framework "Pods-Wanderful/KeychainSwift.framework"
   install_framework "Pods-Wanderful/ObjectMapper.framework"
+  install_framework "Pods-Wanderful/PullToMakeFlight.framework"
+  install_framework "Pods-Wanderful/PullToRefresh.framework"
   install_framework "Pods-Wanderful/STPopup.framework"
 fi

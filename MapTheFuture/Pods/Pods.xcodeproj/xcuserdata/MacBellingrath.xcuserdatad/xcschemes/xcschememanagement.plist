@@ -39,6 +39,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PullToMakeFlight.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PullToRefresher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>STPopup.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -48,6 +58,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3379E3FA07EC42B98F25E16F9B0A0D60</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -62,22 +77,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5235FF56878E69AB46B606A6BD2038D4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8397863B1EE4DADF451FB78FC675C857</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>A1BF58736B6CCECB5DB30E2108366143</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>AD94D9B7E77B01476391072DBADAC7D7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C5CBCAA97E951CC882334464FBDF983D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EFC4519EC61DB23B579DAB7F3D142FD3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FB1CCB9A0E9AA14FA0A4C75425BDF5EF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

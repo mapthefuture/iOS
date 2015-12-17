@@ -12,6 +12,7 @@ pod 'KeychainSwift', '~> 3.0'
 pod 'AlamofireImage', '~> 2.0'
 pod 'STPopup'
 pod 'Eureka', '~> 1.2'
+pod 'PullToMakeFlight', '~> 1.0'
 end
 
 target 'Wanderful' do

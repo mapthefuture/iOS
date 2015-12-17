@@ -16,6 +16,7 @@
 		E62442B51C06055900EA937E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E62442B41C06055900EA937E /* Extensions.swift */; };
 		E63670AE1C0F79B300906D4E /* Site.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63670AD1C0F79B300906D4E /* Site.swift */; };
 		E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E63670B01C0F806500906D4E /* SiteTableViewController.swift */; };
+		E645047B1C21F3490027F772 /* TourEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E645047A1C21F3490027F772 /* TourEditingViewController.swift */; };
 		E6459F4A1C0F54290085E3A8 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6459F491C0F54290085E3A8 /* User.storyboard */; };
 		E6459F4D1C0F543B0085E3A8 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F4B1C0F543B0085E3A8 /* OnboardingViewController.swift */; };
 		E6459F4E1C0F543B0085E3A8 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6459F4C1C0F543B0085E3A8 /* RegisterViewController.swift */; };
@@ -77,6 +78,7 @@
 		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
 		E63670AD1C0F79B300906D4E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		E63670B01C0F806500906D4E /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
+		E645047A1C21F3490027F772 /* TourEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourEditingViewController.swift; sourceTree = "<group>"; };
 		E6459F491C0F54290085E3A8 /* User.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		E6459F4B1C0F543B0085E3A8 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		E6459F4C1C0F543B0085E3A8 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				E6459F4B1C0F543B0085E3A8 /* OnboardingViewController.swift */,
 				E6459F4C1C0F543B0085E3A8 /* RegisterViewController.swift */,
 				E6459F4F1C0F544F0085E3A8 /* AvatarViewController.swift */,
+				E645047A1C21F3490027F772 /* TourEditingViewController.swift */,
 				E67F7EA91C14D168005171FB /* Uploader.swift */,
 				E6459F501C0F544F0085E3A8 /* ChoiceViewController.swift */,
 				E6459F511C0F544F0085E3A8 /* LoginViewController.swift */,
@@ -528,6 +531,7 @@
 				E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */,
 				E64B10501C1623E700710479 /* AddSiteTableViewCell.swift in Sources */,
 				E67A2AB51C1F76280086586E /* CreateCollectionViewCell.swift in Sources */,
+				E645047B1C21F3490027F772 /* TourEditingViewController.swift in Sources */,
 				E67A2AC61C20792F0086586E /* FloatLabelTextField.swift in Sources */,
 				E6459F531C0F544F0085E3A8 /* ChoiceViewController.swift in Sources */,
 				E67A2AC41C2078F60086586E /* CustomCells.swift in Sources */,

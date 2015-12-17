@@ -25,6 +25,7 @@ class MapTableViewCell: UITableViewCell {
         {
         didSet {
             if myTour == true {
+                
                 myTourView.backgroundColor = UIColor.unitedNationsBlue()
                 
             } else {

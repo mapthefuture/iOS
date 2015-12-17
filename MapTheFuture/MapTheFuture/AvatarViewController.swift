@@ -8,9 +8,11 @@
 
 import UIKit
 import KeychainSwift
+import AlamofireImage
 
 
-class AvatarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+
+class AvatarViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate {
     
     
     var tours: [Tour] = [] {
@@ -42,18 +44,23 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
     @IBOutlet weak var avatarImageView: UIImageView! {
         didSet {
             
+            if let avURL = KeychainSwift().get("avatarURL"), let _url = NSURL(string: avURL) {
+                let filter = AspectScaledToFillSizeCircleFilter(size: avatarImageView.frame.size)
+                avatarImageView.af_setImageWithURL(_url, placeholderImage: UIImage(named: "placeholder"), filter: filter , imageTransition: .CrossDissolve(0.1))
+            }
             
-            let gr = UITapGestureRecognizer(target: self, action: "pickPhoto")
+            let gr = UITapGestureRecognizer(target: self, action: "pickPhoto:")
             gr.numberOfTapsRequired = 2
+            gr.delegate = self
             avatarImageView.addGestureRecognizer(gr)
-            avatarImageView.getProfilePicture()
+            
             
         }
     }
     
 
         
-        func pickPhoto() {
+    func pickPhoto(sender: UITapGestureRecognizer) {
         //Presents Image Picker
         self.navigationController?.presentViewController(picker, animated: true, completion: nil)
         }
@@ -107,6 +114,49 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
         
     }
     
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+       
+        let deleteAction = UITableViewRowAction(style: .Default, title: "Delete") { (action, ip) -> Void in
+            print(ip)
+            
+            if let t = self.tours[safe: indexPath.row] {
+                
+//            delete tour here
+                NetworkManager.sharedManager().deleteTour(t, success: { (success) -> () in
+                    if !(success) {
+                        self.alertUser("Error deleting tour", message: "please try again.")
+                    } else if success {
+                        self.alertUser("Deleted Tour", message: "We have deleted your tour successfully.")
+                        self.tableView.reloadData()
+                    }
+                })
+                
+            }
+        }
+        
+        
+        let editAction = UITableViewRowAction(style: .Normal, title: "Edit", handler: { (editaction, ip) -> Void in
+            print("editing \(ip)")
+            self.tour = self.tours[indexPath.row]
+        
+            editaction.backgroundColor = UIColor.loblollyColor()
+            
+            self.performSegueWithIdentifier("EditSegueIdentifier", sender: self)
+          
+            
+            
+        })
+        
+        
+        return [deleteAction, editAction]
+    }
+    var tour: Tour?
+    
+ 
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
@@ -115,5 +165,12 @@ class AvatarViewController: UIViewController, UINavigationControllerDelegate, UI
         
         return cell
     }
-
+  
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        guard segue.identifier == "EditSegueIdentifier"  else { return }
+        guard let destVC = segue.destinationViewController as? TourEditingViewController else { return }
+        
+        destVC.tour = self.tour
+        }
    }
+

@@ -16,7 +16,7 @@ import STPopup
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
    
-   
+
    lazy var locationMgr: CLLocationManager = {
      
       let locmgr = CLLocationManager()
@@ -68,12 +68,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             distArray.append(loc.distanceFromLocation(currentLoc))
          }
       }
-      print(distArray)
+//      print(distArray)
       return distArray.isEmpty ? nil : distArray
    }
    
-      
-   
+
    var up = false {
      
       didSet {
@@ -85,8 +84,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
          upArrow.setNeedsDisplay()
          
-//         let _annotations: [MKAnnotation] = up ?  mapView.annotations : [ mapView.userLocation ]
-//         mapView.showAnnotations(_annotations, animated: true)
+         let span = up ? MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10) : MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+         let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: span)
+         
+         mapView.setRegion(region, animated: true)
+      
          
          upArrow.updateConstraintsIfNeeded()
         
@@ -94,7 +96,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
    }
    
-   var tapGR: UISwipeGestureRecognizer?
+
    
    @IBOutlet weak var mapView: MKMapView! {
       didSet {
@@ -103,10 +105,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
    }
    
+
     var searchController:UISearchController!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var upArrow: UIButton!
-    @IBOutlet weak var tableView: UITableView!
+   @IBOutlet weak var tableView: UITableView!
    @IBOutlet weak var imageView: UIImageView! {
       didSet {
          
@@ -128,16 +131,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       toggleView()
     }
    
-   func refresh() {
+    func refresh(completion:()->()) {
 
       
-      Loading.start()
+//      Loading.start()
       if tours.isEmpty { print(1); toggleView() }
       
       NetworkManager.sharedManager().getAllTours { [weak self] (success, tours) -> () in
          
          if success == false {
-            
+            completion()
             self?.alertUser("Failed to get tours", message: "We're having trouble connecting to the network. Try again")
             
          } else {
@@ -147,7 +150,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             
             
-            Loading.stop()
+//            Loading.stop()
+            completion()
             print(2)
             self?.toggleView()
             
@@ -159,6 +163,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func findMeButtonPressed(sender: AnyObject) {
        locationMgr.requestLocation()
+      refresh { () -> () in
+         
+      }
    }
    
 
@@ -168,6 +175,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
+      
       if CLLocationManager.locationServicesEnabled() {
          switch CLLocationManager.authorizationStatus() {
             
@@ -187,14 +197,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
       if let avURL = KeychainSwift().get("avatarURL"), let _url = NSURL(string: avURL) {
          let filter = AspectScaledToFillSizeCircleFilter(size: imageView.frame.size)
-         imageView.af_setImageWithURL(_url, placeholderImage: UIImage(named: "placeholder"), filter: filter , imageTransition: .CrossDissolve(0.5))
+         imageView.af_setImageWithURL(_url, placeholderImage: UIImage(named: "placeholder"), filter: filter , imageTransition: .CrossDissolve(0.1))
       }
       
 //      imageView.getProfilePicture()
-     
-      refresh()
       
-    
+      refresh { () -> () in
+         print("Refreshed")
+      }
+   
+      
+      
         //Configure ImageView
         imageView.layer.cornerRadius = imageView.frame.height / 2
         imageView.layer.masksToBounds = true
@@ -209,8 +222,22 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
       //Create TitleView
       setTitleView()
+      
+
+      
+   
+
 
     }
+   override func viewDidLayoutSubviews() {
+      super.viewDidLayoutSubviews()
+
+//      tableView.addPullToRefresh(refresher) { () -> () in
+//         self.refresh({ () -> () in
+//            self.tableView.endRefreshing()
+//         })
+//      }
+   }
 
    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
       
@@ -249,22 +276,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
    func toggleView() {
       
-      
-//         if self.up {
-//            let effect = UIBlurEffect(style: .ExtraLight )
-//            
-//            effectView = UIVisualEffectView(effect: effect)
-//            effectView?.frame = self.mapView.frame
-//            
-//            if let _efv = self.effectView {
-//               mapView.addSubview(_efv)
-//
-//            }
-//            
-//         } else if !(up) {
-//            effectView?.removeFromSuperview()
-//         }
-      
+   
 
      
       if mapToTableRatioConstraint.active {
@@ -365,6 +377,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     //MARK: - MapView
     func mapView(mapView: MKMapView, didUpdateUserLocation userLocation: MKUserLocation) {
+       tours = tours.filter{$0.distance(from: userLocation.coordinate) > 0}.sort{ $0.distance(from: userLocation.coordinate) < $1.distance(from: userLocation.coordinate) }
+      
       tableView.reloadData()
 
     }
@@ -393,13 +407,23 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       guard let pv = pinView  else {
          
          
+         
+         
         let pinV =  WanderfulAnnotationView(annotation: annotation, reuseIdentifier: defaultPinID)
+         if let tour = tours.indexOf({ $0.title == annotation.title ?? ""}){
+            let t = tours[tour]
+            pinV.tour = t
+            
+         }
 
 
          return pinV
       }
       return pv
    }
+   
+   func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
+         }
    
    //MARK: - Location Manager
    

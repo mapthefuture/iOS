@@ -16,7 +16,9 @@ class SiteDetailPopupViewController: UIViewController {
 
             if let s = site, let url = s.imageURL, let ns = NSURL(string: url) {
                 if s.hasImage() {
-                    imgView.af_setImageWithURL(ns, placeholderImage: nil, filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: imgView.frame.size, radius: 20), imageTransition: .FlipFromTop(1))
+                    imgView.af_setImageWithURL(ns, placeholderImage: nil, filter: AspectScaledToFillSizeWithRoundedCornersFilter(size: imgView.frame.size, radius: 5), imageTransition: .FlipFromTop(1))
+                    
+
                 }
             }
         }
@@ -24,17 +26,20 @@ class SiteDetailPopupViewController: UIViewController {
     
     @IBOutlet weak var tourDescription: UITextView! {
         didSet {
-            tourDescription.text = site?.description
-            
+            tourDescription.text = site?.description ?? site?.title
         }
     }
-
+    
+    var large = false
+  
     @IBOutlet weak var imageButton: UIButton! {
         didSet {
             if let url = site?.imageURL{
                 if url.containsString("missing") {
                     imageButton.enabled = false
                     imageButton.hidden = true
+                    
+                    
                 }
 
                 

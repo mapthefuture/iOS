@@ -12,6 +12,8 @@ class WanderfulAnnotationView: MKAnnotationView {
     
      let defaultPinID = "com.macbellingrath.pin"
     
+    var tour: Tour?
+    
 
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
@@ -25,10 +27,12 @@ class WanderfulAnnotationView: MKAnnotationView {
        self.canShowCallout = true
        self.draggable = false
         
+        
+        
 //        self.backgroundColor = UIColor.loblollyColor()
     
         self.rightCalloutAccessoryView  = UIButton(type: .InfoLight)
-            
+        
         self.frame.size = CGSize(width: 30, height: 30)
         
     }

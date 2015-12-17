@@ -1,0 +1,6 @@
+framework module PullToMakeFlight {
+  umbrella header "PullToMakeFlight-umbrella.h"
+
+  export *
+  module * { export * }
+}

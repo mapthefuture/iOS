@@ -16,17 +16,24 @@ class SiteCreationNavigationController: UINavigationController, RowControllerTyp
 }
 
 
-class SiteCreationViewController: FormViewController {
+class SiteCreationViewController: FormViewController, CLLocationManagerDelegate {
     
     var tour: Tour?
     
     var sites: [Site] = []
     var siteIndex = 1
     var responseSites: [Site] = []
+    
+    lazy var manager = CLLocationManager()
+    
+    var currentLoc = CLLocation()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        manager.delegate = self
+        manager.requestLocation()
         
         form +++ Section("Sites") {
             
@@ -42,15 +49,30 @@ class SiteCreationViewController: FormViewController {
                 done.onCellSelection({ (cell, row) -> () in
                     
                     self.createSites()
+                  
                     guard let t = self.tour else { return print("No tour for self") }
+                    
                     self.sites.map {
+                      
                         NetworkManager.sharedManager().createSiteForTour2($0, tour: t, completion: { (success) -> () in
+                            
                             if !success {
+                            
                                 self.alertUser("Couldn't upload sites.", message: "Try again.")
                                 
                             } else if success {
+                                
                                 print("successfully uploaded")
-                                self.dismissViewControllerAnimated(true, completion: nil)
+                               
+                                if let tourid = self.tour?.id, let lat = self.sites.first?.coordinate?.latitude, let lon = self.sites.first?.coordinate?.longitude {
+                                   
+                                    let params = [ "start_lat" : String(lat),  "start_lon": String(lon) ]
+                                   
+                                    NetworkManager.sharedManager().updateTour(tourid, params: params, success: { (success) -> () in
+                                        
+                                        self.dismissViewControllerAnimated(true, completion: nil)
+                                    })
+                                }
                             }
                         })
                     }
@@ -80,7 +102,7 @@ class SiteCreationViewController: FormViewController {
                         <<< LocationRow("SiteLocation\(self.siteIndex)") {
                             $0.title = "Location"
                             
-                            $0.value = CLLocation(latitude: -34.91, longitude: -56.1646)
+                            $0.value = self.currentLoc
                             
                         self.siteIndex++
                             
@@ -149,9 +171,11 @@ class SiteCreationViewController: FormViewController {
             <<< TextAreaRow("SiteDescription\(siteIndex)") { $0.placeholder = "Provide a description"
             }
             <<< LocationRow("SiteLocation\(siteIndex)") {
+                
+                
                 $0.title = "Location"
                 
-                $0.value = CLLocation(latitude: -34.91, longitude: -56.1646)
+                $0.value = self.currentLoc
                 
             }
     }
@@ -161,6 +185,15 @@ class SiteCreationViewController: FormViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print(error)
+    }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let loc = locations.last {
+            self.currentLoc = loc
+        }
+    }
 
     /*
     // MARK: - Navigation

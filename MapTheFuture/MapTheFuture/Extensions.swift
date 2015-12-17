@@ -322,7 +322,7 @@ extension UIImageView {
         
         NetworkManager.sharedManager().downloadProfileImage { [weak self] (success, profileImage) -> () in
             if let prof = profileImage {
-                self?.image = prof
+                self?.image = prof.af_imageWithRoundedCornerRadius(40)
                 self?.contentMode = .ScaleAspectFill
                 if let imgD = UIImagePNGRepresentation(prof) {
                     keychain.set(imgD, forKey: "profileImage")

@@ -9,9 +9,9 @@
 import UIKit
 import MapKit
 import STPopup
+import PullToMakeFlight
 
-
-class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
     
     var tour: Tour?
     var sites: [Site] = [] {
@@ -39,15 +39,8 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     var currentLocCoord: CLLocationCoordinate2D?
     
-    lazy var locManager: CLLocationManager = {
-        let lazylocmanager = CLLocationManager()
-        lazylocmanager.delegate = self
-        lazylocmanager.requestWhenInUseAuthorization()
-        lazylocmanager.requestLocation()
-        return lazylocmanager
-    }()
-
-  
+    let locManager: CLLocationManager = CLLocationManager()
+    
     @IBOutlet weak var tourTitleLabel: UILabel!
     
 
@@ -55,7 +48,6 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     func getRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D, completion:(MKRoute?) -> ()) {
         
-        Loading.start()
        let fromPM = MKPlacemark(coordinate: from, addressDictionary: nil)
        let toPM = MKPlacemark(coordinate: to, addressDictionary: nil)
         
@@ -76,7 +68,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
             if error != nil { Loading.stop(); completion(nil); print(error) }
             
             if let r = response {
-                Loading.stop()
+
                 completion(r.routes.first)
             }
             
@@ -86,11 +78,12 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     
     func getSitesAndSteps(completion completion:(()->())?) {
         
+        routes = []
         
-        defer { if let _c = completion { _c() } }
+//        defer { if let _c = completion { _c() } }
         
 
-        
+        locManager.requestLocation()
         //Get sites
         if let t = tour, let id = t.id {
             
@@ -105,17 +98,20 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 
                 
                 //put coordinates into array
-                self.coords = sites.flatMap{$0.coordinate}
-
+                self.coords = sites.map{$0.coordinate ?? CLLocationCoordinate2D()}
                 
-                
-                if let currloccord = self.currentLocCoord {
-                    self.coords.insert(currloccord, atIndex: 0)
+                if sites.count == 1 {
+                    if let c = self.locManager.location?.coordinate {
+                        self.coords.insert(c, atIndex: 0)
+                    }
                 }
+
                 
                 print("Coordinates: \(self.coords)")
                 
                 //loop through coords and create routes
+            
+                if self.routes.count > 0 { self.routes = [] }
         
                 for (index, _coordinate) in self.coords.enumerate() {
                     
@@ -127,6 +123,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                     guard let to = self.coords[safe: index + 1] else { return }
                     
                     self.getRoute(_coordinate, to: to, completion: { (route) -> () in
+                        
                         
                         if let _route = route {
                             
@@ -150,14 +147,12 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         distanceLabel.text = calculateTotalDistanceFrom(routes).metersToMilesString()
         timeEstimateTextLabel.text = calculateTimeEstimateStringFrom(routes)
         
-        print("Calculation : \(calculateTimeEstimateStringFrom(routes))")
         
+        print("Calculation : \(calculateTimeEstimateStringFrom(routes))")
     }
     
-    override func viewWillAppear(animated: Bool) {
-        
-    }
-
+   
+    let refresh = PullToMakeFlight()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,13 +162,24 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
        self.tourTitleLabel.text = tour?.title ?? "Wander"
        self.automaticallyAdjustsScrollViewInsets = false
         
-
-        getSitesAndSteps(completion: nil)
-        
+        locManager.delegate = self
+        locManager.requestLocation()
        
+        self.currentLocCoord = locManager.location?.coordinate
+
+        refresh.hideDelay = 1.5
+        tableView.addPullToRefresh(refresh) {
+            
+            self.getSitesAndSteps { self.tableView.endRefreshing() }
+            
+        }
+        self.getSitesAndSteps { () -> () in
+            self.tableView.reloadData()
+        }
+        
 
     }
-
+    
     @IBAction func moreButtonPressed(sender: AnyObject) {
         print("MORE PRESSED")
     }
@@ -219,12 +225,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         }
 
         //Get Site
-        let site = sites[section]
-    
+        let _site = sites[section]
 
-        
         //Check for the site's coordinate
-        if let coord = site.coordinate {
+        if let coord = _site.coordinate {
             
                 
                 let polyLines =   routes.flatMap{ $0.polyline }
@@ -233,6 +237,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 if let first = mapHeaderView.overlays.first {
             
                 let rect =  mapHeaderView.overlays.reduce(first.boundingMapRect, combine: { MKMapRectUnion($0, $1.boundingMapRect)})
+                    
                      mapHeaderView.setVisibleMapRect(rect, edgePadding: UIEdgeInsets(top: 50.0, left: 50.0, bottom: 50.0, right: 50.0), animated: true)
                 }
         }
@@ -242,47 +247,79 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
             
         
               headerV.contentView.backgroundColor = UIColor.unitedNationsBlue()
-            headerV.site = site
+          
+            
+           
+            if !(_site.hasImage()){
+                headerV.cameraIcon.hidden = true
+            }
+            if let audiourl = _site.audioURL  {
+                if audiourl.containsString("missing") {
+                    headerV.audioIcon.hidden = true
+                }
+            }
+            if let descrip = _site.description {
+                if descrip.characters.count == 0 {
+                    headerV.noteIcon.hidden = true
+                }
+            }
+            
+                headerV.site = _site
+            
+            let tapGR = UITapGestureRecognizer(target: self, action: "headerTapped:")
+            tapGR.numberOfTapsRequired = 1
+            tapGR.delegate = self
+            
+            headerV.addGestureRecognizer(tapGR)
 
+            print(headerV.site)
                 return headerV
+            
         }
         
         return nil
 
     }
     
-
-    var site: Site?
-    
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        let popV = UIStoryboard(name: "Main", bundle: nil)
-       
-        if let v = popV.instantiateViewControllerWithIdentifier("PopUpController") as?
+    func headerTapped(sender: UITapGestureRecognizer) {
+        print("header tapped \(sender.view)")
+        guard let hv = sender.view as? SiteSectionHeaderTableViewCell, let selectedSite = hv.site else { return }
+        if let v = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("PopUpController") as?
             
             SiteDetailPopupViewController {
                 
                 
-                    
                 
+                let popup = STPopupController(rootViewController: v)
+                v.site = selectedSite
                 
-                
-                
-            
-            let popup = STPopupController(rootViewController: v)
-            
                 popup.cornerRadius = 4
-            
+                
                 popup.navigationBar.barTintColor = UIColor.unitedNationsBlue()
                 popup.navigationBar.tintColor = UIColor.whiteColor()
                 popup.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(15, weight: UIFontWeightMedium), NSForegroundColorAttributeName: UIColor.whiteColor()]
-            
+                
                 popup.presentInViewController(self)
-                let site = sites[indexPath.section]
-                v.site = site
-
+                
+//                v.site = selectedSite
+                
                 
         }
+
+        
+        
+        
+    }
+    
+
+    var site: Site?
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        
+//        guard let selectedSite = sites[safe: indexPath.section] else { return print("NO: \(indexPath.row, indexPath.section)") }
+        
+       
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -290,6 +327,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         return routes[safe: section]?.steps.count ?? 1
     }
 
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -309,9 +347,10 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 cell.detailTextLabel?.text = "\(step.distance.metersToMiles()) miles"
             }
         }
-
         return cell
     }
+    
+
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 50
@@ -322,7 +361,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
         if let loc = locations.last {
             currentLocCoord = loc.coordinate
         }
-        getSitesAndSteps (completion: nil)
+//        getSitesAndSteps (completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -350,6 +389,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
 
 
 }
+
 
 
 
