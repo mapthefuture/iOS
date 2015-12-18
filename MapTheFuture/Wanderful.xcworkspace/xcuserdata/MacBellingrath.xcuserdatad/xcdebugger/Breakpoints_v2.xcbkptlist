@@ -137,54 +137,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapTheFuture/SiteCreationViewController.swift"
-            timestampString = "471989976.921714"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.SiteCreationViewController.(viewDidLoad (Wanderful.SiteCreationViewController) -&gt; () -&gt; ()).(closure #2)"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.521225"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "216">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.SiteCreationViewController.(viewDidLoad (Wanderful.SiteCreationViewController) -&gt; () -&gt; ()).(closure #2).(closure #1)"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.521353"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MapTheFuture/Site.swift"
             timestampString = "471907537.062885"
             startingColumnNumber = "9223372036854775807"

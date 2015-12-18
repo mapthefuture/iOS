@@ -14,6 +14,8 @@ import AlamofireImage
 import STPopup
 
 
+
+
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
    
 
@@ -38,7 +40,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
          
          tours = tours.filter{$0.distance(from: loc) > 0}.sort{ $0.distance(from: loc) < $1.distance(from: loc) }
          
-        _ = tours.map({ t in
+         mapView.annotations.map { mapView.removeAnnotation($0)}
+         
+         tours.map({ t in
          
             guard let coord = t.coordinate else { return }
             let a = MKPointAnnotation()
@@ -84,10 +88,16 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
          upArrow.setNeedsDisplay()
          
-         let span = up ? MKCoordinateSpan(latitudeDelta: 10, longitudeDelta: 10) : MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+         
+  
+         
+         
+         
+         let span = up ? MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2) : MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
          let region = MKCoordinateRegion(center: mapView.userLocation.coordinate, span: span)
          
          mapView.setRegion(region, animated: true)
+      
       
          
          upArrow.updateConstraintsIfNeeded()
@@ -319,6 +329,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
          cell.tourTitleLabel.text = tour.title ?? ""
          cell.tourDescriptionLabel?.text = tour.description ?? ""
+         cell.categoryLabel.text = tour.category
       
 
      cell.distanceLabel.text = tour.distance(from: mapView.userLocation.coordinate).titleFromDouble()
@@ -414,6 +425,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             let t = tours[tour]
             pinV.tour = t
             
+            
          }
 
 
@@ -421,6 +433,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       }
       return pv
    }
+   
+
    
    func mapView(mapView: MKMapView, didSelectAnnotationView view: MKAnnotationView) {
          }

@@ -21,6 +21,10 @@ class MapTableViewCell: UITableViewCell {
     
     @IBOutlet weak var myTourView: UIView!
     
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    
     var myTour = false
         {
         didSet {

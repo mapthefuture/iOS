@@ -31,7 +31,7 @@ class WanderfulAnnotationView: MKAnnotationView {
         
 //        self.backgroundColor = UIColor.loblollyColor()
     
-        self.rightCalloutAccessoryView  = UIButton(type: .InfoLight)
+        
         
         self.frame.size = CGSize(width: 30, height: 30)
         
@@ -51,7 +51,6 @@ class WanderfulAnnotationView: MKAnnotationView {
         
         //        self.backgroundColor = UIColor.loblollyColor()
         
-        self.rightCalloutAccessoryView  = UIButton(type: .InfoLight)
         
         self.frame.size = CGSize(width: 30, height: 30)
 
