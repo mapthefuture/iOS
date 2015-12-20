@@ -49,6 +49,14 @@
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
+		E6D431881C247B20002A0422 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D431861C247B20002A0422 /* Interface.storyboard */; };
+		E6D4318A1C247B20002A0422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D431891C247B20002A0422 /* Assets.xcassets */; };
+		E6D431911C247B20002A0422 /* WanderfulWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E6D431961C247B20002A0422 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431951C247B20002A0422 /* InterfaceController.swift */; };
+		E6D431981C247B20002A0422 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431971C247B20002A0422 /* ExtensionDelegate.swift */; };
+		E6D4319A1C247B20002A0422 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431991C247B20002A0422 /* GlanceController.swift */; };
+		E6D4319C1C247B20002A0422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D4319B1C247B20002A0422 /* Assets.xcassets */; };
+		E6D431A01C247B20002A0422 /* WanderfulWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E6D431841C247B20002A0422 /* WanderfulWatch.app */; };
 		E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 		E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EFC3021C173A8600921042 /* AddSiteButton.swift */; };
@@ -63,7 +71,46 @@
 			remoteGlobalIDString = E68942221BFD357400FF5415;
 			remoteInfo = MapTheFuture;
 		};
+		E6D431921C247B20002A0422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6D4318F1C247B20002A0422;
+			remoteInfo = "WanderfulWatch Extension";
+		};
+		E6D4319E1C247B20002A0422 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6D431831C247B20002A0422;
+			remoteInfo = WanderfulWatch;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E6D431A61C247B20002A0422 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E6D431911C247B20002A0422 /* WanderfulWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D431A81C247B20002A0422 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E6D431A01C247B20002A0422 /* WanderfulWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		42A806D558184F7ACA6CCB81 /* Pods_Wanderful.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wanderful.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,10 +159,19 @@
 		E68942391BFD357400FF5415 /* Wanderful.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wanderful.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E69E4CE91C09E737002DEE61 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
+		E6D431841C247B20002A0422 /* WanderfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6D431871C247B20002A0422 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E6D431891C247B20002A0422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6D4318B1C247B20002A0422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WanderfulWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6D431951C247B20002A0422 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E6D431971C247B20002A0422 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E6D431991C247B20002A0422 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		E6D4319B1C247B20002A0422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6D4319D1C247B20002A0422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanderfulAnnotationView.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E6EFC3021C173A8600921042 /* AddSiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteButton.swift; sourceTree = "<group>"; };
@@ -134,6 +190,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E68942361BFD357400FF5415 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D4318D1C247B20002A0422 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -254,6 +317,8 @@
 			children = (
 				E68942251BFD357400FF5415 /* Wanderful */,
 				E689423C1BFD357400FF5415 /* WanderfulTests */,
+				E6D431851C247B20002A0422 /* WanderfulWatch */,
+				E6D431941C247B20002A0422 /* WanderfulWatch Extension */,
 				E68942241BFD357400FF5415 /* Products */,
 				7DB249AF850E9F52D990E437 /* Pods */,
 				97F22CF9BD35D46C81315416 /* Frameworks */,
@@ -265,6 +330,8 @@
 			children = (
 				E68942231BFD357400FF5415 /* Wanderful.app */,
 				E68942391BFD357400FF5415 /* Wanderful.xctest */,
+				E6D431841C247B20002A0422 /* WanderfulWatch.app */,
+				E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -289,6 +356,28 @@
 			);
 			name = WanderfulTests;
 			path = MapTheFutureTests;
+			sourceTree = "<group>";
+		};
+		E6D431851C247B20002A0422 /* WanderfulWatch */ = {
+			isa = PBXGroup;
+			children = (
+				E6D431861C247B20002A0422 /* Interface.storyboard */,
+				E6D431891C247B20002A0422 /* Assets.xcassets */,
+				E6D4318B1C247B20002A0422 /* Info.plist */,
+			);
+			path = WanderfulWatch;
+			sourceTree = "<group>";
+		};
+		E6D431941C247B20002A0422 /* WanderfulWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E6D431951C247B20002A0422 /* InterfaceController.swift */,
+				E6D431971C247B20002A0422 /* ExtensionDelegate.swift */,
+				E6D431991C247B20002A0422 /* GlanceController.swift */,
+				E6D4319B1C247B20002A0422 /* Assets.xcassets */,
+				E6D4319D1C247B20002A0422 /* Info.plist */,
+			);
+			path = "WanderfulWatch Extension";
 			sourceTree = "<group>";
 		};
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
@@ -316,7 +405,6 @@
 				E68942261BFD357400FF5415 /* AppDelegate.swift */,
 				E67245D41C19C85200B24FBA /* Loading.swift */,
 				E62442B41C06055900EA937E /* Extensions.swift */,
-				E69E4CE91C09E737002DEE61 /* ObjCBridge.h */,
 				E689422F1BFD357400FF5415 /* Assets.xcassets */,
 				E68942311BFD357400FF5415 /* LaunchScreen.storyboard */,
 				E68942341BFD357400FF5415 /* Info.plist */,
@@ -348,10 +436,12 @@
 				C8ECA5FC7061FD054F679253 /* Embed Pods Frameworks */,
 				BF4F56CAE4B458AEED01AF22 /* Copy Pods Resources */,
 				E6459F461C0F46F20085E3A8 /* ShellScript */,
+				E6D431A81C247B20002A0422 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E6D4319F1C247B20002A0422 /* PBXTargetDependency */,
 			);
 			name = Wanderful;
 			productName = MapTheFuture;
@@ -376,6 +466,40 @@
 			productReference = E68942391BFD357400FF5415 /* Wanderful.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		E6D431831C247B20002A0422 /* WanderfulWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6D431A71C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch" */;
+			buildPhases = (
+				E6D431821C247B20002A0422 /* Resources */,
+				E6D431A61C247B20002A0422 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6D431931C247B20002A0422 /* PBXTargetDependency */,
+			);
+			name = WanderfulWatch;
+			productName = WanderfulWatch;
+			productReference = E6D431841C247B20002A0422 /* WanderfulWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6D431A51C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch Extension" */;
+			buildPhases = (
+				E6D4318C1C247B20002A0422 /* Sources */,
+				E6D4318D1C247B20002A0422 /* Frameworks */,
+				E6D4318E1C247B20002A0422 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WanderfulWatch Extension";
+			productName = "WanderfulWatch Extension";
+			productReference = E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -399,6 +523,13 @@
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = E68942221BFD357400FF5415;
 					};
+					E6D431831C247B20002A0422 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = UQFL2U85FV;
+					};
+					E6D4318F1C247B20002A0422 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = E689421E1BFD357400FF5415 /* Build configuration list for PBXProject "Wanderful" */;
@@ -416,6 +547,8 @@
 			targets = (
 				E68942221BFD357400FF5415 /* Wanderful */,
 				E68942381BFD357400FF5415 /* WanderfulTests */,
+				E6D431831C247B20002A0422 /* WanderfulWatch */,
+				E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -437,6 +570,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D431821C247B20002A0422 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D4318A1C247B20002A0422 /* Assets.xcassets in Resources */,
+				E6D431881C247B20002A0422 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6D4318E1C247B20002A0422 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D4319C1C247B20002A0422 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,6 +707,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E6D4318C1C247B20002A0422 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6D431981C247B20002A0422 /* ExtensionDelegate.swift in Sources */,
+				E6D431961C247B20002A0422 /* InterfaceController.swift in Sources */,
+				E6D4319A1C247B20002A0422 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -564,6 +724,16 @@
 			isa = PBXTargetDependency;
 			target = E68942221BFD357400FF5415 /* Wanderful */;
 			targetProxy = E689423A1BFD357400FF5415 /* PBXContainerItemProxy */;
+		};
+		E6D431931C247B20002A0422 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */;
+			targetProxy = E6D431921C247B20002A0422 /* PBXContainerItemProxy */;
+		};
+		E6D4319F1C247B20002A0422 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6D431831C247B20002A0422 /* WanderfulWatch */;
+			targetProxy = E6D4319E1C247B20002A0422 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -582,6 +752,14 @@
 				E68942321BFD357400FF5415 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E6D431861C247B20002A0422 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E6D431871C247B20002A0422 /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -627,7 +805,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "{PRODUCT_NAME}/ObjCBridge.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -665,7 +843,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "{PRODUCT_NAME}/ObjCBridge.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -685,7 +863,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = MapTheFuture/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -703,7 +881,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = MapTheFuture/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
@@ -728,6 +906,70 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFutureTests;
 				PRODUCT_NAME = Wanderful;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderful.app/Wanderful";
+			};
+			name = Release;
+		};
+		E6D431A11C247B20002A0422 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = WanderfulWatch_Extension;
+				INFOPLIST_FILE = WanderfulWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		E6D431A21C247B20002A0422 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = WanderfulWatch_Extension;
+				INFOPLIST_FILE = WanderfulWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		E6D431A31C247B20002A0422 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "WanderfulWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		E6D431A41C247B20002A0422 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "WanderfulWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -757,6 +999,24 @@
 			buildConfigurations = (
 				E68942461BFD357400FF5415 /* Debug */,
 				E68942471BFD357400FF5415 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6D431A51C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D431A31C247B20002A0422 /* Debug */,
+				E6D431A41C247B20002A0422 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6D431A71C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6D431A11C247B20002A0422 /* Debug */,
+				E6D431A21C247B20002A0422 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

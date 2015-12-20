@@ -76,15 +76,14 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
 
     }
     
-    func getSitesAndSteps(completion completion:(()->())?) {
+    func getSitesAndSteps(withStartCoord start:CLLocationCoordinate2D?,  completion:(()->())?) {
         
         routes = []
-        
-//        defer { if let _c = completion { _c() } }
+        self.coords = []
         
 
         locManager.requestLocation()
-        //Get sites
+
         if let t = tour, let id = t.id {
             
             NetworkManager.sharedManager().getSitesforTour(id, completion: {  (success, sites)
@@ -98,26 +97,26 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 
                 
                 //put coordinates into array
-                self.coords = sites.map{$0.coordinate ?? CLLocationCoordinate2D()}
+                self.coords = sites.flatMap{$0.coordinate}
                 
-                if sites.count == 1 {
-                    if let c = self.locManager.location?.coordinate {
-                        self.coords.insert(c, atIndex: 0)
-                    }
+             
+                if let startCoord = start {
+                    
+                    self.coords.insert(startCoord, atIndex: 0)
                 }
+                
 
                 
                 print("Coordinates: \(self.coords)")
                 
-                //loop through coords and create routes
+
             
                 if self.routes.count > 0 { self.routes = [] }
         
                 for (index, _coordinate) in self.coords.enumerate() {
                     
                     print("current index: \(index). Coord: \(_coordinate)")
-                  
-//                    guard let i = index where i < self.coords.count  else { return }
+
                   
                 
                     guard let to = self.coords[safe: index + 1] else { return }
@@ -167,15 +166,17 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
        
         self.currentLocCoord = locManager.location?.coordinate
 
-        refresh.hideDelay = 1.5
+
         tableView.addPullToRefresh(refresh) {
             
-            self.getSitesAndSteps { self.tableView.endRefreshing() }
+            
+            self.getSitesAndSteps(withStartCoord: nil)  { self.tableView.endRefreshing() }
             
         }
-        self.getSitesAndSteps { () -> () in
-            self.tableView.reloadData()
+        if let loc = currentLocCoord {
+            self.getSitesAndSteps(withStartCoord: loc) { self.tableView.reloadData()}
         }
+        self.getSitesAndSteps(withStartCoord: nil)  { self.tableView.reloadData() }
         
 
     }
@@ -264,7 +265,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 }
             }
             
-                headerV.site = _site
+            headerV.site = _site
             
             let tapGR = UITapGestureRecognizer(target: self, action: "headerTapped:")
             tapGR.numberOfTapsRequired = 1
@@ -301,7 +302,6 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
                 
                 popup.presentInViewController(self)
                 
-//                v.site = selectedSite
                 
                 
         }
@@ -317,7 +317,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
         
-//        guard let selectedSite = sites[safe: indexPath.section] else { return print("NO: \(indexPath.row, indexPath.section)") }
+        guard let selectedSite = sites[safe: indexPath.section] else { return print("NO: \(indexPath.row, indexPath.section)") }
         
        
     }
@@ -358,10 +358,9 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        if let loc = locations.last {
-            currentLocCoord = loc.coordinate
+        if let loc = locations.last?.coordinate {
+            currentLocCoord = loc
         }
-//        getSitesAndSteps (completion: nil)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -381,8 +380,7 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard segue.identifier == "showSiteDetail" else { return }
         guard let siteDetailVC = segue.destinationViewController as? SiteDetailViewController else { return }
-//            siteDetailVC.site = site
-        
+
         
     }
     

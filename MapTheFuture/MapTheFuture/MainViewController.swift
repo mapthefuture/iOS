@@ -14,6 +14,9 @@ import AlamofireImage
 import STPopup
 
 
+import WatchConnectivity
+
+
 
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate,  MKMapViewDelegate, UISearchBarDelegate, UIGestureRecognizerDelegate {
@@ -28,6 +31,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
    }()
    
+   
+   var session: WCSession?
+   var watchAvailble = {
+
+      return WCSession.defaultSession().reachable && WCSession.isSupported() && WCSession.defaultSession().paired && WCSession.defaultSession().watchAppInstalled
+      
+   }()
   
    
    var tours: [Tour] = [] {
@@ -158,9 +168,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                
                self?.tours = tours
             
-            
-            
-//            Loading.stop()
             completion()
             print(2)
             self?.toggleView()
@@ -185,7 +192,14 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+      
+      
+      if watchAvailble {
+         self.session = WCSession.defaultSession()
+         self.session?.delegate = self
+         self.session?.activateSession()
+         
+      }
         
       
       if CLLocationManager.locationServicesEnabled() {
@@ -353,37 +367,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
       return 90
    }
-   
-//   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-//    
-//      
-//      return distanceCategories.count
-//   
-//   }
-   
-   
-   
-//   var distanceCategories: [String: [CLLocationDistance]] {
-//      return calcDistances()?.categorize{$0.titleFromDouble()} ?? [:]
-//   }
-//
-//
-//   var distanceLabels: [String] {
-//      var array: [String] = []
-//     _ =  distanceCategories.keys.map{array.append($0)}
-//      return array
-//   }
-//   let distanceLabels = ["Less than one mile", "One to five miles", "Five to ten miles", "Ten to twenty miles","Twenty to fifty miles", "Far Away", "Unknown"]
 
-
-   
-//   func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//      
-//      return distanceLabels[section]
-//   }
-//   
-//   
-   
    
 
     //MARK: - MapView
@@ -394,16 +378,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
    
-   
-   
 
-    
-    
-   
-//    var isRotating: Bool = true
-   
- 
-   
    let defaultPinID = "com.macbellingrath.pin"
    
    
@@ -444,5 +419,15 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
       print(error)
    }
+}
+
+
+
+extension MainViewController: WCSessionDelegate {
+   
+   func sessionWatchStateDidChange(session: WCSession) {
+      print(session)
+   }
+   
 }
 
