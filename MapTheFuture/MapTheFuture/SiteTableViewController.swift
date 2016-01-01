@@ -10,8 +10,10 @@ import UIKit
 import MapKit
 import STPopup
 import PullToMakeFlight
+import WatchConnectivity
 
-class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate {
+
+class SiteTableViewController: UITableViewController, CLLocationManagerDelegate, MKMapViewDelegate, UIGestureRecognizerDelegate, WCSessionDelegate {
     
     var tour: Tour?
     var sites: [Site] = [] {
@@ -35,8 +37,33 @@ class SiteTableViewController: UITableViewController, CLLocationManagerDelegate,
     @IBOutlet weak var timeEstimateTextLabel: UILabel!
     @IBOutlet weak var mapHeaderView: MKMapView!
     
+    private var session: WCSession?
+    private let messageKey = "tourMessage"
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        
+        if WCSession.isSupported(){
+            session = WCSession.defaultSession()
+            session?.delegate = self
+            session?.activateSession()
+            
+            var tourDict: [String : String] = [:]
+            
+            if let title = tour?.title {
+               
+                tourDict[TourDictKey.TourTitle.rawValue] = title
+                tourDict[TourDictKey.MetersToMilesString.rawValue] = calculateTotalDistanceFrom(routes).metersToMilesString()
+                
+                tourDict[TourDictKey.TimeEstimate.rawValue] = calculateTimeEstimateStringFrom(routes)
+            }
+            session?.sendMessage(tourDict, replyHandler: nil, errorHandler: nil)
+   
+        }
+    }
     
-    
+    enum TourDictKey: String {
+        case TourTitle, TourTime, TourDistance, MetersToMilesString, TimeEstimate
+    }
+
     var currentLocCoord: CLLocationCoordinate2D?
     
     let locManager: CLLocationManager = CLLocationManager()

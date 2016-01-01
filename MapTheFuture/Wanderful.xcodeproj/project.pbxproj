@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		5C2F10EFE380F283DFCA9FD3 /* Pods_Wanderful.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42A806D558184F7ACA6CCB81 /* Pods_Wanderful.framework */; };
 		E6043B131C0F826B00A2453E /* SiteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */; };
+		E609C67B1C36D7B500E69423 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E609C6791C36D7B500E69423 /* Interface.storyboard */; };
+		E609C67D1C36D7B500E69423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E609C67C1C36D7B500E69423 /* Assets.xcassets */; };
+		E609C6841C36D7B500E69423 /* Field Guide Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E609C6831C36D7B500E69423 /* Field Guide Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E609C6891C36D7B500E69423 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E609C6881C36D7B500E69423 /* InterfaceController.swift */; };
+		E609C68B1C36D7B500E69423 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E609C68A1C36D7B500E69423 /* ExtensionDelegate.swift */; };
+		E609C68D1C36D7B500E69423 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E609C68C1C36D7B500E69423 /* GlanceController.swift */; };
+		E609C68F1C36D7B500E69423 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E609C68E1C36D7B500E69423 /* Assets.xcassets */; };
+		E609C6931C36D7B500E69423 /* Field Guide.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E609C6771C36D7B500E69423 /* Field Guide.app */; };
 		E6241B311C0DF56B00D2F5DD /* CreateTourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */; };
 		E6241B361C0E02F800D2F5DD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B351C0E02F800D2F5DD /* User.swift */; };
 		E6241B381C0E093400D2F5DD /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */; };
@@ -49,14 +57,7 @@
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
-		E6D431881C247B20002A0422 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E6D431861C247B20002A0422 /* Interface.storyboard */; };
-		E6D4318A1C247B20002A0422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D431891C247B20002A0422 /* Assets.xcassets */; };
-		E6D431911C247B20002A0422 /* WanderfulWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E6D431961C247B20002A0422 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431951C247B20002A0422 /* InterfaceController.swift */; };
-		E6D431981C247B20002A0422 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431971C247B20002A0422 /* ExtensionDelegate.swift */; };
-		E6D4319A1C247B20002A0422 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D431991C247B20002A0422 /* GlanceController.swift */; };
-		E6D4319C1C247B20002A0422 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6D4319B1C247B20002A0422 /* Assets.xcassets */; };
-		E6D431A01C247B20002A0422 /* WanderfulWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E6D431841C247B20002A0422 /* WanderfulWatch.app */; };
+		E6E3537C1C36D9D300E64C20 /* FieldGuideRowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E3537B1C36D9D300E64C20 /* FieldGuideRowController.swift */; };
 		E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 		E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EFC3021C173A8600921042 /* AddSiteButton.swift */; };
@@ -64,6 +65,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E609C6851C36D7B500E69423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E609C6821C36D7B500E69423;
+			remoteInfo = "Field Guide Extension";
+		};
+		E609C6911C36D7B500E69423 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E609C6761C36D7B500E69423;
+			remoteInfo = "Field Guide";
+		};
 		E689423A1BFD357400FF5415 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
@@ -71,30 +86,16 @@
 			remoteGlobalIDString = E68942221BFD357400FF5415;
 			remoteInfo = MapTheFuture;
 		};
-		E6D431921C247B20002A0422 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6D4318F1C247B20002A0422;
-			remoteInfo = "WanderfulWatch Extension";
-		};
-		E6D4319E1C247B20002A0422 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = E6D431831C247B20002A0422;
-			remoteInfo = WanderfulWatch;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E6D431A61C247B20002A0422 /* Embed App Extensions */ = {
+		E609C6991C36D7B500E69423 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				E6D431911C247B20002A0422 /* WanderfulWatch Extension.appex in Embed App Extensions */,
+				E609C6841C36D7B500E69423 /* Field Guide Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +106,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				E6D431A01C247B20002A0422 /* WanderfulWatch.app in Embed Watch Content */,
+				E609C6931C36D7B500E69423 /* Field Guide.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,12 +118,22 @@
 		C5077B2B6FEF52F66203214A /* Pods-Wanderful.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wanderful.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wanderful/Pods-Wanderful.release.xcconfig"; sourceTree = "<group>"; };
 		DF03D476B6F086E9CE208883 /* Pods-Wanderful.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wanderful.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wanderful/Pods-Wanderful.debug.xcconfig"; sourceTree = "<group>"; };
 		E6043B121C0F826B00A2453E /* SiteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewCell.swift; sourceTree = "<group>"; };
+		E609C6771C36D7B500E69423 /* Field Guide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Field Guide.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E609C67A1C36D7B500E69423 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		E609C67C1C36D7B500E69423 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E609C67E1C36D7B500E69423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E609C6831C36D7B500E69423 /* Field Guide Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Field Guide Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E609C6881C36D7B500E69423 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		E609C68A1C36D7B500E69423 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		E609C68C1C36D7B500E69423 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
+		E609C68E1C36D7B500E69423 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E609C6901C36D7B500E69423 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6241B301C0DF56B00D2F5DD /* CreateTourViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTourViewController.swift; sourceTree = "<group>"; };
 		E6241B351C0E02F800D2F5DD /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../MapTheFuture/MyPlayground.playground; sourceTree = "<group>"; };
 		E63670AD1C0F79B300906D4E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		E63670B01C0F806500906D4E /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
 		E645047A1C21F3490027F772 /* TourEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourEditingViewController.swift; sourceTree = "<group>"; };
@@ -162,16 +173,7 @@
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
-		E6D431841C247B20002A0422 /* WanderfulWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WanderfulWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6D431871C247B20002A0422 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		E6D431891C247B20002A0422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E6D4318B1C247B20002A0422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WanderfulWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E6D431951C247B20002A0422 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		E6D431971C247B20002A0422 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		E6D431991C247B20002A0422 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		E6D4319B1C247B20002A0422 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E6D4319D1C247B20002A0422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E6E3537B1C36D9D300E64C20 /* FieldGuideRowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FieldGuideRowController.swift; sourceTree = "<group>"; };
 		E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanderfulAnnotationView.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E6EFC3021C173A8600921042 /* AddSiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteButton.swift; sourceTree = "<group>"; };
@@ -180,6 +182,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E609C6801C36D7B500E69423 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E68942201BFD357400FF5415 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,13 +199,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E68942361BFD357400FF5415 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6D4318D1C247B20002A0422 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -221,6 +223,29 @@
 				42A806D558184F7ACA6CCB81 /* Pods_Wanderful.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E609C6781C36D7B500E69423 /* Field Guide */ = {
+			isa = PBXGroup;
+			children = (
+				E609C6791C36D7B500E69423 /* Interface.storyboard */,
+				E609C67C1C36D7B500E69423 /* Assets.xcassets */,
+				E609C67E1C36D7B500E69423 /* Info.plist */,
+			);
+			path = "Field Guide";
+			sourceTree = "<group>";
+		};
+		E609C6871C36D7B500E69423 /* Field Guide Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E609C6881C36D7B500E69423 /* InterfaceController.swift */,
+				E6E3537B1C36D9D300E64C20 /* FieldGuideRowController.swift */,
+				E609C68A1C36D7B500E69423 /* ExtensionDelegate.swift */,
+				E609C68C1C36D7B500E69423 /* GlanceController.swift */,
+				E609C68E1C36D7B500E69423 /* Assets.xcassets */,
+				E609C6901C36D7B500E69423 /* Info.plist */,
+			);
+			path = "Field Guide Extension";
 			sourceTree = "<group>";
 		};
 		E6241B321C0DFF0000D2F5DD /* User Flow */ = {
@@ -317,8 +342,8 @@
 			children = (
 				E68942251BFD357400FF5415 /* Wanderful */,
 				E689423C1BFD357400FF5415 /* WanderfulTests */,
-				E6D431851C247B20002A0422 /* WanderfulWatch */,
-				E6D431941C247B20002A0422 /* WanderfulWatch Extension */,
+				E609C6781C36D7B500E69423 /* Field Guide */,
+				E609C6871C36D7B500E69423 /* Field Guide Extension */,
 				E68942241BFD357400FF5415 /* Products */,
 				7DB249AF850E9F52D990E437 /* Pods */,
 				97F22CF9BD35D46C81315416 /* Frameworks */,
@@ -330,8 +355,8 @@
 			children = (
 				E68942231BFD357400FF5415 /* Wanderful.app */,
 				E68942391BFD357400FF5415 /* Wanderful.xctest */,
-				E6D431841C247B20002A0422 /* WanderfulWatch.app */,
-				E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */,
+				E609C6771C36D7B500E69423 /* Field Guide.app */,
+				E609C6831C36D7B500E69423 /* Field Guide Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -351,33 +376,12 @@
 		E689423C1BFD357400FF5415 /* WanderfulTests */ = {
 			isa = PBXGroup;
 			children = (
+				E62442B61C06068A00EA937E /* MyPlayground.playground */,
 				E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */,
 				E689423F1BFD357400FF5415 /* Info.plist */,
 			);
 			name = WanderfulTests;
 			path = MapTheFutureTests;
-			sourceTree = "<group>";
-		};
-		E6D431851C247B20002A0422 /* WanderfulWatch */ = {
-			isa = PBXGroup;
-			children = (
-				E6D431861C247B20002A0422 /* Interface.storyboard */,
-				E6D431891C247B20002A0422 /* Assets.xcassets */,
-				E6D4318B1C247B20002A0422 /* Info.plist */,
-			);
-			path = WanderfulWatch;
-			sourceTree = "<group>";
-		};
-		E6D431941C247B20002A0422 /* WanderfulWatch Extension */ = {
-			isa = PBXGroup;
-			children = (
-				E6D431951C247B20002A0422 /* InterfaceController.swift */,
-				E6D431971C247B20002A0422 /* ExtensionDelegate.swift */,
-				E6D431991C247B20002A0422 /* GlanceController.swift */,
-				E6D4319B1C247B20002A0422 /* Assets.xcassets */,
-				E6D4319D1C247B20002A0422 /* Info.plist */,
-			);
-			path = "WanderfulWatch Extension";
 			sourceTree = "<group>";
 		};
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
@@ -408,7 +412,6 @@
 				E689422F1BFD357400FF5415 /* Assets.xcassets */,
 				E68942311BFD357400FF5415 /* LaunchScreen.storyboard */,
 				E68942341BFD357400FF5415 /* Info.plist */,
-				E62442B61C06068A00EA937E /* MyPlayground.playground */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -425,6 +428,40 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E609C6761C36D7B500E69423 /* Field Guide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E609C69A1C36D7B500E69423 /* Build configuration list for PBXNativeTarget "Field Guide" */;
+			buildPhases = (
+				E609C6751C36D7B500E69423 /* Resources */,
+				E609C6991C36D7B500E69423 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E609C6861C36D7B500E69423 /* PBXTargetDependency */,
+			);
+			name = "Field Guide";
+			productName = "Field Guide";
+			productReference = E609C6771C36D7B500E69423 /* Field Guide.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		E609C6821C36D7B500E69423 /* Field Guide Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E609C6981C36D7B500E69423 /* Build configuration list for PBXNativeTarget "Field Guide Extension" */;
+			buildPhases = (
+				E609C67F1C36D7B500E69423 /* Sources */,
+				E609C6801C36D7B500E69423 /* Frameworks */,
+				E609C6811C36D7B500E69423 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Field Guide Extension";
+			productName = "Field Guide Extension";
+			productReference = E609C6831C36D7B500E69423 /* Field Guide Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 		E68942221BFD357400FF5415 /* Wanderful */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E68942421BFD357400FF5415 /* Build configuration list for PBXNativeTarget "Wanderful" */;
@@ -441,7 +478,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E6D4319F1C247B20002A0422 /* PBXTargetDependency */,
+				E609C6921C36D7B500E69423 /* PBXTargetDependency */,
 			);
 			name = Wanderful;
 			productName = MapTheFuture;
@@ -466,40 +503,6 @@
 			productReference = E68942391BFD357400FF5415 /* Wanderful.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		E6D431831C247B20002A0422 /* WanderfulWatch */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E6D431A71C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch" */;
-			buildPhases = (
-				E6D431821C247B20002A0422 /* Resources */,
-				E6D431A61C247B20002A0422 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				E6D431931C247B20002A0422 /* PBXTargetDependency */,
-			);
-			name = WanderfulWatch;
-			productName = WanderfulWatch;
-			productReference = E6D431841C247B20002A0422 /* WanderfulWatch.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E6D431A51C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch Extension" */;
-			buildPhases = (
-				E6D4318C1C247B20002A0422 /* Sources */,
-				E6D4318D1C247B20002A0422 /* Frameworks */,
-				E6D4318E1C247B20002A0422 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "WanderfulWatch Extension";
-			productName = "WanderfulWatch Extension";
-			productReference = E6D431901C247B20002A0422 /* WanderfulWatch Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -510,6 +513,13 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Mac Bellingrath";
 				TargetAttributes = {
+					E609C6761C36D7B500E69423 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = UQFL2U85FV;
+					};
+					E609C6821C36D7B500E69423 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 					E68942221BFD357400FF5415 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = UQFL2U85FV;
@@ -522,13 +532,6 @@
 					E68942381BFD357400FF5415 = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = E68942221BFD357400FF5415;
-					};
-					E6D431831C247B20002A0422 = {
-						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = UQFL2U85FV;
-					};
-					E6D4318F1C247B20002A0422 = {
-						CreatedOnToolsVersion = 7.2;
 					};
 				};
 			};
@@ -547,13 +550,30 @@
 			targets = (
 				E68942221BFD357400FF5415 /* Wanderful */,
 				E68942381BFD357400FF5415 /* WanderfulTests */,
-				E6D431831C247B20002A0422 /* WanderfulWatch */,
-				E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */,
+				E609C6761C36D7B500E69423 /* Field Guide */,
+				E609C6821C36D7B500E69423 /* Field Guide Extension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E609C6751C36D7B500E69423 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E609C67D1C36D7B500E69423 /* Assets.xcassets in Resources */,
+				E609C67B1C36D7B500E69423 /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E609C6811C36D7B500E69423 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E609C68F1C36D7B500E69423 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E68942211BFD357400FF5415 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -570,23 +590,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6D431821C247B20002A0422 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6D4318A1C247B20002A0422 /* Assets.xcassets in Resources */,
-				E6D431881C247B20002A0422 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E6D4318E1C247B20002A0422 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6D4319C1C247B20002A0422 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,6 +657,17 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E609C67F1C36D7B500E69423 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E609C68B1C36D7B500E69423 /* ExtensionDelegate.swift in Sources */,
+				E609C6891C36D7B500E69423 /* InterfaceController.swift in Sources */,
+				E6E3537C1C36D9D300E64C20 /* FieldGuideRowController.swift in Sources */,
+				E609C68D1C36D7B500E69423 /* GlanceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E689421F1BFD357400FF5415 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -707,37 +721,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E6D4318C1C247B20002A0422 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E6D431981C247B20002A0422 /* ExtensionDelegate.swift in Sources */,
-				E6D431961C247B20002A0422 /* InterfaceController.swift in Sources */,
-				E6D4319A1C247B20002A0422 /* GlanceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E609C6861C36D7B500E69423 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E609C6821C36D7B500E69423 /* Field Guide Extension */;
+			targetProxy = E609C6851C36D7B500E69423 /* PBXContainerItemProxy */;
+		};
+		E609C6921C36D7B500E69423 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E609C6761C36D7B500E69423 /* Field Guide */;
+			targetProxy = E609C6911C36D7B500E69423 /* PBXContainerItemProxy */;
+		};
 		E689423B1BFD357400FF5415 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E68942221BFD357400FF5415 /* Wanderful */;
 			targetProxy = E689423A1BFD357400FF5415 /* PBXContainerItemProxy */;
 		};
-		E6D431931C247B20002A0422 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6D4318F1C247B20002A0422 /* WanderfulWatch Extension */;
-			targetProxy = E6D431921C247B20002A0422 /* PBXContainerItemProxy */;
-		};
-		E6D4319F1C247B20002A0422 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = E6D431831C247B20002A0422 /* WanderfulWatch */;
-			targetProxy = E6D4319E1C247B20002A0422 /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		E609C6791C36D7B500E69423 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E609C67A1C36D7B500E69423 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		E689422C1BFD357400FF5415 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -754,17 +766,73 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E6D431861C247B20002A0422 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E6D431871C247B20002A0422 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E609C6941C36D7B500E69423 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Field_Guide_Extension;
+				INFOPLIST_FILE = "Field Guide/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		E609C6951C36D7B500E69423 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				IBSC_MODULE = Field_Guide_Extension;
+				INFOPLIST_FILE = "Field Guide/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
+		E609C6961C36D7B500E69423 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Field Guide Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Debug;
+		};
+		E609C6971C36D7B500E69423 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Field Guide Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.1;
+			};
+			name = Release;
+		};
 		E68942401BFD357400FF5415 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -864,6 +932,7 @@
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -882,6 +951,7 @@
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -909,73 +979,27 @@
 			};
 			name = Release;
 		};
-		E6D431A11C247B20002A0422 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				IBSC_MODULE = WanderfulWatch_Extension;
-				INFOPLIST_FILE = WanderfulWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		E6D431A21C247B20002A0422 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				IBSC_MODULE = WanderfulWatch_Extension;
-				INFOPLIST_FILE = WanderfulWatch/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		E6D431A31C247B20002A0422 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "WanderfulWatch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		E6D431A41C247B20002A0422 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = "WanderfulWatch Extension/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E609C6981C36D7B500E69423 /* Build configuration list for PBXNativeTarget "Field Guide Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E609C6961C36D7B500E69423 /* Debug */,
+				E609C6971C36D7B500E69423 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E609C69A1C36D7B500E69423 /* Build configuration list for PBXNativeTarget "Field Guide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E609C6941C36D7B500E69423 /* Debug */,
+				E609C6951C36D7B500E69423 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E689421E1BFD357400FF5415 /* Build configuration list for PBXProject "Wanderful" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -999,24 +1023,6 @@
 			buildConfigurations = (
 				E68942461BFD357400FF5415 /* Debug */,
 				E68942471BFD357400FF5415 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6D431A51C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E6D431A31C247B20002A0422 /* Debug */,
-				E6D431A41C247B20002A0422 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		E6D431A71C247B20002A0422 /* Build configuration list for PBXNativeTarget "WanderfulWatch" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E6D431A11C247B20002A0422 /* Debug */,
-				E6D431A21C247B20002A0422 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E6D431831C247B20002A0422"
-               BuildableName = "WanderfulWatch.app"
-               BlueprintName = "WanderfulWatch"
+               BlueprintIdentifier = "E609C6761C36D7B500E69423"
+               BuildableName = "Field Guide.app"
+               BlueprintName = "Field Guide"
                ReferencedContainer = "container:Wanderful.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E6D4318F1C247B20002A0422"
-               BuildableName = "WanderfulWatch Extension.appex"
-               BlueprintName = "WanderfulWatch Extension"
+               BlueprintIdentifier = "E609C6821C36D7B500E69423"
+               BuildableName = "Field Guide Extension.appex"
+               BlueprintName = "Field Guide Extension"
                ReferencedContainer = "container:Wanderful.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -60,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6D431831C247B20002A0422"
-            BuildableName = "WanderfulWatch.app"
-            BlueprintName = "WanderfulWatch"
+            BlueprintIdentifier = "E609C6761C36D7B500E69423"
+            BuildableName = "Field Guide.app"
+            BlueprintName = "Field Guide"
             ReferencedContainer = "container:Wanderful.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -86,18 +86,18 @@
          RemotePath = "/Wanderful">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6D431831C247B20002A0422"
-            BuildableName = "WanderfulWatch.app"
-            BlueprintName = "WanderfulWatch"
+            BlueprintIdentifier = "E609C6761C36D7B500E69423"
+            BuildableName = "Field Guide.app"
+            BlueprintName = "Field Guide"
             ReferencedContainer = "container:Wanderful.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6D431831C247B20002A0422"
-            BuildableName = "WanderfulWatch.app"
-            BlueprintName = "WanderfulWatch"
+            BlueprintIdentifier = "E609C6761C36D7B500E69423"
+            BuildableName = "Field Guide.app"
+            BlueprintName = "Field Guide"
             ReferencedContainer = "container:Wanderful.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -117,18 +117,18 @@
          RemotePath = "/Wanderful">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6D431831C247B20002A0422"
-            BuildableName = "WanderfulWatch.app"
-            BlueprintName = "WanderfulWatch"
+            BlueprintIdentifier = "E609C6761C36D7B500E69423"
+            BuildableName = "Field Guide.app"
+            BlueprintName = "Field Guide"
             ReferencedContainer = "container:Wanderful.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "E6D431831C247B20002A0422"
-            BuildableName = "WanderfulWatch.app"
-            BlueprintName = "WanderfulWatch"
+            BlueprintIdentifier = "E609C6761C36D7B500E69423"
+            BuildableName = "Field Guide.app"
+            BlueprintName = "Field Guide"
             ReferencedContainer = "container:Wanderful.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

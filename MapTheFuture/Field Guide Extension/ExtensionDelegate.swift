@@ -1,9 +1,9 @@
 //
 //  ExtensionDelegate.swift
-//  WanderfulWatch Extension
+//  Field Guide Extension
 //
-//  Created by Mac Bellingrath on 12/18/15.
-//  Copyright © 2015 Mac Bellingrath. All rights reserved.
+//  Created by Mac Bellingrath on 1/1/16.
+//  Copyright © 2016 Mac Bellingrath. All rights reserved.
 //
 
 import WatchKit

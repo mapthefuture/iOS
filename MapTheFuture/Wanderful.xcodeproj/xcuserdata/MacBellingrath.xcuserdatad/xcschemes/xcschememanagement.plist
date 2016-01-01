@@ -4,10 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Glance - WanderfulWatch.xcscheme</key>
+		<key>Field Guide.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>13</integer>
+		</dict>
+		<key>Glance - Field Guide.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>14</integer>
 		</dict>
 		<key>MapTheFuture.xcscheme</key>
 		<dict>
@@ -16,10 +21,12 @@
 		</dict>
 		<key>MapTheFutureTV.xcscheme</key>
 		<dict>
+			<key>isShown</key>
+			<false/>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>WanderfulWatch.xcscheme</key>
+		<key>Wanderful.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>12</integer>
@@ -27,6 +34,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>E609C6761C36D7B500E69423</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>E68942221BFD357400FF5415</key>
 		<dict>
 			<key>primary</key>

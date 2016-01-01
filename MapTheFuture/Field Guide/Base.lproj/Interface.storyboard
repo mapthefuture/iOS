@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9515"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Field_Guide_Extension">
+                    <items>
+                        <label alignment="center" text="Label" textAlignment="center" id="JJP-n1-kch"/>
+                        <table alignment="left" id="ZWc-8A-7tR">
+                            <items>
+                                <tableRow identifier="MainRowType" id="5jW-Jm-Qkh" customClass="FieldGuideRowController" customModule="Field_Guide_Extension">
+                                    <group key="rootItem" width="1" height="54.5" alignment="left" layout="vertical" id="yv2-eI-mlY">
+                                        <items>
+                                            <label alignment="left" text="Label" id="bFa-FN-gf7">
+                                                <color key="textColor" red="0.31764999030000002" green="0.49412000179999999" blue="0.90979999300000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                            <label alignment="left" text="Label" id="5ew-1i-bF3">
+                                                <color key="textColor" red="0.75686001780000001" green="0.79215997459999998" blue="0.83529001469999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="detailLabel" destination="5ew-1i-bF3" id="W3X-aw-6UG"/>
+                                        <outlet property="titleLabel" destination="bFa-FN-gf7" id="zp5-fd-0Q1"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="ZWc-8A-7tR" id="MYa-Am-7Hh"/>
+                        <outlet property="tourTitleLabel" destination="JJP-n1-kch" id="6do-be-AbD"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="164" y="217"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="rjY-Ar-IMT">
+            <objects>
+                <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="Field_Guide" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" id="gv7-I2-MZq"/>
+                        <group alignment="left" id="eew-Gs-W6Y"/>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="164" y="514"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MapTheFuture/SiteTableViewController.swift"
-            timestampString = "472312014.733487"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "getSitesAndSteps(withStartCoord:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "MapTheFuture/SiteCreationViewController.swift"
             timestampString = "471989976.921714"
             startingColumnNumber = "9223372036854775807"
@@ -58,7 +42,7 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.501495"
+                  timestampString = "473358214.922101"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "150"
@@ -73,7 +57,7 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.501652"
+                  timestampString = "473358214.922354"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "151"
@@ -106,7 +90,7 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.512288"
+                  timestampString = "473358214.923547"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
@@ -121,7 +105,7 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "471991367.512582"
+                  timestampString = "473358214.923728"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
@@ -250,12 +234,12 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/TourEditingViewController.swift"
-                  timestampString = "471991367.560867"
+                  timestampString = "473358214.92744"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "572">
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "568">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -265,14 +249,78 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/TourEditingViewController.swift"
-                  timestampString = "471991367.560985"
+                  timestampString = "473358214.927618"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
                   offsetFromSymbolStart = "324">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTheFuture/SiteTableViewController.swift"
+            timestampString = "473357766.603091"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "saveButtonPressed(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTheFuture/SiteTableViewController.swift"
+            timestampString = "473357767.0366"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "saveButtonPressed(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTheFuture/SiteTableViewController.swift"
+            timestampString = "473357767.502588"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "saveButtonPressed(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MapTheFuture/SiteTableViewController.swift"
+            timestampString = "473357767.894527"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "saveButtonPressed(_:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
