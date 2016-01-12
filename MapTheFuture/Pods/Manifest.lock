@@ -1,20 +1,20 @@
 PODS:
-  - Alamofire (3.1.3)
-  - AlamofireImage (2.1.1):
+  - Alamofire (3.1.4)
+  - AlamofireImage (2.2.0):
     - Alamofire (~> 3.1)
   - AlamofireObjectMapper (2.1.0):
     - Alamofire (~> 3.1.0)
     - ObjectMapper (~> 1.0)
-  - Crashlytics (3.4.1):
+  - Crashlytics (3.5.0):
     - Fabric (~> 1.6.0)
-  - Eureka (1.3.0)
-  - Fabric (1.6.1)
+  - Eureka (1.3.1)
+  - Fabric (1.6.2)
   - KeychainSwift (3.0.10)
-  - ObjectMapper (1.0.1)
+  - ObjectMapper (1.1.1)
   - PullToMakeFlight (1.1):
     - PullToRefresher (~> 1.0)
   - PullToRefresher (1.3.1)
-  - STPopup (1.5.0)
+  - STPopup (1.6.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0)
@@ -28,16 +28,16 @@ DEPENDENCIES:
   - STPopup
 
 SPEC CHECKSUMS:
-  Alamofire: 9f93b56389e48def9220dd57d1f44b1927229a5a
-  AlamofireImage: 31f7c4e9f516183e0ef2d2da18318de28a4628b8
+  Alamofire: fbc829692f351fa1d8a31dd75fd7f7f56fea31fb
+  AlamofireImage: bedb8a4bdfb98eda81ba12952fba6e9e90420922
   AlamofireObjectMapper: 24097576202064f8b0a583452dd934064f78dc0e
-  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
-  Eureka: d4c038db3ddc4b60f6f08b0aca8ecbb0e9ff1278
-  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
+  Crashlytics: fabfd45d0e8b8dc936c682b97e302b9a49a1c827
+  Eureka: 10df73e578ed8ec1f30c8fda5b4ffc8739786b74
+  Fabric: e8296d4a1abb3c5eed770cc86b311c862f51d340
   KeychainSwift: b3fcc33bd6e12778be79d9be27e0f2e369b8cc4e
-  ObjectMapper: 98524bac0dca46c6b3d5ee02cd410fc700ec6ce2
+  ObjectMapper: 4143abed1dbd49b73d75092fe8fa1c88ed6434b7
   PullToMakeFlight: ca24fa0dc23b441e91e4928513f318710534341d
   PullToRefresher: e17cc032b48148824a77fbf4bce5beb81933071a
-  STPopup: 0c5bfe21b39ce422593f93d8f7f5df3d1bc6d1d3
+  STPopup: 7975883c48560e4cb16ea1c6f351312ed2cd2bc0
 
 COCOAPODS: 0.39.0

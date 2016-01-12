@@ -8,125 +8,54 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
 		</dict>
 		<key>AlamofireImage.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>AlamofireObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>4</integer>
 		</dict>
 		<key>Eureka.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>5</integer>
 		</dict>
 		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>6</integer>
 		</dict>
 		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>7</integer>
 		</dict>
 		<key>Pods-Wanderful.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>8</integer>
 		</dict>
 		<key>PullToMakeFlight.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>9</integer>
 		</dict>
 		<key>PullToRefresher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>10</integer>
 		</dict>
 		<key>STPopup.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>11</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3379E3FA07EC42B98F25E16F9B0A0D60</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>432ECC54282C84882B482CCB4CF227FC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4C698C648EE4D43C6B8BE0BE1FE91737</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>A1BF58736B6CCECB5DB30E2108366143</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD94D9B7E77B01476391072DBADAC7D7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5CBCAA97E951CC882334464FBDF983D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EFC4519EC61DB23B579DAB7F3D142FD3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FB1CCB9A0E9AA14FA0A4C75425BDF5EF</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FBD082A0D35F7917EAB9DD9D3CCA9976</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

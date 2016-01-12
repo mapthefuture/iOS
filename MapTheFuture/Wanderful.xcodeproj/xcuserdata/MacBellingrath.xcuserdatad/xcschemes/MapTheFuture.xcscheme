@@ -32,8 +32,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E68942381BFD357400FF5415"
-               BuildableName = "Wanderful.xctest"
+               BlueprintIdentifier = "E68B33311C4553930066022E"
+               BuildableName = "WanderfulTests.xctest"
                BlueprintName = "WanderfulTests"
                ReferencedContainer = "container:Wanderful.xcodeproj">
             </BuildableReference>

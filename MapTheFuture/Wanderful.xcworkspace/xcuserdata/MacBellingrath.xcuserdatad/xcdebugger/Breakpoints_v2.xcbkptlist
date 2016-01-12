@@ -33,38 +33,6 @@
             endingLineNumber = "150"
             landmarkName = "updatePhotos(forSites:completion:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.SiteCreationViewController.updatePhotos (Wanderful.SiteCreationViewController)(forSites : Swift.Array&lt;Wanderful.Site&gt;, completion : (Swift.Bool) -&gt; ()) -&gt; ()"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "473358214.922101"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "150"
-                  endingLineNumber = "150"
-                  offsetFromSymbolStart = "352">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Wanderful.SiteCreationViewController.(updatePhotos (Wanderful.SiteCreationViewController) -&gt; (forSites : Swift.Array&lt;Wanderful.Site&gt;, completion : (Swift.Bool) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "Wanderful"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "473358214.922354"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,12 +58,12 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "473358214.923547"
+                  timestampString = "474306162.187488"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
                   endingLineNumber = "152"
-                  offsetFromSymbolStart = "384">
+                  offsetFromSymbolStart = "574">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -105,12 +73,12 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/SiteCreationViewController.swift"
-                  timestampString = "473358214.923728"
+                  timestampString = "474306162.187615"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "152"
                   endingLineNumber = "152"
-                  offsetFromSymbolStart = "424">
+                  offsetFromSymbolStart = "467">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -234,12 +202,12 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/TourEditingViewController.swift"
-                  timestampString = "473358214.92744"
+                  timestampString = "474306162.237564"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "568">
+                  offsetFromSymbolStart = "662">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
@@ -249,12 +217,12 @@
                   moduleName = "Wanderful"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/MacBellingrath/Documents/Development/Github/MapTheFuture/MapTheFuture/MapTheFuture/TourEditingViewController.swift"
-                  timestampString = "473358214.927618"
+                  timestampString = "474306162.237722"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "44"
                   endingLineNumber = "44"
-                  offsetFromSymbolStart = "324">
+                  offsetFromSymbolStart = "338">
                </Location>
             </Locations>
          </BreakpointContent>

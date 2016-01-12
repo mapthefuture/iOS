@@ -15,7 +15,7 @@ import AlamofireImage
 
 private let _sharedInstance = NetworkManager()
 
-class NetworkManager: NSObject {
+public class NetworkManager: NSObject {
     
     typealias JSON = [String: AnyObject]
     private let base = "https://fathomless-savannah-6575.herokuapp.com/"

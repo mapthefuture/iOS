@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E66A84604E7E35852437BC78'
+               BlueprintIdentifier = 'AA1A8A176B28DE3734C2E41A'
                BlueprintName = 'PullToMakeFlight'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'PullToMakeFlight.framework'>

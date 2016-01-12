@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BB3A6590CD3CE559EC692DA8'
+               BlueprintIdentifier = 'BA24E334FD686A4CEBE8A4A7'
                BlueprintName = 'Pods-Wanderful'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_Wanderful.framework'>

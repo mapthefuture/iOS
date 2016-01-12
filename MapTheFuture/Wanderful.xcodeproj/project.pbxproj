@@ -53,7 +53,7 @@
 		E689422E1BFD357400FF5415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E689422C1BFD357400FF5415 /* Main.storyboard */; };
 		E68942301BFD357400FF5415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E689422F1BFD357400FF5415 /* Assets.xcassets */; };
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
-		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
+		E68B33351C4553930066022E /* WanderfulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B33341C4553930066022E /* WanderfulTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
@@ -79,12 +79,12 @@
 			remoteGlobalIDString = E609C6761C36D7B500E69423;
 			remoteInfo = "Field Guide";
 		};
-		E689423A1BFD357400FF5415 /* PBXContainerItemProxy */ = {
+		E68B33371C4553930066022E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E689421B1BFD357400FF5415 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E68942221BFD357400FF5415;
-			remoteInfo = MapTheFuture;
+			remoteInfo = Wanderful;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -133,7 +133,6 @@
 		E6241B371C0E093400D2F5DD /* MapTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		E62442B21C05ED9E00EA937E /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E62442B41C06055900EA937E /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		E62442B61C06068A00EA937E /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = MyPlayground.playground; path = ../MapTheFuture/MyPlayground.playground; sourceTree = "<group>"; };
 		E63670AD1C0F79B300906D4E /* Site.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Site.swift; sourceTree = "<group>"; };
 		E63670B01C0F806500906D4E /* SiteTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteTableViewController.swift; sourceTree = "<group>"; };
 		E645047A1C21F3490027F772 /* TourEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TourEditingViewController.swift; sourceTree = "<group>"; };
@@ -167,9 +166,9 @@
 		E689422F1BFD357400FF5415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E68942321BFD357400FF5415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E68942341BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E68942391BFD357400FF5415 /* Wanderful.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wanderful.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
-		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E68B33321C4553930066022E /* WanderfulTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderfulTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E68B33341C4553930066022E /* WanderfulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderfulTests.swift; sourceTree = "<group>"; };
+		E68B33361C4553930066022E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
@@ -198,7 +197,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E68942361BFD357400FF5415 /* Frameworks */ = {
+		E68B332F1C4553930066022E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,9 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				E68942251BFD357400FF5415 /* Wanderful */,
-				E689423C1BFD357400FF5415 /* WanderfulTests */,
 				E609C6781C36D7B500E69423 /* Field Guide */,
 				E609C6871C36D7B500E69423 /* Field Guide Extension */,
+				E68B33331C4553930066022E /* WanderfulTests */,
 				E68942241BFD357400FF5415 /* Products */,
 				7DB249AF850E9F52D990E437 /* Pods */,
 				97F22CF9BD35D46C81315416 /* Frameworks */,
@@ -354,9 +353,9 @@
 			isa = PBXGroup;
 			children = (
 				E68942231BFD357400FF5415 /* Wanderful.app */,
-				E68942391BFD357400FF5415 /* Wanderful.xctest */,
 				E609C6771C36D7B500E69423 /* Field Guide.app */,
 				E609C6831C36D7B500E69423 /* Field Guide Extension.appex */,
+				E68B33321C4553930066022E /* WanderfulTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -373,15 +372,13 @@
 			path = MapTheFuture;
 			sourceTree = "<group>";
 		};
-		E689423C1BFD357400FF5415 /* WanderfulTests */ = {
+		E68B33331C4553930066022E /* WanderfulTests */ = {
 			isa = PBXGroup;
 			children = (
-				E62442B61C06068A00EA937E /* MyPlayground.playground */,
-				E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */,
-				E689423F1BFD357400FF5415 /* Info.plist */,
+				E68B33341C4553930066022E /* WanderfulTests.swift */,
+				E68B33361C4553930066022E /* Info.plist */,
 			);
-			name = WanderfulTests;
-			path = MapTheFutureTests;
+			path = WanderfulTests;
 			sourceTree = "<group>";
 		};
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
@@ -485,22 +482,22 @@
 			productReference = E68942231BFD357400FF5415 /* Wanderful.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E68942381BFD357400FF5415 /* WanderfulTests */ = {
+		E68B33311C4553930066022E /* WanderfulTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E68942451BFD357400FF5415 /* Build configuration list for PBXNativeTarget "WanderfulTests" */;
+			buildConfigurationList = E68B33391C4553940066022E /* Build configuration list for PBXNativeTarget "WanderfulTests" */;
 			buildPhases = (
-				E68942351BFD357400FF5415 /* Sources */,
-				E68942361BFD357400FF5415 /* Frameworks */,
-				E68942371BFD357400FF5415 /* Resources */,
+				E68B332E1C4553930066022E /* Sources */,
+				E68B332F1C4553930066022E /* Frameworks */,
+				E68B33301C4553930066022E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E689423B1BFD357400FF5415 /* PBXTargetDependency */,
+				E68B33381C4553930066022E /* PBXTargetDependency */,
 			);
 			name = WanderfulTests;
-			productName = MapTheFutureTests;
-			productReference = E68942391BFD357400FF5415 /* Wanderful.xctest */;
+			productName = WanderfulTests;
+			productReference = E68B33321C4553930066022E /* WanderfulTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -529,7 +526,7 @@
 							};
 						};
 					};
-					E68942381BFD357400FF5415 = {
+					E68B33311C4553930066022E = {
 						CreatedOnToolsVersion = 7.2;
 						TestTargetID = E68942221BFD357400FF5415;
 					};
@@ -549,9 +546,9 @@
 			projectRoot = "";
 			targets = (
 				E68942221BFD357400FF5415 /* Wanderful */,
-				E68942381BFD357400FF5415 /* WanderfulTests */,
 				E609C6761C36D7B500E69423 /* Field Guide */,
 				E609C6821C36D7B500E69423 /* Field Guide Extension */,
+				E68B33311C4553930066022E /* WanderfulTests */,
 			);
 		};
 /* End PBXProject section */
@@ -586,7 +583,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E68942371BFD357400FF5415 /* Resources */ = {
+		E68B33301C4553930066022E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -713,11 +710,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E68942351BFD357400FF5415 /* Sources */ = {
+		E68B332E1C4553930066022E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */,
+				E68B33351C4553930066022E /* WanderfulTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,10 +731,10 @@
 			target = E609C6761C36D7B500E69423 /* Field Guide */;
 			targetProxy = E609C6911C36D7B500E69423 /* PBXContainerItemProxy */;
 		};
-		E689423B1BFD357400FF5415 /* PBXTargetDependency */ = {
+		E68B33381C4553930066022E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E68942221BFD357400FF5415 /* Wanderful */;
-			targetProxy = E689423A1BFD357400FF5415 /* PBXContainerItemProxy */;
+			targetProxy = E68B33371C4553930066022E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -853,6 +850,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -898,6 +896,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -925,6 +924,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MapTheFuture/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -944,6 +944,7 @@
 				CODE_SIGN_ENTITLEMENTS = MapTheFuture/MapTheFuture.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = MapTheFuture/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -955,26 +956,26 @@
 			};
 			name = Release;
 		};
-		E68942461BFD357400FF5415 /* Debug */ = {
+		E68B333A1C4553940066022E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MapTheFutureTests/Info.plist;
+				INFOPLIST_FILE = WanderfulTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFutureTests;
-				PRODUCT_NAME = Wanderful;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.WanderfulTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderful.app/Wanderful";
 			};
 			name = Debug;
 		};
-		E68942471BFD357400FF5415 /* Release */ = {
+		E68B333B1C4553940066022E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = MapTheFutureTests/Info.plist;
+				INFOPLIST_FILE = WanderfulTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFutureTests;
-				PRODUCT_NAME = Wanderful;
+				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.WanderfulTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderful.app/Wanderful";
 			};
 			name = Release;
@@ -1018,14 +1019,13 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E68942451BFD357400FF5415 /* Build configuration list for PBXNativeTarget "WanderfulTests" */ = {
+		E68B33391C4553940066022E /* Build configuration list for PBXNativeTarget "WanderfulTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E68942461BFD357400FF5415 /* Debug */,
-				E68942471BFD357400FF5415 /* Release */,
+				E68B333A1C4553940066022E /* Debug */,
+				E68B333B1C4553940066022E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

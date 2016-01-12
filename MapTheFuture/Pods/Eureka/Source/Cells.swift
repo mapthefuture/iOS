@@ -276,7 +276,7 @@ public class _FieldCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T>, 
     }
     
     public func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        return formViewController()?.textInputShouldEndEditing(textField, cell: self) ?? true
+        return formViewController()?.textInput(textField, shouldChangeCharactersInRange:range, replacementString:string, cell: self) ?? true
     }
     
     public func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
@@ -399,6 +399,8 @@ public class URLCell : _FieldCell<NSURL>, CellType {
     
     public override func setup() {
         super.setup()
+        textField.autocorrectionType = .No
+        textField.autocapitalizationType = .None
         textField.keyboardType = .URL
     }
 }
@@ -441,7 +443,7 @@ public class ZipCodeCell : _FieldCell<String>, CellType {
         super.update()
         textField.autocorrectionType = .No
         textField.autocapitalizationType = .AllCharacters
-        textField.keyboardType = .ASCIICapable
+        textField.keyboardType = .NumbersAndPunctuation
     }
 }
 
@@ -679,16 +681,16 @@ public class _TextAreaCell<T where T: Equatable, T: InputTypeInitiable> : Cell<T
         textView.keyboardType = .Default
         textView.delegate = self
         textView.font = .preferredFontForTextStyle(UIFontTextStyleBody)
+        textView.textContainer.lineFragmentPadding = 0
+        textView.textContainerInset = UIEdgeInsetsZero
         placeholderLabel.font = textView.font
         selectionStyle = .None
         contentView.addSubview(textView)
         contentView.addSubview(placeholderLabel)
         
         let views : [String: AnyObject] =  ["textView": textView, "label": placeholderLabel]
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-8-[label]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-0-[textView]-0-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
-        contentView.addConstraint(NSLayoutConstraint(item: textView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 0))
-        contentView.addConstraint(NSLayoutConstraint(item: textView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: 0))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[label]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
+        contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[textView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[textView]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
         contentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-[label]-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: views))
     }
