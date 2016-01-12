@@ -54,6 +54,7 @@
 		E68942301BFD357400FF5415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E689422F1BFD357400FF5415 /* Assets.xcassets */; };
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
 		E68B33351C4553930066022E /* WanderfulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E68B33341C4553930066022E /* WanderfulTests.swift */; };
+		E698C2DC1C45AC5C0011939C /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E698C2DB1C45AC5C0011939C /* ExtensionsTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
@@ -169,6 +170,7 @@
 		E68B33321C4553930066022E /* WanderfulTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderfulTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E68B33341C4553930066022E /* WanderfulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderfulTests.swift; sourceTree = "<group>"; };
 		E68B33361C4553930066022E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E698C2DB1C45AC5C0011939C /* ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
@@ -376,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				E68B33341C4553930066022E /* WanderfulTests.swift */,
+				E698C2DB1C45AC5C0011939C /* ExtensionsTests.swift */,
 				E68B33361C4553930066022E /* Info.plist */,
 			);
 			path = WanderfulTests;
@@ -715,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E68B33351C4553930066022E /* WanderfulTests.swift in Sources */,
+				E698C2DC1C45AC5C0011939C /* ExtensionsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1026,6 +1030,7 @@
 				E68B333B1C4553940066022E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
