@@ -112,7 +112,6 @@
 		E68942391BFD357400FF5415 /* Wanderful.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wanderful.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E69E4CE91C09E737002DEE61 /* ObjCBridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCBridge.h; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
@@ -316,7 +315,6 @@
 				E68942261BFD357400FF5415 /* AppDelegate.swift */,
 				E67245D41C19C85200B24FBA /* Loading.swift */,
 				E62442B41C06055900EA937E /* Extensions.swift */,
-				E69E4CE91C09E737002DEE61 /* ObjCBridge.h */,
 				E689422F1BFD357400FF5415 /* Assets.xcassets */,
 				E68942311BFD357400FF5415 /* LaunchScreen.storyboard */,
 				E68942341BFD357400FF5415 /* Info.plist */,
@@ -685,7 +683,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = MapTheFuture/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -703,7 +701,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFuture;
 				PRODUCT_NAME = Wanderful;
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = MapTheFuture/ObjCBridge.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
