@@ -1,0 +1,5 @@
+language: objective-c 
+xcode_workspace: iOS/MapTheFuture/Wanderful.xcworkspace 
+xcode_scheme: MapTheFuture
+podfile: iOS/MapTheFuture/Podfile
+
