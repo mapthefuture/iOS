@@ -45,7 +45,7 @@
 		E689422E1BFD357400FF5415 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E689422C1BFD357400FF5415 /* Main.storyboard */; };
 		E68942301BFD357400FF5415 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E689422F1BFD357400FF5415 /* Assets.xcassets */; };
 		E68942331BFD357400FF5415 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E68942311BFD357400FF5415 /* LaunchScreen.storyboard */; };
-		E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */; };
+		E689423E1BFD357400FF5415 /* WanderfulTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E689423D1BFD357400FF5415 /* WanderfulTests.swift */; };
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
@@ -109,8 +109,8 @@
 		E689422F1BFD357400FF5415 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E68942321BFD357400FF5415 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E68942341BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E68942391BFD357400FF5415 /* Wanderful.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Wanderful.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTheFutureTests.swift; sourceTree = "<group>"; };
+		E68942391BFD357400FF5415 /* WanderfulTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WanderfulTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E689423D1BFD357400FF5415 /* WanderfulTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WanderfulTests.swift; sourceTree = "<group>"; };
 		E689423F1BFD357400FF5415 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -263,7 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				E68942231BFD357400FF5415 /* Wanderful.app */,
-				E68942391BFD357400FF5415 /* Wanderful.xctest */,
+				E68942391BFD357400FF5415 /* WanderfulTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 		E689423C1BFD357400FF5415 /* WanderfulTests */ = {
 			isa = PBXGroup;
 			children = (
-				E689423D1BFD357400FF5415 /* MapTheFutureTests.swift */,
+				E689423D1BFD357400FF5415 /* WanderfulTests.swift */,
 				E689423F1BFD357400FF5415 /* Info.plist */,
 			);
 			name = WanderfulTests;
@@ -371,7 +371,7 @@
 			);
 			name = WanderfulTests;
 			productName = MapTheFutureTests;
-			productReference = E68942391BFD357400FF5415 /* Wanderful.xctest */;
+			productReference = E68942391BFD357400FF5415 /* WanderfulTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -551,7 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E689423E1BFD357400FF5415 /* MapTheFutureTests.swift in Sources */,
+				E689423E1BFD357400FF5415 /* WanderfulTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,7 +712,7 @@
 				INFOPLIST_FILE = MapTheFutureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFutureTests;
-				PRODUCT_NAME = Wanderful;
+				PRODUCT_NAME = WanderfulTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderful.app/Wanderful";
 			};
 			name = Debug;
@@ -724,7 +724,7 @@
 				INFOPLIST_FILE = MapTheFutureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.macbellingrath.MapTheFutureTests;
-				PRODUCT_NAME = Wanderful;
+				PRODUCT_NAME = WanderfulTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wanderful.app/Wanderful";
 			};
 			name = Release;
