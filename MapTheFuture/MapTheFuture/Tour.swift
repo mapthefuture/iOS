@@ -10,8 +10,9 @@ import UIKit
 import AlamofireObjectMapper
 import ObjectMapper
 import CoreLocation
+import CoreData
 
-class Tour: Mappable {
+final class Tour: NSManagedObject, Mappable {
     
     var id: Int?
     var user_id: Int?
@@ -22,7 +23,7 @@ class Tour: Mappable {
     var startLat: String?
     var startLong: String?
     var category: String?
-    var description: String?
+    var tourDescription: String?
     var coordinate: CLLocationCoordinate2D? {
         print(startLat, startLong)
         guard let lat = self.startLat, let long = self.startLong, let dlat = Double(lat),  let dlong = Double(long)  else { return nil }
@@ -30,9 +31,13 @@ class Tour: Mappable {
         
     }
 
-    required init?(_ map: Map){
+    
+    init?(_ map: Map){
+        //TODO
+//        super.init(entity: <#T##NSEntityDescription#>, insertIntoManagedObjectContext: <#T##NSManagedObjectContext?#>)
         
     }
+
     
     func distance(from fromCoordinate: CLLocationCoordinate2D) -> Double {
         
@@ -57,7 +62,7 @@ class Tour: Mappable {
         startLat <- map["start_lat"]
         startLong <- map["start_lon"]
         category <- map["category"]
-        description <- map["description"]
+        tourDescription <- map["description"]
     }
     
     static var categories = [

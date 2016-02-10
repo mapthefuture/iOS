@@ -173,7 +173,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E68942381BFD357400FF5415"
-               BuildableName = "Wanderful.xctest"
+               BuildableName = "WanderfulTests.xctest"
                BlueprintName = "WanderfulTests"
                ReferencedContainer = "container:Wanderful.xcodeproj">
             </BuildableReference>

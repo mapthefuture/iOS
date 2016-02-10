@@ -49,6 +49,7 @@
 		E69E4CEB1C09E84A002DEE61 /* AudioRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */; };
 		E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */; };
 		E6A1CC721C1E30C0001A01DF /* SiteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */; };
+		E6C6743C1C6B8978002B4874 /* Wanderful.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E6C6743A1C6B8978002B4874 /* Wanderful.xcdatamodeld */; };
 		E6EB43C51C1C755E00D85F1F /* WanderfulAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */; };
 		E6ED67081BFE419B00EAC9D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */; };
 		E6EFC3031C173A8600921042 /* AddSiteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6EFC3021C173A8600921042 /* AddSiteButton.swift */; };
@@ -115,6 +116,7 @@
 		E69E4CEA1C09E84A002DEE61 /* AudioRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecordViewController.swift; sourceTree = "<group>"; };
 		E69F6BFF1C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteSectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E6A1CC711C1E30C0001A01DF /* SiteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SiteDetailViewController.swift; sourceTree = "<group>"; };
+		E6C6743B1C6B8978002B4874 /* Wanderful.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wanderful.xcdatamodel; sourceTree = "<group>"; };
 		E6EB43C41C1C755E00D85F1F /* WanderfulAnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WanderfulAnnotationView.swift; sourceTree = "<group>"; };
 		E6ED67071BFE419B00EAC9D4 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E6EFC3021C173A8600921042 /* AddSiteButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSiteButton.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 		E68942251BFD357400FF5415 /* Wanderful */ = {
 			isa = PBXGroup;
 			children = (
+				E6C6743D1C6B897C002B4874 /* Core Data */,
 				E689422C1BFD357400FF5415 /* Main.storyboard */,
 				E674739C1C0CDC8F00EEF02A /* MainFlow */,
 				E6241B321C0DFF0000D2F5DD /* User Flow */,
@@ -288,6 +291,14 @@
 			);
 			name = WanderfulTests;
 			path = MapTheFutureTests;
+			sourceTree = "<group>";
+		};
+		E6C6743D1C6B897C002B4874 /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E6C6743A1C6B8978002B4874 /* Wanderful.xcdatamodeld */,
+			);
+			name = "Core Data";
 			sourceTree = "<group>";
 		};
 		E6FE25221C0662FB002D2206 /* Creation Flow */ = {
@@ -518,6 +529,7 @@
 				E67473A21C0DE1C100EEF02A /* Tour.swift in Sources */,
 				E63670AE1C0F79B300906D4E /* Site.swift in Sources */,
 				E69F6C001C1E2788007676BE /* SiteSectionHeaderTableViewCell.swift in Sources */,
+				E6C6743C1C6B8978002B4874 /* Wanderful.xcdatamodeld in Sources */,
 				E6FE25211C0662F4002D2206 /* AddSitesViewController.swift in Sources */,
 				E63670B11C0F806500906D4E /* SiteTableViewController.swift in Sources */,
 				E689422B1BFD357400FF5415 /* RoutingViewController.swift in Sources */,
@@ -760,6 +772,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E6C6743A1C6B8978002B4874 /* Wanderful.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E6C6743B1C6B8978002B4874 /* Wanderful.xcdatamodel */,
+			);
+			currentVersion = E6C6743B1C6B8978002B4874 /* Wanderful.xcdatamodel */;
+			path = Wanderful.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E689421B1BFD357400FF5415 /* Project object */;
 }
